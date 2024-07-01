@@ -2,18 +2,15 @@ import type { Metadata } from "next";
 // import "@/styles/globals.css";
 import { Inter as FontSans } from "next/font/google";
 
-import { cn } from "@/lib/utils";
+import "./globals.css";
+import Layout from "@/Layout";
 
-const fontSans = FontSans({
+// ==========================================================================================
+
+const inter = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
 });
-
-import "./globals.css";
-
-import Header from "@/Layout/Header";
-
-// ==========================================================================================
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,15 +24,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
-        )}
-      >
-        <Header />
-
-        {children}
+      <body className={inter.className}>
+        <Layout>{children}</Layout>
       </body>
     </html>
   );

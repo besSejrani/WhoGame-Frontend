@@ -1,0 +1,93 @@
+{
+  "persons": [
+    {
+      "name": "Sandra",
+      "imageUrl": "/images/users/sandra.webp"
+    },
+    {
+      "name": "Philippe",
+      "imageUrl": "/images/users/philippe.webp"
+    },
+    {
+      "name": "Lua",
+      "imageUrl": "/images/users/lua.webp"
+    },
+    {
+      "name": "Scarlet",
+      "imageUrl": "/images/users/scarlet.webp"
+    },
+    {
+      "name": "Dewey",
+      "imageUrl": "/images/users/dewey.webp"
+    },
+    {
+      "name": "Rose",
+      "imageUrl": "/images/users/rose.webp"
+    },
+    {
+      "name": "Tchad",
+      "imageUrl": "/images/users/tchad.webp"
+    },
+    {
+      "name": "Elisabeth",
+      "imageUrl": "/images/users/elisabeth.webp"
+    },
+    {
+      "name": "Ahmed",
+      "imageUrl": "/images/users/ahmed.webp"
+    },
+    {
+      "name": "Anna",
+      "imageUrl": "/images/users/anna.webp"
+    },
+    {
+      "name": "Mike",
+      "imageUrl": "/images/users/mike.webp"
+    },
+    {
+      "name": "Felicia",
+      "imageUrl": "/images/users/felicia.webp"
+    },
+    {
+      "name": "Pietro",
+      "imageUrl": "/images/users/pietro.webp"
+    },
+    {
+      "name": "Camilla",
+      "imageUrl": "/images/users/camila.webp"
+    },
+    {
+      "name": "Blake",
+      "imageUrl": "/images/users/blake.webp"
+    },
+    {
+      "name": "Mia",
+      "imageUrl": "/images/users/mia.webp"
+    },
+    {
+      "name": "Chris",
+      "imageUrl": "/images/users/chris.webp"
+    },
+    {
+      "name": "Clara",
+      "imageUrl": "/images/users/clara.webp"
+    },
+    {
+      "name": "Kai",
+      "imageUrl": "/images/users/kai.webp"
+    },
+    {
+      "name": "Victoire",
+      "imageUrl": "/images/users/victoire.webp"
+    },
+
+    {
+      "name": "Ali",
+      "imageUrl": "/images/users/ali.webp"
+    },
+    {
+      "name": "Jimena",
+      "imageUrl": "/images/users/jimena.webp"
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+import { style } from "@vanilla-extract/css";
+
+// ======================================
+// Root
+// ======================================
+export const root = style({
+  display: "grid",
+  gridTemplateColumns: "1fr 25rem",
+  width: "100%",
+  gridColumnGap: "4rem",
+});
+
+// ======================================
+// Sticky
+// ======================================
+export const sticky = style({
+  position: "sticky",
+  top: "6rem",
+  margin: "6rem 0rem",
+  height: "max-content",
+});
+
+// ======================================
+// Grid
+// ======================================
+export const grid = style({
+  margin: "6rem 0rem",
+  display: "grid",
+  gridTemplateColumns: "1fr 1fr 1fr 1fr",
+  width: "100%",
+  height: "100%",
+  gridGap: "1rem",
+  position: "relative",
+});
+
+// ======================================
+// Sidebar
+// ======================================
+export const sidebar = style({
+  height: "50rem",
+  width: "100%",
+
+  borderRadius: "1rem",
+  overflow: "hidden",
+  boxShadow: `
+        rgba(0, 0, 0, 0.2) 0px 4px 2px -2px,
+        rgba(0, 0, 0, 0.2) 0px 2px 2px 0px,
+        rgba(0, 0, 0, 0.3) 0px 2px 6px 0px
+      `,
+
+  display: "grid",
+  gridTemplateRows: "9fr 1fr",
+});
+
+// ======================================
+// Sidebar Content
+// ======================================
+export const sidebarContent = style({
+  padding: "1.5rem",
+  display: "flex",
+  flexDirection: "column",
+  gap: "1rem",
+  overflowY: "scroll",
+});
+
+// ======================================
+// Chat Group
+// ======================================
+export const chatGroup = style({
+  display: "flex",
+  flexDirection: "column",
+  gap: "0.5rem",
+});
+
+// ======================================
+// Chat User
+// ======================================
+export const chatUser = style({
+  alignSelf: "flex-end",
+  background: "#e0f7fa",
+  padding: "0.8rem",
+  borderRadius: "1rem",
+  maxWidth: "60%",
+  wordWrap: "break-word",
+  overflowWrap: "break-word",
+});
+
+// ======================================
+// Chat User
+// ======================================
+export const chatBot = style({
+  alignSelf: "flex-start",
+  background: "#e0e0e0",
+  padding: "0.8rem",
+  borderRadius: "1rem",
+  maxWidth: "60%",
+  wordWrap: "break-word",
+  overflowWrap: "break-word",
+});
