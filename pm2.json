@@ -1,0 +1,11 @@
+{
+  "apps": [
+    {
+      "name": "nextjs",
+      "script": "npm",
+      "args": "run start",
+      "instances": "2",
+      "exec_mode": "cluster"
+    }
+  ]
+}

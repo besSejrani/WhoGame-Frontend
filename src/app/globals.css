@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-weight: 300;
+  /* font-size: 62.5%; */
+  /* font-family: var(--font-inter); */
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease;
+}
