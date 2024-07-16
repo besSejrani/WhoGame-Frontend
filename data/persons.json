@@ -2,11 +2,11 @@
   "persons": [
     {
       "name": "Ali",
-      "imageUrl": "/images/users/ali.webp"
+      "imageUrl": "/images/users/Ali.webp"
     },
     {
       "name": "Anna",
-      "imageUrl": "/images/users/anna.webp"
+      "imageUrl": "/images/users/Anna.webp"
     },
     {
       "name": "Bertha",
@@ -22,7 +22,7 @@
     },
     {
       "name": "Chris",
-      "imageUrl": "/images/users/chris.webp"
+      "imageUrl": "/images/users/Chris.webp"
     },
     {
       "name": "Christopher",
@@ -34,7 +34,7 @@
     },
     {
       "name": "Felicia",
-      "imageUrl": "/images/users/felicia.webp"
+      "imageUrl": "/images/users/Felicia.webp"
     },
     {
       "name": "George",
