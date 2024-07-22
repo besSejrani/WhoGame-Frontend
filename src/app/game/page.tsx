@@ -29,11 +29,14 @@ const Game = () => {
   // Event
   // ===========================
   const getGameSession = async () => {
-    const { data } = await axios.get(`${uri}/v1/game`);
+    console.log("uri", uri);
+    const { data } = await axios.get(`${uri}/wii_dev_start_game`);
 
-    if (data?.body?.session_id) {
-      await setSessionId(data?.body?.session_id);
-      await router.push(`/game/${data?.body?.session_id}`);
+    console.log("data", data);
+
+    if (data?.session_id) {
+      await setSessionId(data?.session_id);
+      await router.push(`/game/${data?.session_id}`);
     }
   };
 

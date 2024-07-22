@@ -49,25 +49,45 @@ const Sidebar = () => {
     if (!question) return;
 
     try {
+      console.log(
+        "bla",
+        JSON.stringify(
+          {
+            session_id: sessionId,
+            question,
+          },
+          null,
+          4
+        )
+      );
+
       const { data } = await axios.post(
-        `${uri}/v1/question`,
-        {
-          session_id: sessionId,
-          question,
-        },
+        `${uri}/wii_prod_ask_question`,
+        JSON.stringify(
+          {
+            session_id: sessionId,
+            question,
+          },
+          null,
+          4
+        ),
         {
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "text/plain",
           },
         }
       );
 
       console.log("data", data);
+      console.log(
+        "stirngify",
+        JSON.stringify({
+          session_id: sessionId,
+          question,
+        })
+      );
 
-      setChat((prevChat) => [
-        ...prevChat,
-        { question, answer: data?.body?.answer },
-      ]);
+      setChat((prevChat) => [...prevChat, { question, answer: data?.answer }]);
       if (textareaRef.current) {
         textareaRef.current.value = "";
       }
