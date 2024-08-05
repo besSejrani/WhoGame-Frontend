@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 // Components
 import Button from "@/Components/client/Button";
@@ -30,9 +30,10 @@ const Sidebar = () => {
   const { counter, sessionId } = useGameStore();
 
   // ===========================
-  // Ref
+  // Refs
   // ===========================
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const chatEndRef = useRef<HTMLDivElement>(null);
 
   // ===========================
   // State
@@ -40,6 +41,13 @@ const Sidebar = () => {
   const [chat, setChat] = useState<{ question: string; answer: string }[]>([]);
 
   console.log("session_id", sessionId);
+
+  // ===========================
+  // Effects
+  // ===========================
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [chat]);
 
   // ===========================
   // Events
@@ -101,6 +109,13 @@ const Sidebar = () => {
     askQuestion();
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+      askQuestion();
+    }
+  };
+
   return (
     <div className={sticky}>
       <aside className={sidebar}>
@@ -111,6 +126,7 @@ const Sidebar = () => {
               <div className={chatBot}>{entry.answer}</div>
             </div>
           ))}
+          <div ref={chatEndRef} />
         </div>
 
         <div style={{ height: "100%" }}>
@@ -121,6 +137,7 @@ const Sidebar = () => {
             <textarea
               ref={textareaRef}
               placeholder="Type your message here."
+              onKeyDown={handleKeyDown}
               style={{
                 width: "75%",
                 padding: "1rem",
