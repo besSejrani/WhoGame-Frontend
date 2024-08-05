@@ -16,6 +16,13 @@ export const containedButton = style({
   ":hover": {
     backgroundColor: "#f8b000",
   },
+
+  selectors: {
+    "&:disabled": {
+      backgroundColor: "#ddd",
+      cursor: "not-allowed",
+    },
+  },
 });
 
 // ======================================
@@ -33,5 +40,13 @@ export const outlinedButton = style({
   ":hover": {
     backgroundColor: "#FFB500",
     color: "white",
+  },
+
+  selectors: {
+    "&:disabled": {
+      color: "#ddd",
+      borderColor: "#ddd",
+      cursor: "not-allowed",
+    },
   },
 });

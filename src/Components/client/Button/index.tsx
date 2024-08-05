@@ -15,6 +15,7 @@ interface IButton {
   variant: "contained" | "outlined";
   type: "button" | "reset" | "submit";
   styleOverrides?: React.CSSProperties;
+  disabled?: boolean;
 }
 
 const Button: React.FC<IButton> = ({
@@ -24,6 +25,7 @@ const Button: React.FC<IButton> = ({
   text,
   href,
   styleOverrides = {},
+  disabled,
 }) => {
   const className = variant === "contained" ? containedButton : outlinedButton;
 
@@ -35,6 +37,7 @@ const Button: React.FC<IButton> = ({
           type={type}
           onClick={onClick}
           style={styleOverrides}
+          disabled={disabled}
         >
           {text}
         </button>

@@ -39,6 +39,7 @@ const Sidebar = () => {
   // State
   // ===========================
   const [chat, setChat] = useState<{ question: string; answer: string }[]>([]);
+  const [isSending, setIsSending] = useState(false);
 
   console.log("session_id", sessionId);
 
@@ -55,6 +56,8 @@ const Sidebar = () => {
   const askQuestion = async () => {
     const question = textareaRef.current?.value;
     if (!question) return;
+
+    setIsSending(true);
 
     try {
       console.log(
@@ -101,18 +104,24 @@ const Sidebar = () => {
       }
     } catch (error) {
       console.log("error", error);
+    } finally {
+      setIsSending(false);
     }
   };
 
   const submitHandler = (event: React.FormEvent) => {
     event.preventDefault();
-    askQuestion();
+    if (!isSending) {
+      askQuestion();
+    }
   };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === "Enter" && !event.shiftKey) {
       event.preventDefault();
-      askQuestion();
+      if (!isSending) {
+        askQuestion();
+      }
     }
   };
 
@@ -150,6 +159,7 @@ const Sidebar = () => {
               text="Send"
               type="submit"
               variant="contained"
+              disabled={isSending}
               styleOverrides={{
                 width: "25%",
                 padding: "0rem 0rem",
