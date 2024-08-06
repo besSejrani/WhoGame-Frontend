@@ -60,18 +60,6 @@ const Sidebar = () => {
     setIsSending(true);
 
     try {
-      console.log(
-        "bla",
-        JSON.stringify(
-          {
-            session_id: sessionId,
-            question,
-          },
-          null,
-          4
-        )
-      );
-
       const { data } = await axios.post(
         `${uri}/wii_prod_ask_question`,
         JSON.stringify(
@@ -87,15 +75,6 @@ const Sidebar = () => {
             "Content-Type": "text/plain",
           },
         }
-      );
-
-      console.log("data", data);
-      console.log(
-        "stirngify",
-        JSON.stringify({
-          session_id: sessionId,
-          question,
-        })
       );
 
       setChat((prevChat) => [...prevChat, { question, answer: data?.answer }]);

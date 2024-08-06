@@ -49,12 +49,20 @@ const Card: React.FC<ICard> = ({
   // ==============================
 
   const guessUser = async () => {
-    const { data } = await axios.post(`${uri}/v1/guess`, {
-      person: name.toLowerCase(),
-      session_id,
-    });
+    const { data } = await axios.post(
+      `${uri}/wii_dev_guess_person`,
+      JSON.stringify({
+        person: name,
+        session_id,
+      }),
+      {
+        headers: {
+          "Content-Type": "text/plain",
+        },
+      }
+    );
 
-    if (data?.body?.answer_correct) {
+    if (data.answer_correct) {
       await router.push(`/game/${session_id}/success`);
     } else {
       incrementCounter();
