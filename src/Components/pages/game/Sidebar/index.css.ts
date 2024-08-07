@@ -26,10 +26,10 @@ export const sticky = style({
 export const grid = style({
   margin: "6rem 0rem",
   display: "grid",
-  gridTemplateColumns: "1fr 1fr 1fr 1fr",
+  gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr",
   width: "100%",
-  height: "100%",
   gridGap: "1rem",
+  gridRowGap: "2rem",
   position: "relative",
 });
 
@@ -37,30 +37,43 @@ export const grid = style({
 // Sidebar
 // ======================================
 export const sidebar = style({
-  height: "50rem",
+  height: "30rem",
   width: "100%",
-
   borderRadius: "1rem",
   overflow: "hidden",
   boxShadow: `
-        rgba(0, 0, 0, 0.2) 0px 4px 2px -2px,
-        rgba(0, 0, 0, 0.2) 0px 2px 2px 0px,
-        rgba(0, 0, 0, 0.3) 0px 2px 6px 0px
-      `,
-
-  display: "grid",
-  gridTemplateRows: "9fr 1fr",
+    rgba(0, 0, 0, 0.2) 0px 4px 2px -2px,
+    rgba(0, 0, 0, 0.2) 0px 2px 2px 0px,
+    rgba(0, 0, 0, 0.3) 0px 2px 6px 0px
+  `,
 });
 
 // ======================================
 // Sidebar Content
 // ======================================
 export const sidebarContent = style({
+  height: "100%",
+  display: "flex",
+  flexDirection: "column",
+});
+
+// ======================================
+// Chat Container
+// ======================================
+export const chatContainer = style({
+  flex: 1,
+  overflowY: "auto",
   padding: "1.5rem",
   display: "flex",
   flexDirection: "column",
   gap: "1rem",
-  overflowY: "scroll",
+});
+
+// ======================================
+// Form Container
+// ======================================
+export const formContainer = style({
+  borderTop: "1px solid rgba(0,0,0,0.3)",
 });
 
 // ======================================
@@ -86,7 +99,7 @@ export const chatUser = style({
 });
 
 // ======================================
-// Chat User
+// Chat Bot
 // ======================================
 export const chatBot = style({
   alignSelf: "flex-start",

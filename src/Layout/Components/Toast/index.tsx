@@ -36,7 +36,7 @@ const Toast = () => {
   useEffect(() => {
     if (errorMessage) {
       toast.error(errorMessage, {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 10000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -59,7 +59,7 @@ const Toast = () => {
   useEffect(() => {
     if (infoMessage) {
       toast.info(infoMessage, {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 10000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -79,7 +79,7 @@ const Toast = () => {
   useEffect(() => {
     if (successMessage) {
       toast.success(successMessage, {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 10000,
         hideProgressBar: false,
         closeOnClick: true,
