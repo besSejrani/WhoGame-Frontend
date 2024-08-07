@@ -10,15 +10,22 @@ import {
   sticky,
   chatContainer,
   formContainer,
+  loadingSpinner,
 } from "./index.css";
 import { useGameStore } from "@/Store/game";
 import { prodAskQuestions } from "@Queries/index";
+
+type ChatEntry = {
+  id: number;
+  userPrompt: string;
+  botResponse: string | null;
+};
 
 const Sidebar = () => {
   const { counter, sessionId } = useGameStore();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
-  const [chat, setChat] = useState<{ question: string; answer: string }[]>([]);
+  const [chat, setChat] = useState<ChatEntry[]>([]);
   const [isSending, setIsSending] = useState(false);
 
   useEffect(() => {
@@ -28,38 +35,53 @@ const Sidebar = () => {
     }
   }, [chat]);
 
-  const askQuestion = async () => {
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
     const question = textareaRef.current?.value;
-    if (!question || !sessionId) return;
+    if (!question || !sessionId || isSending) return;
 
+    const newEntry: ChatEntry = {
+      id: Date.now(),
+      userPrompt: question,
+      botResponse: null,
+    };
+
+    // Add user's message immediately
+    setChat((prev) => [...prev, newEntry]);
+
+    // Clear input
+    if (textareaRef.current) {
+      textareaRef.current.value = "";
+    }
+
+    // Set isSending to true after adding the user's message
     setIsSending(true);
 
     try {
       const answer = await prodAskQuestions({ sessionId, question });
-      setChat((prevChat) => [...prevChat, { question, answer }]);
-      if (textareaRef.current) {
-        textareaRef.current.value = "";
-      }
+      setChat((prev) =>
+        prev.map((entry) =>
+          entry.id === newEntry.id ? { ...entry, botResponse: answer } : entry
+        )
+      );
     } catch (error) {
       console.log("error", error);
+      setChat((prev) =>
+        prev.map((entry) =>
+          entry.id === newEntry.id
+            ? { ...entry, botResponse: "An error occurred. Please try again." }
+            : entry
+        )
+      );
     } finally {
       setIsSending(false);
-    }
-  };
-
-  const submitHandler = (event: React.FormEvent) => {
-    event.preventDefault();
-    if (!isSending) {
-      askQuestion();
     }
   };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === "Enter" && !event.shiftKey) {
       event.preventDefault();
-      if (!isSending) {
-        askQuestion();
-      }
+      handleSubmit(event);
     }
   };
 
@@ -68,17 +90,25 @@ const Sidebar = () => {
       <aside className={sidebar}>
         <div className={sidebarContent}>
           <div ref={chatContainerRef} className={chatContainer}>
-            {chat.map((entry, index) => (
-              <div key={index} className={chatGroup}>
-                <div className={chatUser}>{entry.question}</div>
-                <div className={chatBot}>{entry.answer}</div>
-              </div>
+            {chat.map((entry) => (
+              <React.Fragment key={entry.id}>
+                <div className={chatGroup}>
+                  <div className={chatUser}>{entry.userPrompt}</div>
+                </div>
+                {entry.botResponse === null ? (
+                  <div className={loadingSpinner}></div>
+                ) : (
+                  <div className={chatGroup}>
+                    <div className={chatBot}>{entry.botResponse}</div>
+                  </div>
+                )}
+              </React.Fragment>
             ))}
           </div>
           <div className={formContainer}>
             <form
               style={{ display: "flex", width: "100%" }}
-              onSubmit={submitHandler}
+              onSubmit={handleSubmit}
             >
               <textarea
                 ref={textareaRef}

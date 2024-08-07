@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { style, keyframes } from "@vanilla-extract/css";
 
 // ======================================
 // Root
@@ -109,4 +109,19 @@ export const chatBot = style({
   maxWidth: "60%",
   wordWrap: "break-word",
   overflowWrap: "break-word",
+});
+
+const spin = keyframes({
+  "0%": { transform: "rotate(0deg)" },
+  "100%": { transform: "rotate(360deg)" },
+});
+
+export const loadingSpinner = style({
+  display: "inline-block",
+  width: "20px",
+  height: "20px",
+  border: "2px solid #f3f3f3",
+  borderTop: "2px solid #3498db",
+  borderRadius: "50%",
+  animation: `${spin} 1s linear infinite`,
 });
