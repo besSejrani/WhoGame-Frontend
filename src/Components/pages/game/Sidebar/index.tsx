@@ -1,3 +1,4 @@
+// React
 import React, { useRef, useState, useEffect } from "react";
 
 // Components
@@ -17,16 +18,12 @@ import {
 // Store
 import { useGameStore } from "@/Store/game";
 
-// HTTPS
-import axios from "axios";
-
-// Environment Variables
-import ServerUri from "@/@Server/ServerUri";
+// Queries
+import { prodAskQuestions } from "@Queries/index";
 
 // ==========================================================================================
 
 const Sidebar = () => {
-  const uri = ServerUri();
   const { counter, sessionId } = useGameStore();
 
   // ===========================
@@ -55,34 +52,19 @@ const Sidebar = () => {
   // ===========================
   const askQuestion = async () => {
     const question = textareaRef.current?.value;
-    if (!question) return;
+    if (!question || !sessionId) return;
 
     setIsSending(true);
 
     try {
-      const { data } = await axios.post(
-        `${uri}/wii_prod_ask_question`,
-        JSON.stringify(
-          {
-            session_id: sessionId,
-            question,
-          },
-          null,
-          4
-        ),
-        {
-          headers: {
-            "Content-Type": "text/plain",
-          },
-        }
-      );
-
-      setChat((prevChat) => [...prevChat, { question, answer: data?.answer }]);
+      const answer = await prodAskQuestions({ sessionId, question });
+      setChat((prevChat) => [...prevChat, { question, answer }]);
       if (textareaRef.current) {
         textareaRef.current.value = "";
       }
     } catch (error) {
       console.log("error", error);
+      // You might want to set an error state here and display it to the user
     } finally {
       setIsSending(false);
     }

@@ -4,7 +4,8 @@
 import Header from "./Header";
 
 // Components
-import Modal from "@/Components/client/Modal";
+import Modal from "@Layout/Components/Modal";
+import Toast from "@Layout/Components/Toast";
 
 // ==========================================================================================
 
@@ -18,6 +19,7 @@ const Layout: React.FC<ILayout> = ({ children }) => {
       <Header />
       {children}
       <Modal />
+      <Toast />
     </div>
   );
 };

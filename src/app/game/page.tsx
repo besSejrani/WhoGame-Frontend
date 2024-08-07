@@ -1,5 +1,8 @@
 "use client";
 
+// React
+import { useState } from "react";
+
 // Next
 import { useRouter } from "next/navigation";
 
@@ -11,32 +14,49 @@ import Button from "@/Components/client/Button";
 
 // Store
 import { useGameStore } from "@/Store/game";
+import useToastStore from "@Store/toasts";
 
-// HTTPS
-import axios from "axios";
-
-// Environment Variables
-import ServerUri from "@/@Server/ServerUri";
+// Queries
+import { getGameSession } from "@Queries/index";
 
 // ==========================================================================================
 
 const Game = () => {
-  const uri = ServerUri();
   const router = useRouter();
+
+  // ===========================
+  // Store
+  // ===========================
   const { setSessionId } = useGameStore();
+  const setErrorMessage = useToastStore((state) => state.setErrorMessage);
+  const setSuccessMessage = useToastStore((state) => state.setSuccessMessage);
+
+  // ===========================
+  // State
+  // ===========================
+  const [isLoading, setIsLoading] = useState(false);
 
   // ===========================
   // Event
   // ===========================
-  const getGameSession = async () => {
-    console.log("uri", uri);
-    const { data } = await axios.get(`${uri}/wii_dev_start_game`);
+  const handleStartGame = async () => {
+    setIsLoading(true);
+    try {
+      const session_id = await getGameSession();
 
-    console.log("data", data);
-
-    if (data?.session_id) {
-      await setSessionId(data?.session_id);
-      await router.push(`/game/${data?.session_id}`);
+      if (session_id) {
+        setSessionId(session_id);
+        router.push(`/game/${session_id}`);
+        setSuccessMessage("The game has started");
+      } else {
+        console.error("No session ID returned");
+        setErrorMessage("The game could not be started");
+      }
+    } catch (error) {
+      console.error("Error starting game:", error);
+      setErrorMessage("The game could not be started");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -55,7 +75,7 @@ const Game = () => {
           text="Start"
           type="button"
           variant="contained"
-          onClick={() => getGameSession()}
+          onClick={() => handleStartGame()}
         />
       </div>
     </Container>

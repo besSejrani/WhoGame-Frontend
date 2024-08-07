@@ -1,31 +1,32 @@
 "use client";
 
+// React
 import React, { useState } from "react";
 
 // Next
 import { useRouter } from "next/navigation";
 
 // Store
-import { useModalStore } from "@/Store/modal";
 import { useGameStore } from "@/Store/game";
+import useToastStore from "@Store/toasts";
 
-// HTTPS
-import axios from "axios";
-
-// Environment Variables
-import ServerUri from "@/@Server/ServerUri";
-
-// Define a type for the component props
-interface GuessSuccessFormProps {
-  session_id: string;
-}
+// Queries
+import { enterRaffle } from "@Queries/index";
 
 // ==========================================================================================
 
+interface GuessSuccessFormProps {
+  session_id: string;
+}
 const GuessSuccessForm: React.FC<GuessSuccessFormProps> = ({ session_id }) => {
-  const uri = ServerUri();
   const router = useRouter();
   const { resetCounter, resetSession } = useGameStore();
+
+  // ==============================
+  //  Store
+  // ==============================
+  const setErrorMessage = useToastStore((state) => state.setErrorMessage);
+  const setSuccessMessage = useToastStore((state) => state.setSuccessMessage);
 
   // ===========================
   // State
@@ -35,6 +36,9 @@ const GuessSuccessForm: React.FC<GuessSuccessFormProps> = ({ session_id }) => {
     email: "",
     organization: "",
   });
+
+  // UI
+  const [disabled, setDisabled] = useState<boolean>(false);
 
   // ===========================
   // Event
@@ -50,22 +54,29 @@ const GuessSuccessForm: React.FC<GuessSuccessFormProps> = ({ session_id }) => {
   // ===========================
   // Submit
   // ===========================
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (form: React.FormEvent) => {
+    form.preventDefault();
 
-    const { data } = await axios.post(`${uri}/v1/raffle`, {
-      session_id,
-      name: formData.name,
-      email: formData.email,
-      organization: formData.organization,
-    });
+    try {
+      const data = enterRaffle({
+        sessionId: session_id,
+        email: formData.email,
+        name: formData.name,
+        organization: formData.organization,
+      });
 
-    console.log("data", data);
+      console.log("data", data);
 
-    // resetCounter();
-    // resetSession();
+      resetCounter();
+      resetSession();
 
-    // await router.push(`/`);
+      await router.push(`/`);
+      setSuccessMessage("Thank you for completing the form");
+    } catch (error) {
+      setErrorMessage("The form couldn't be updated");
+    } finally {
+      setDisabled(false);
+    }
   };
 
   return (

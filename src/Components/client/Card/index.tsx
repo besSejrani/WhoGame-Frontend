@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 
 // Components
 import Button from "@/Components/client/Button";
-import ModalVerifyIdentity from "@/Components/client/Modal/Content/ModalVerifyIdentity";
+import ModalVerifyIdentity from "@/Layout/Components/Modal/Content/ModalVerifyIdentity";
 
 // Styles
 import { image, paragraph, root } from "./index.css";
@@ -11,12 +11,10 @@ import { image, paragraph, root } from "./index.css";
 // Store
 import { useModalStore } from "@/Store/modal";
 import { useGameStore } from "@/Store/game";
+import useToastStore from "@Store/toasts";
 
-// HTTPS
-import axios from "axios";
-
-// Environment Variables
-import ServerUri from "@/@Server/ServerUri";
+// Queries
+import { guessPerson } from "@Queries/index";
 
 // ==========================================================================================
 
@@ -35,7 +33,6 @@ const Card: React.FC<ICard> = ({
   onClick,
   session_id,
 }) => {
-  const uri = ServerUri();
   const router = useRouter();
 
   // ==============================
@@ -43,32 +40,31 @@ const Card: React.FC<ICard> = ({
   // ==============================
   const { openModal, closeModal } = useModalStore((state) => state);
   const { incrementCounter } = useGameStore();
+  const setErrorMessage = useToastStore((state) => state.setErrorMessage);
+  const setSuccessMessage = useToastStore((state) => state.setSuccessMessage);
 
   // ==============================
   //  Events
   // ==============================
 
   const guessUser = async () => {
-    const { data } = await axios.post(
-      `${uri}/wii_dev_guess_person`,
-      JSON.stringify({
-        person: name,
-        session_id,
-      }),
-      {
-        headers: {
-          "Content-Type": "text/plain",
-        },
+    try {
+      const answerCorrect = await guessPerson({ sessionId: session_id, name });
+
+      if (answerCorrect) {
+        await router.push(`/game/${session_id}/success`);
+        setSuccessMessage("You nailed it !");
+      } else {
+        incrementCounter();
+        setErrorMessage("Wrong guess, try again !");
       }
-    );
-
-    if (data.answer_correct) {
-      await router.push(`/game/${session_id}/success`);
-    } else {
-      incrementCounter();
+    } catch (error) {
+      console.error("Error guessing person:", error);
+      setErrorMessage("Wrong guess, try again !");
+      // Handle error (e.g., show error message to user)
+    } finally {
+      await closeModal();
     }
-
-    await closeModal();
   };
 
   return (
