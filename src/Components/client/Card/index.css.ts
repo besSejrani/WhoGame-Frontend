@@ -5,7 +5,7 @@ import { style } from "@vanilla-extract/css";
 // ======================================
 export const root = style({
   position: "relative",
-  height: "max-content",
+  height: "300px",
   display: "flex",
   flexDirection: "column",
   boxShadow: `rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.2) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 1px 3px 0px`,
@@ -18,7 +18,7 @@ export const root = style({
 // Image
 // ======================================
 export const image = style({
-  height: "400px",
+  height: "250px",
   width: "100%",
   objectFit: "cover",
   cursor: "pointer",

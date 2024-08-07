@@ -18,8 +18,9 @@ export const grid = style({
   display: "grid",
   gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr",
   width: "100%",
-  height: "100%",
+  // height: "100%",
   gridGap: "1rem",
+  gridRowGap: "2rem",
   position: "relative",
 });
 
