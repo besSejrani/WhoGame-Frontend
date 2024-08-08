@@ -28,12 +28,6 @@ const Header = () => {
             </li>
 
             <li className={li}>
-              <Link href="/leaderboard" className={link}>
-                Leaderboard
-              </Link>
-            </li>
-
-            <li className={li}>
               <Link href="/diagram" className={link}>
                 Diagram
               </Link>

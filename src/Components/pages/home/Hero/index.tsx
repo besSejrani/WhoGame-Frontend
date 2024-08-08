@@ -1,6 +1,3 @@
-// Next
-import Link from "next/link";
-
 // Components
 import Button from "@/Components/client/Button";
 
@@ -25,13 +22,6 @@ const Hero = () => {
             href="/game"
             variant="contained"
             text="Let's Start"
-            type="button"
-            styleOverrides={{ padding: "0.7rem 1rem" }}
-          />
-          <Button
-            href="/leaderboard"
-            variant="outlined"
-            text="Leaderboard"
             type="button"
             styleOverrides={{ padding: "0.7rem 1rem" }}
           />
