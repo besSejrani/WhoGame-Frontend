@@ -19,5 +19,12 @@ declare namespace NodeJS {
     NEXT_PUBLIC_DEVELOPMENT_SERVER: string;
     NEXT_PUBLIC_STAGING_SERVER: string;
     NEXT_PUBLIC_PRODUCTION_SERVER: string;
+
+    // ==================================
+    // AWS
+    // ==================================
+    AWS_ACCESS_KEY_ID: string;
+    AWS_SECRET_ACCESS_KEY: string;
+    AWS_REGION: string;
   }
 }

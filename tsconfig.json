@@ -27,6 +27,7 @@
       "@Hooks/*": ["./src/Hooks/*"],
       "@Helpers/*": ["./src/Helpers/*"],
       "@Class/*": ["./src/Class/*"],
+      "@DynamoDB/*": ["./src/@DynamoDB/*"],
       "@Queries/*": ["./src/@Queries/*"],
       "@Server/*": ["./src/@Server/*"],
       "@Types/*": ["./src/@Types/*"]

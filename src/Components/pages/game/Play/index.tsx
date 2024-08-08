@@ -9,17 +9,20 @@ import Sidebar from "@/Components/pages/game/Sidebar";
 // Styles
 import { root, grid } from "./index.css";
 
-// JSON
-import personData from "@Data/persons.json";
+// ==========================================================================================
+
+type Person = {
+  name: string;
+  photo_url: string;
+};
 
 // Define a type for the component props
 interface GameIdProps {
   session_id: string;
+  data: Person[];
 }
 
-// ==========================================================================================
-
-const GameId: React.FC<GameIdProps> = ({ session_id }) => {
+const GameId: React.FC<GameIdProps> = ({ session_id, data }) => {
   // ===========================
   // State
   // ===========================
@@ -43,10 +46,10 @@ const GameId: React.FC<GameIdProps> = ({ session_id }) => {
   return (
     <div className={root}>
       <div className={grid}>
-        {personData.persons.map((person) => {
+        {data.map((person) => {
           return (
             <Card
-              imageUrl={person.imageUrl}
+              imageUrl={person.photo_url}
               name={person.name}
               key={person.name}
               isSelected={selectedCards.has(person.name)}
