@@ -14,7 +14,7 @@
     "@vanilla-extract/css": "^1.15.3",
     "axios": "^1.7.3",
     "class-variance-authority": "^0.7.0",
-    "lucide-react": "^0.378.0",
+    "lucide-react": "^0.427.0",
     "next": "v15.0.0-canary.111",
     "react": "19.0.0-rc-2d2cc042-20240809",
     "react-confetti": "^6.1.0",
