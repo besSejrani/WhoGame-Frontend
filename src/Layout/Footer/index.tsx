@@ -149,6 +149,20 @@ const Footer = () => {
                 <span
                   style={{ opacity: "0.85", margin: "0rem 0.5rem 0rem 0rem" }}
                 >
+                  Berlin
+                </span>
+                🇩🇪
+              </li>
+              <li
+                style={{
+                  listStyle: "none",
+                  margin: "0rem 0rem 0.5rem 0rem",
+                  fontSize: "1.2rem",
+                }}
+              >
+                <span
+                  style={{ opacity: "0.85", margin: "0rem 0.5rem 0rem 0rem" }}
+                >
                   Duisburg
                 </span>
                 🇩🇪

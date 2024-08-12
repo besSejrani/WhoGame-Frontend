@@ -1,3 +1,7 @@
+"use client";
+
+import React, { useEffect, useState, CSSProperties } from "react";
+
 // Next
 import Link from "next/link";
 // UI
@@ -12,8 +16,54 @@ import { root, header, links, link, li } from "./index.css";
 // ==========================================================================================
 
 const Header = () => {
+  // ==============================
+  // State
+  // ==============================
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+
+  // ==============================
+  // Event
+  // ==============================
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+      const isScrolledDown = prevScrollPos < currentScrollPos;
+      const isScrolledPast50px = currentScrollPos > 50;
+
+      setIsHeaderVisible(
+        (isScrolledDown && !isScrolledPast50px) || // Show when scrolling down but not past 50px
+          (!isScrolledDown && currentScrollPos > 0) || // Show when scrolling up and not at the top
+          currentScrollPos <= 0 // Always show at the top
+      );
+
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [prevScrollPos]);
+
+  const headerWrapperStyle: CSSProperties = {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 50,
+    backgroundColor: "white",
+    boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+    transition: "transform 0.3s ease-in-out",
+  };
+
+  const dynamicStyle: CSSProperties = {
+    ...headerWrapperStyle,
+    transform: isHeaderVisible ? "translateY(0)" : "translateY(-100%)",
+  };
+
   return (
-    <div className={root}>
+    <div style={dynamicStyle} className={root}>
       <Container styleOverrides={{ padding: "0.2rem 0rem ", width: "90%" }}>
         <header className={header}>
           <Link href="/">

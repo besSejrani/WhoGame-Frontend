@@ -10,7 +10,7 @@ const Hero = () => {
   return (
     <main className={hero}>
       <div>
-        <h1 className={title}>Who Is It ? The AI Challenge</h1>
+        <h1 className={title}>Who Is RAG ? The AI Challenge</h1>
         <p className={paragraph}>
           Dive into the mistery! Can you figure out who's who? Ask smart
           questions, use your detectives skills to narrow down the options, and
