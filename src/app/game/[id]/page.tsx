@@ -28,9 +28,7 @@ const GameId: React.FC<{ params: Params }> = async ({ params }) => {
   const data = (await scanPeopleTable()) as Person[];
 
   return (
-    <Container
-      styleOverrides={{ padding: "3rem 0rem 0rem 0rem ", width: "90%" }}
-    >
+    <Container styleOverrides={{ width: "95%" }}>
       <Play session_id={session_id} data={data} />
     </Container>
   );

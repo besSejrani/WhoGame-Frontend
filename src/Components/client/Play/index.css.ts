@@ -14,7 +14,7 @@ export const root = style({
 // Grid
 // ======================================
 export const grid = style({
-  margin: "6rem 0rem",
+  margin: "4rem 0rem",
   display: "grid",
   gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr",
   width: "100%",
@@ -28,10 +28,10 @@ export const grid = style({
 // ======================================
 export const sidebar = style({
   position: "sticky",
-  top: "6rem",
+  top: "4rem",
   height: "50rem",
   width: "100%",
-  margin: "6rem 0rem",
+  margin: "4rem 0rem",
   borderRadius: "1rem",
   overflow: "hidden",
   boxShadow: `

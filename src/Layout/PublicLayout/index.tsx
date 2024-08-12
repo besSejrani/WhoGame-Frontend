@@ -1,6 +1,10 @@
 // Layout
-import Header from "@Layout/Header";
-import Footer from "@Layout/Footer";
+import Header from "@/Layout/Components/Header";
+import Footer from "@/Layout/Components/Footer";
+
+// Components
+// import Modal from "@Layout/Components/Modal";
+// import Toast from "@Layout/Components/Toast";
 
 // ==========================================================================================
 

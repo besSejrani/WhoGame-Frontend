@@ -88,7 +88,7 @@ const Header = () => {
                 text="Let's Play"
                 type="button"
                 variant="outlined"
-                href="/game"
+                href="/game/start"
                 styleOverrides={{
                   fontSize: "1.2rem",
                   fontWeight: 400,

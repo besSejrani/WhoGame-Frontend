@@ -15,8 +15,8 @@ export const root = style({
 // ======================================
 export const sticky = style({
   position: "sticky",
-  top: "6rem",
-  margin: "6rem 0rem",
+  top: "4rem",
+  margin: "4rem 0rem",
   height: "max-content",
 });
 
