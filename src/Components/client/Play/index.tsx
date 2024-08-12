@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 // Components
 import Card from "@/Components/client/Card";
-import Sidebar from "@/Components/pages/game/Sidebar";
+import Sidebar from "@Components/client/Sidebar";
 
 // Styles
 import { root, grid } from "./index.css";

@@ -2,9 +2,9 @@
 import Container from "@/Components/ui/Container";
 
 // Components
-import Hero from "@/Components/pages/home/Hero";
-import GameRules from "@/Components/pages/home/GameRules";
-import Rewards from "@/Components/pages/home/Rewards";
+import Hero from "@/Components/client/Hero";
+import GameRules from "@/Components/client/GameRules";
+import Rewards from "@/Components/client/Rewards";
 
 // ====================================================================================
 

@@ -125,3 +125,35 @@ export const loadingSpinner = style({
   borderRadius: "50%",
   animation: `${spin} 1s linear infinite`,
 });
+
+const blink = keyframes({
+  "0%": { opacity: 0.2 },
+  "20%": { opacity: 1 },
+  "100%": { opacity: 0.2 },
+});
+
+export const typingIndicator = style({
+  display: "flex",
+  alignItems: "center",
+  gap: "4px",
+  alignSelf: "flex-start",
+  padding: "0.8rem",
+  borderRadius: "1rem",
+  background: "#e0e0e0",
+});
+
+export const typingDot = style({
+  width: "6px",
+  height: "6px",
+  backgroundColor: "#333",
+  borderRadius: "50%",
+  animation: `${blink} 1.4s infinite both`,
+  selectors: {
+    "&:nth-child(2)": {
+      animationDelay: "0.2s",
+    },
+    "&:nth-child(3)": {
+      animationDelay: "0.4s",
+    },
+  },
+});

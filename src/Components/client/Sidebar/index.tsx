@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import Button from "@/Components/client/Button";
-import Timer from "@/Components/pages/game/Timer";
+import Timer from "@Components/client/Timer";
 import {
   sidebar,
   sidebarContent,
@@ -11,6 +11,10 @@ import {
   chatContainer,
   formContainer,
   loadingSpinner,
+  typingDot,
+  grid,
+  root,
+  typingIndicator,
 } from "./index.css";
 
 import GameRulesModal from "@/Layout/Components/Modal/Content/GameRules";
@@ -21,16 +25,13 @@ import { prodAskQuestions } from "@Queries/index";
 
 type ChatEntry = {
   id: number;
-  userPrompt: string;
+  userPrompt: string | null;
   botResponse: string | null;
+  isTyping: boolean;
 };
 
 const Sidebar = () => {
-  // ==============================
-  //  Store
-  // ==============================
   const { openModal, isOpen, closeModal } = useModalStore((state) => state);
-
   const { counter, sessionId } = useGameStore();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
@@ -44,6 +45,43 @@ const Sidebar = () => {
     }
   }, [chat]);
 
+  useEffect(() => {
+    const initialMessages = [
+      { id: Date.now(), userPrompt: null, botResponse: null, isTyping: true },
+      {
+        id: Date.now() + 1,
+        userPrompt: null,
+        botResponse: null,
+        isTyping: true,
+      },
+      {
+        id: Date.now() + 2,
+        userPrompt: null,
+        botResponse: null,
+        isTyping: true,
+      },
+    ];
+    setChat(initialMessages);
+
+    const messages = [
+      "Can you figure out who's who ?",
+      "Ask smart questions, use your detectives skills to narrow down the options, and make your guess",
+      "Good Luck!",
+    ];
+
+    messages.forEach((message, index) => {
+      setTimeout(() => {
+        setChat((prev) =>
+          prev.map((entry, i) =>
+            i === index
+              ? { ...entry, botResponse: message, isTyping: false }
+              : entry
+          )
+        );
+      }, (index + 1) * 1000);
+    });
+  }, []);
+
   const handleOpenModal = useCallback(() => {
     console.log("Attempting to open modal");
     openModal(<GameRulesModal />);
@@ -55,7 +93,7 @@ const Sidebar = () => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         console.log("Escape key pressed");
-        event.preventDefault(); // Add this line
+        event.preventDefault();
         handleOpenModal();
       }
     };
@@ -69,7 +107,6 @@ const Sidebar = () => {
     };
   }, [handleOpenModal]);
 
-  // Log modal state changes
   useEffect(() => {
     console.log("Modal state changed:", { isOpen });
   }, [isOpen]);
@@ -83,24 +120,24 @@ const Sidebar = () => {
       id: Date.now(),
       userPrompt: question,
       botResponse: null,
+      isTyping: true,
     };
 
-    // Add user's message immediately
     setChat((prev) => [...prev, newEntry]);
 
-    // Clear input
     if (textareaRef.current) {
       textareaRef.current.value = "";
     }
 
-    // Set isSending to true after adding the user's message
     setIsSending(true);
 
     try {
       const answer = await prodAskQuestions({ sessionId, question });
       setChat((prev) =>
         prev.map((entry) =>
-          entry.id === newEntry.id ? { ...entry, botResponse: answer } : entry
+          entry.id === newEntry.id
+            ? { ...entry, botResponse: answer, isTyping: false }
+            : entry
         )
       );
     } catch (error) {
@@ -108,7 +145,11 @@ const Sidebar = () => {
       setChat((prev) =>
         prev.map((entry) =>
           entry.id === newEntry.id
-            ? { ...entry, botResponse: "An error occurred. Please try again." }
+            ? {
+                ...entry,
+                botResponse: "An error occurred. Please try again.",
+                isTyping: false,
+              }
             : entry
         )
       );
@@ -131,15 +172,23 @@ const Sidebar = () => {
           <div ref={chatContainerRef} className={chatContainer}>
             {chat.map((entry) => (
               <React.Fragment key={entry.id}>
-                <div className={chatGroup}>
-                  <div className={chatUser}>{entry.userPrompt}</div>
-                </div>
-                {entry.botResponse === null ? (
-                  <div className={loadingSpinner}></div>
-                ) : (
+                {entry.userPrompt !== null && (
                   <div className={chatGroup}>
-                    <div className={chatBot}>{entry.botResponse}</div>
+                    <div className={chatUser}>{entry.userPrompt}</div>
                   </div>
+                )}
+                {entry.isTyping ? (
+                  <div className={typingIndicator}>
+                    <span className={typingDot}></span>
+                    <span className={typingDot}></span>
+                    <span className={typingDot}></span>
+                  </div>
+                ) : (
+                  entry.botResponse && (
+                    <div className={chatGroup}>
+                      <div className={chatBot}>{entry.botResponse}</div>
+                    </div>
+                  )
                 )}
               </React.Fragment>
             ))}
@@ -207,7 +256,6 @@ const Sidebar = () => {
           {counter}
         </p>
       </div>
-
       <div
         style={{
           margin: "1.5rem 0rem 0rem 0rem",
@@ -215,9 +263,9 @@ const Sidebar = () => {
           justifyContent: "space-between",
           alignItems: "center",
           cursor: "pointer",
-          userSelect: "none", // Add this line
-          WebkitUserSelect: "none", // For webkit browsers
-          MozUserSelect: "none", // For Firefox
+          userSelect: "none",
+          WebkitUserSelect: "none",
+          MozUserSelect: "none",
           msUserSelect: "none",
         }}
         onClick={() => {

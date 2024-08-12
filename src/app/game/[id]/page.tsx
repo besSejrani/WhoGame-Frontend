@@ -2,7 +2,7 @@
 import Container from "@/Components/ui/Container";
 
 // Page
-import Play from "@Components/pages/game/Play";
+import Play from "@/Components/client/Play";
 
 // DynamoDB
 import { scanPeopleTable } from "@DynamoDB/dynamodb";
