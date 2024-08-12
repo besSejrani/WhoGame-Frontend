@@ -1,5 +1,3 @@
-"use client";
-
 // Layout
 import Header from "@Layout/Header";
 
