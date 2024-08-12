@@ -61,7 +61,7 @@ const Game = () => {
   };
 
   return (
-    <Container>
+    <Container styleOverrides={{ padding: "0rem" }}>
       <div
         style={{
           width: "100%",

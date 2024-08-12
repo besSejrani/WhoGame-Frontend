@@ -2,6 +2,7 @@
 
 // Layout
 import Header from "./Header";
+import Footer from "./Footer";
 
 // Components
 import Modal from "@Layout/Components/Modal";
@@ -18,6 +19,7 @@ const Layout: React.FC<ILayout> = ({ children }) => {
     <div>
       <Header />
       {children}
+      <Footer />
       <Modal />
       <Toast />
     </div>
