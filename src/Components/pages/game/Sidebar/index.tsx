@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import Button from "@/Components/client/Button";
 import Timer from "@/Components/pages/game/Timer";
 import {
@@ -12,6 +12,10 @@ import {
   formContainer,
   loadingSpinner,
 } from "./index.css";
+
+import GameRulesModal from "@/Layout/Components/Modal/Content/GameRules";
+
+import { useModalStore } from "@/Store/modal";
 import { useGameStore } from "@/Store/game";
 import { prodAskQuestions } from "@Queries/index";
 
@@ -22,6 +26,11 @@ type ChatEntry = {
 };
 
 const Sidebar = () => {
+  // ==============================
+  //  Store
+  // ==============================
+  const { openModal, isOpen, closeModal } = useModalStore((state) => state);
+
   const { counter, sessionId } = useGameStore();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
@@ -34,6 +43,36 @@ const Sidebar = () => {
         chatContainerRef.current.scrollHeight;
     }
   }, [chat]);
+
+  const handleOpenModal = useCallback(() => {
+    console.log("Attempting to open modal");
+    openModal(<GameRulesModal />);
+    console.log("Modal open function called");
+    console.log("Current modal state:", { isOpen });
+  }, [openModal, isOpen]);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        console.log("Escape key pressed");
+        event.preventDefault(); // Add this line
+        handleOpenModal();
+      }
+    };
+
+    console.log("Adding event listener for Escape key");
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      console.log("Removing event listener for Escape key");
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [handleOpenModal]);
+
+  // Log modal state changes
+  useEffect(() => {
+    console.log("Modal state changed:", { isOpen });
+  }, [isOpen]);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -166,6 +205,36 @@ const Sidebar = () => {
         <p>
           <b>Attempts:</b>
           {counter}
+        </p>
+      </div>
+
+      <div
+        style={{
+          margin: "1.5rem 0rem 0rem 0rem",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          cursor: "pointer",
+          userSelect: "none", // Add this line
+          WebkitUserSelect: "none", // For webkit browsers
+          MozUserSelect: "none", // For Firefox
+          msUserSelect: "none",
+        }}
+        onClick={() => {
+          console.log("Help div clicked");
+          handleOpenModal();
+        }}
+      >
+        <p>Need some help ?</p>
+        <p
+          style={{
+            border: "1px solid grey",
+            borderRadius: "99px",
+            width: "max-content",
+            padding: "0.25rem 1rem",
+          }}
+        >
+          esc
         </p>
       </div>
     </div>
