@@ -10,10 +10,7 @@ import {
   sticky,
   chatContainer,
   formContainer,
-  loadingSpinner,
   typingDot,
-  grid,
-  root,
   typingIndicator,
 } from "./index.css";
 
@@ -31,7 +28,7 @@ type ChatEntry = {
 };
 
 const Sidebar = () => {
-  const { openModal, isOpen, closeModal } = useModalStore((state) => state);
+  const { openModal, isOpen } = useModalStore((state) => state);
   const { counter, sessionId } = useGameStore();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
@@ -60,12 +57,19 @@ const Sidebar = () => {
         botResponse: null,
         isTyping: true,
       },
+      {
+        id: Date.now() + 3,
+        userPrompt: null,
+        botResponse: null,
+        isTyping: true,
+      },
     ];
     setChat(initialMessages);
 
     const messages = [
       "Can you figure out who's who ?",
-      "Ask smart questions, use your detectives skills to narrow down the options, and make your guess",
+      "Ask smart questions, use your detective skills to narrow down the possibilities, and make your guess.",
+      "Click on the user cards to eliminate suspects and narrow your options.",
       "Good Luck!",
     ];
 
@@ -229,6 +233,7 @@ const Sidebar = () => {
           </div>
         </div>
       </aside>
+
       <div
         style={{
           borderRadius: "1rem",
@@ -252,38 +257,50 @@ const Sidebar = () => {
         </h2>
         <Timer />
         <p>
-          <b>Attempts:</b>
+          <span style={{ fontWeight: 500 }}>Attempts:</span>
           {counter}
         </p>
-      </div>
-      <div
-        style={{
-          margin: "1.5rem 0rem 0rem 0rem",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          cursor: "pointer",
-          userSelect: "none",
-          WebkitUserSelect: "none",
-          MozUserSelect: "none",
-          msUserSelect: "none",
-        }}
-        onClick={() => {
-          console.log("Help div clicked");
-          handleOpenModal();
-        }}
-      >
-        <p>Need some help ?</p>
-        <p
+
+        <hr style={{ opacity: 0.5, margin: "1.5rem 0rem" }} />
+
+        <h2
           style={{
-            border: "1px solid grey",
-            borderRadius: "99px",
-            width: "max-content",
-            padding: "0.25rem 1rem",
+            fontSize: "1.4rem",
+            fontWeight: 400,
+            margin: "0rem 0rem 0.5rem 0rem",
           }}
         >
-          esc
-        </p>
+          Keyboard shortcuts
+        </h2>
+        <div
+          style={{
+            margin: "0 0rem 0rem 0rem",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            cursor: "pointer",
+            userSelect: "none",
+            WebkitUserSelect: "none",
+            MozUserSelect: "none",
+            msUserSelect: "none",
+          }}
+          onClick={() => {
+            console.log("Help div clicked");
+            handleOpenModal();
+          }}
+        >
+          <p>Need some help ?</p>
+          <p
+            style={{
+              border: "1px solid grey",
+              borderRadius: "99px",
+              width: "max-content",
+              padding: "0.25rem 1rem",
+            }}
+          >
+            esc
+          </p>
+        </div>
       </div>
     </div>
   );

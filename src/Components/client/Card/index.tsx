@@ -52,7 +52,7 @@ const Card: React.FC<ICard> = ({
       const answerCorrect = await guessPerson({ sessionId: session_id, name });
 
       if (answerCorrect) {
-        await router.push(`/game/${session_id}/success`);
+        await router.push(`/success-game/${session_id}`);
         setSuccessMessage("You nailed it !");
       } else {
         incrementCounter();

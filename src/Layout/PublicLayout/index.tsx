@@ -25,6 +25,7 @@ const Layout: React.FC<ILayout> = ({ children }) => {
   // ===========================
   const isGameRoute = pathname.startsWith("/game");
   const isStartGameRoute = pathname.startsWith("/start-game");
+  const isSuccessGameRoute = pathname.startsWith("/success-game");
 
   return (
     <div>
@@ -33,7 +34,7 @@ const Layout: React.FC<ILayout> = ({ children }) => {
 
       <Modal />
       <Toast />
-      {!isGameRoute && !isStartGameRoute && <Footer />}
+      {!isSuccessGameRoute && !isGameRoute && !isStartGameRoute && <Footer />}
     </div>
   );
 };

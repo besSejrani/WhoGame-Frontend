@@ -30,7 +30,7 @@ const Timer = () => {
   return (
     <div style={{ display: "flex" }}>
       <p>
-        <b>Timer:</b>
+        <span style={{ fontWeight: 500 }}>Timer:</span>
         {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
       </p>
     </div>

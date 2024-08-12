@@ -100,8 +100,6 @@ export const enterRaffle = async ({
     }
   );
 
-  console.log("data", data);
-
   return data.answer_correct;
 };
 
