@@ -26,6 +26,18 @@ const PrivacyPolicy = () => {
               lineHeight: "3rem",
               opacity: "0.7",
               fontWeight: 300,
+              margin: "0rem 0rem 2rem 0rem",
+            }}
+          >
+            Last updated: August 13, 2024
+          </p>
+
+          <p
+            style={{
+              fontSize: "2rem",
+              lineHeight: "3rem",
+              opacity: "0.7",
+              fontWeight: 300,
             }}
           >
             Welcome to Who Is Rag! This privacy policy describes how Tecracer
@@ -108,8 +120,41 @@ const PrivacyPolicy = () => {
             <br />
             <strong>What do we use your data for?</strong>
             <br />
-            Some of the data is collected to ensure error-free provision of the
-            website. Other data may be used to analyze your user behavior.
+            We use the data we collect for the following purposes:
+            <ul style={{ margin: "1rem 0 0 2rem" }}>
+              <li>
+                To operate and manage our game-based website, including player
+                registration and participation
+              </li>
+              <li>
+                To contact winners and distribute prizes as part of our game's
+                reward system
+              </li>
+              <li>
+                For marketing purposes, including sending you information about
+                our services, special offers, and updates related to our game
+              </li>
+              <li>
+                To improve our game and website based on player feedback and
+                usage patterns
+              </li>
+              <li>To provide customer support and respond to inquiries</li>
+              <li>
+                To ensure the security and integrity of our game and prevent
+                fraud or misuse
+              </li>
+              <li>
+                To comply with legal obligations and enforce our terms of
+                service
+              </li>
+            </ul>
+            <br />
+            By using our website and providing your personal information, you
+            acknowledge and agree that it may be used for these purposes. We
+            will only use your personal data for the purposes for which we
+            collected it, unless we reasonably consider that we need to use it
+            for another reason and that reason is compatible with the original
+            purpose.
             <br />
             <br />
             <strong>What rights do you have regarding your data?</strong>
