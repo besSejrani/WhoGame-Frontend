@@ -212,7 +212,7 @@ const PrivacyPolicy = () => {
             <br />
             30165 Hannover
             <br />
-            Telefon: <a href="tel:+4951159095950">+49 511- 59 0 95-950</a>
+            Telefon: <a href="tel:+4951159095950">+49 511 59095-950</a>
             <br />
             E-Mail:{" "}
             <a href="mailto:datenschutz@tecracer.de">datenschutz@tecracer.de</a>
@@ -374,7 +374,7 @@ const PrivacyPolicy = () => {
             <br />
             30165 Hannover
             <br />
-            Telefon: <a href="tel:+4951159095950">+49 511- 59 0 95-950</a>
+            Telefon: <a href="tel:+4951159095950">+49 511 59095-950</a>
             <br />
             E-Mail:{" "}
             <a href="mailto:datenschutz@tecracer.de">datenschutz@tecracer.de</a>
@@ -573,8 +573,9 @@ const PrivacyPolicy = () => {
             }}
           >
             If you have any questions about this Privacy Policy, please contact
-            us at: Ioloco Support Team Email: support@ioloco.com Phone: [Your
-            Contact Number] Address: [Your Business Address]
+            us at:{" "}
+            <a href="mailto:datenschutz@tecracer.de">datenschutz@tecracer.de</a>{" "}
+            or call us via <a href="tel:+4951159095950">+49 511 59095-950</a>
           </p>
         </div>
       </Container>
