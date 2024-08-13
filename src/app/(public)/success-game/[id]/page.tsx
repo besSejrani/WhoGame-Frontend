@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 // UI
 import Container from "@/Components/ui/Container";
 

@@ -1,6 +1,9 @@
 // React
 import React from "react";
 
+// Next
+import Link from "next/link";
+
 // UI
 import Container from "@/Components/ui/Container";
 
@@ -355,28 +358,28 @@ const Footer = () => {
             >
               Legal
             </h4>
-            <a
+            <Link
               style={{
                 margin: "0rem 0rem 0.5rem 0rem",
                 fontSize: "1.2rem",
                 cursor: "pointer",
                 opacity: "0.85",
               }}
-              href="#"
+              href="/legal/privacy-policy"
             >
               Privacy Policy
-            </a>
-            <a
+            </Link>
+            <Link
               style={{
                 margin: "0rem 0rem 0.5rem 0rem",
                 fontSize: "1.2rem",
                 cursor: "pointer",
                 opacity: "0.85",
               }}
-              href="#"
+              href="/legal/termes-and-conditions"
             >
               Terms &amp; Conditions
-            </a>
+            </Link>
           </div>
         </div>
       </Container>

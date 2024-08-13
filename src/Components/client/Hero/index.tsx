@@ -19,7 +19,7 @@ const Hero = () => {
 
         <div style={{ margin: "2rem 0rem" }}>
           <Button
-            href="/game"
+            href="/start-game"
             variant="contained"
             text="Let's Start"
             type="button"
