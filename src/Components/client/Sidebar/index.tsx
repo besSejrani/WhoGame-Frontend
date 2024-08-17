@@ -239,6 +239,7 @@ const Sidebar = () => {
           borderRadius: "1rem",
           padding: "1rem",
           margin: "2rem 0rem 0rem 0rem",
+          backgroundColor: "white",
           boxShadow: `
             rgba(0, 0, 0, 0.2) 0px 4px 2px -2px,
             rgba(0, 0, 0, 0.2) 0px 2px 2px 0px,
@@ -302,6 +303,19 @@ const Sidebar = () => {
           </p>
         </div>
       </div>
+
+      <form>
+        <Button
+          text="Quit the game"
+          type="submit"
+          variant="contained"
+          styleOverrides={{
+            margin: "2rem 0rem",
+            width: "100%",
+            fontWeight: 100,
+          }}
+        />
+      </form>
     </div>
   );
 };

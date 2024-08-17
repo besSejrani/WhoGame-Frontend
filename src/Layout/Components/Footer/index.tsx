@@ -16,6 +16,13 @@ const Footer = () => {
     backgroundColor: "#111827",
     color: "#FFFFFF",
     padding: "5rem 0rem 2rem 0rem",
+
+    backgroundImage: 'url("/background-grid.webp")',
+    // backgroundImage: `linear-gradient(76deg, rgb(17 24 39 / 100%), rgb(8 98 158 / 70%)), url(/background-grid.webp)`,
+    backgroundSize: "cover", // or "contain" depending on your design needs
+    backgroundPosition: "bottom",
+    backgroundRepeat: "no-repeat",
+    borderTopLeftRadius: "5rem",
   };
 
   const containerStyles: React.CSSProperties = {

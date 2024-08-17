@@ -24,6 +24,6 @@ export const title = style({
 // ======================================
 export const paragraph = style({
   width: "80%",
-  fontSize: "1.4rem",
+  fontSize: "1.6rem",
   margin: "1rem 0rem",
 });

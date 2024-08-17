@@ -11,7 +11,7 @@ import { containedButton, outlinedButton } from "./index.css";
 interface IButton {
   text: string;
   href?: string;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   variant: "contained" | "outlined";
   type: "button" | "reset" | "submit";
   styleOverrides?: React.CSSProperties;

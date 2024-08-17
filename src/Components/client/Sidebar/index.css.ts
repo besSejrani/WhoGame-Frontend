@@ -67,6 +67,7 @@ export const chatContainer = style({
   display: "flex",
   flexDirection: "column",
   gap: "1rem",
+  backgroundColor: "white",
 });
 
 // ======================================

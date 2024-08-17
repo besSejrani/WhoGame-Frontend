@@ -4,7 +4,7 @@ import { style } from "@vanilla-extract/css";
 // Section
 // ======================================
 export const section = style({
-  padding: "10rem",
+  padding: "6rem 0rem 13rem 0rem",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
