@@ -197,7 +197,49 @@ const PrivacyPolicy = () => {
               margin: "0rem 0rem 2rem 0rem",
             }}
           >
-            2. General notes and mandatory information
+            2. Game-Specific Data Collection and Use
+          </h2>
+          <p
+            style={{
+              fontSize: "2rem",
+              lineHeight: "3rem",
+              opacity: "0.7",
+              fontWeight: 300,
+            }}
+          >
+            2.1. Our "Who Is Rag" game collects and processes data related to
+            your game play, including but not limited to:
+            <ul style={{ margin: "1rem 0 0 2rem" }}>
+              <li>Questions asked during the game</li>
+              <li>Time taken to complete the game</li>
+              <li>Number of questions asked</li>
+              <li>Your final guess</li>
+            </ul>
+            <br />
+            2.2. This data is used to determine winners in various categories,
+            improve our game mechanics, and enhance the overall user experience.
+            <br />
+            <br />
+            2.3. Your game data may be anonymized and used for demonstrating RAG
+            technology capabilities at the Cloud Summit and in future events.
+            <br />
+            <br />
+            2.4. By participating in the game, you consent to the collection and
+            use of this data as described in this privacy policy.
+          </p>
+        </div>
+
+        <hr />
+
+        <div style={{ margin: "5rem 0rem" }}>
+          <h2
+            style={{
+              fontSize: "3.5rem",
+              fontWeight: 300,
+              margin: "0rem 0rem 2rem 0rem",
+            }}
+          >
+            3. General notes and mandatory information
           </h2>
 
           <h3
@@ -207,7 +249,7 @@ const PrivacyPolicy = () => {
               margin: "1.5rem 0rem",
             }}
           >
-            2.1. Privacy
+            3.1. Privacy
           </h3>
 
           <p
@@ -238,7 +280,7 @@ const PrivacyPolicy = () => {
               margin: "1.5rem 0rem",
             }}
           >
-            2.2. Note on the responsible entity
+            3.2. Note on the responsible entity
           </h3>
 
           <p
@@ -276,7 +318,7 @@ const PrivacyPolicy = () => {
               margin: "1.5rem 0rem",
             }}
           >
-            2.3. Withdrawal of your consent to data processing
+            3.3. Withdrawal of your consent to data processing
           </h3>
 
           <p
@@ -301,7 +343,7 @@ const PrivacyPolicy = () => {
               margin: "1.5rem 0rem",
             }}
           >
-            2.4. Right of appeal to the responsible supervisory authority
+            3.4. Right of appeal to the responsible supervisory authority
           </h3>
 
           <p
@@ -331,7 +373,7 @@ const PrivacyPolicy = () => {
               margin: "1.5rem 0rem",
             }}
           >
-            2.5. SSL or TLS encryption
+            3.5. SSL or TLS encryption
           </h3>
 
           <p
@@ -357,7 +399,7 @@ const PrivacyPolicy = () => {
               margin: "1.5rem 0rem",
             }}
           >
-            2.6. Information, blocking, deletion
+            3.6. Information, blocking, deletion
           </h3>
 
           <p
@@ -388,7 +430,7 @@ const PrivacyPolicy = () => {
               margin: "0rem 0rem 2rem 0rem",
             }}
           >
-            3. Privacy Officer
+            4. Privacy Officer
           </h2>
 
           <h3
@@ -398,7 +440,7 @@ const PrivacyPolicy = () => {
               margin: "1.5rem 0rem",
             }}
           >
-            3.1. Legally required data protection officer
+            4.1. Legally required data protection officer
           </h3>
 
           <p
@@ -453,7 +495,7 @@ const PrivacyPolicy = () => {
               margin: "0rem 0rem 2rem 0rem",
             }}
           >
-            4. Data Collection On Our Website
+            5. Data Collection On Our Website
           </h2>
 
           <h3
@@ -463,7 +505,7 @@ const PrivacyPolicy = () => {
               margin: "1.5rem 0rem",
             }}
           >
-            4.1. Cookies
+            5.1. Cookies
           </h3>
 
           <p
@@ -512,7 +554,7 @@ const PrivacyPolicy = () => {
               margin: "1.5rem 0rem",
             }}
           >
-            4.2. Server log files
+            5.2. Server log files
           </h3>
 
           <p
@@ -552,7 +594,7 @@ const PrivacyPolicy = () => {
               margin: "0rem 0rem 2rem 0rem",
             }}
           >
-            5. Data Retention
+            6. Data Retention
           </h2>
           <p
             style={{
@@ -579,7 +621,7 @@ const PrivacyPolicy = () => {
               margin: "0rem 0rem 2rem 0rem",
             }}
           >
-            6. Changes to This Privacy Policy
+            7. Changes to This Privacy Policy
           </h2>
           <p
             style={{
@@ -607,7 +649,7 @@ const PrivacyPolicy = () => {
               margin: "0rem 0rem 2rem 0rem",
             }}
           >
-            7. Contact Us
+            8. Contact Us
           </h2>
           <p
             style={{
