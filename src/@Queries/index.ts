@@ -104,3 +104,25 @@ export const enterRaffle = async ({
 };
 
 // ========================================================================================================
+
+export const quitGame = async ({ sessionId }: { sessionId: string }) => {
+  const uri = ServerUri();
+
+  const data = await axios.post(
+    `${uri}/wii_dev_quit_game`,
+    JSON.stringify({
+      session_id: sessionId,
+    }),
+    {
+      headers: {
+        "Content-Type": "text/plain",
+      },
+    }
+  );
+
+  console.log("dataaaaaaaaa", data);
+
+  return data;
+};
+
+// ========================================================================================================

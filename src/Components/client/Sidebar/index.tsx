@@ -1,3 +1,6 @@
+// Next
+import { useRouter } from "next/navigation";
+
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import Button from "@/Components/client/Button";
 import Timer from "@Components/client/Timer";
@@ -18,7 +21,7 @@ import GameRulesModal from "@/Layout/Components/Modal/Content/GameRules";
 
 import { useModalStore } from "@/Store/modal";
 import { useGameStore } from "@/Store/game";
-import { prodAskQuestions } from "@Queries/index";
+import { prodAskQuestions, quitGame } from "@Queries/index";
 
 type ChatEntry = {
   id: number;
@@ -28,6 +31,8 @@ type ChatEntry = {
 };
 
 const Sidebar = () => {
+  const router = useRouter();
+
   const { openModal, isOpen } = useModalStore((state) => state);
   const { counter, sessionId } = useGameStore();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -169,6 +174,16 @@ const Sidebar = () => {
     }
   };
 
+  const quitTheGame = async () => {
+    const session_id = sessionId!;
+
+    const { status } = await quitGame({ sessionId: session_id });
+
+    if (status === 200) {
+      router.push("/");
+    }
+  };
+
   return (
     <div className={sticky}>
       <aside className={sidebar}>
@@ -254,7 +269,7 @@ const Sidebar = () => {
             margin: "0rem 0rem 1rem 0rem",
           }}
         >
-          Infos
+          Game Infos
         </h2>
         <Timer />
         <p>
@@ -290,7 +305,7 @@ const Sidebar = () => {
             handleOpenModal();
           }}
         >
-          <p>Need some help ?</p>
+          <p>Game Rules</p>
           <p
             style={{
               border: "1px solid grey",
@@ -302,20 +317,20 @@ const Sidebar = () => {
             esc
           </p>
         </div>
-      </div>
 
-      <form>
+        <hr style={{ opacity: 0.5, margin: "1.5rem 0rem" }} />
+
         <Button
           text="Quit the game"
           type="submit"
           variant="contained"
           styleOverrides={{
-            margin: "2rem 0rem",
             width: "100%",
             fontWeight: 100,
           }}
+          onClick={() => quitTheGame()}
         />
-      </form>
+      </div>
     </div>
   );
 };
