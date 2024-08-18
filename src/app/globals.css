@@ -10,10 +10,6 @@ html {
   /* font-family: var(--font-inter); */
 }
 
-body {
-  background-color: rgba(249, 250, 251, 1);
-}
-
 a {
   color: inherit;
   text-decoration: none;

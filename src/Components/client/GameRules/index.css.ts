@@ -4,21 +4,39 @@ import { style } from "@vanilla-extract/css";
 // Section
 // ======================================
 export const section = style({
-  padding: "8rem 0rem",
-  display: "flex",
-  flexDirection: "column",
+  width: "62%",
+
+  display: "grid",
+  gridTemplateColumns: "1fr 1fr",
+  overflow: "hidden",
+
   alignItems: "center",
-  textAlign: "center",
+  border: "2px solid #111827",
+  borderRadius: "3rem",
+});
+
+export const visual = style({
+  padding: "4.5rem 0rem",
+  height: "100%",
+  width: "100%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
   // backgroundColor: "#111827",
-  // backgroundImage: `linear-gradient(76deg, rgb(17 24 39 / 100%), rgb(8 98 158 / 70%)), url(/background-grid.webp)`,
-  // backgroundImage: `linear-gradient(76deg, rgb(17 24 39 / 100%), rgb(8 98 158 / 70%)), url(/background-grid.webp)`,
-  backgroundColor: "#111827",
+
   backgroundImage: 'url("/background-grid.webp")',
   backgroundSize: "cover",
   backgroundPosition: "bottom",
   backgroundRepeat: "no-repeat",
-  color: "white",
-  borderRadius: "2rem",
+});
+
+export const rules = style({
+  height: "100%",
+  width: "100%",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
 });
 
 // ======================================
@@ -28,8 +46,8 @@ export const title = style({
   fontSize: "4rem",
   fontWeight: 350,
   width: "100%",
-  textAlign: "center",
-  margin: "0rem 0rem 4rem 0rem",
+
+  margin: "0rem 0rem 3rem 0rem",
 });
 
 // ======================================

@@ -14,7 +14,10 @@ const Hero = () => {
     <Container>
       <main className={hero}>
         <div>
-          <h1 className={title}>Who Is RAG ? The AI Challenge</h1>
+          <h1 className={title}>
+            Who Is RAG ? <br />
+            The Gen AI Challenge
+          </h1>
           <p className={paragraph}>
             Dive into the mistery! Can you figure out who's who? Ask smart
             questions, use your detectives skills to narrow down the options,
@@ -27,7 +30,11 @@ const Hero = () => {
               variant="contained"
               text="Let's Start"
               type="button"
-              styleOverrides={{ padding: "0.7rem 1rem" }}
+              styleOverrides={{
+                padding: "0.7rem 2rem",
+                borderRadius: 30,
+                cursor: "pointer",
+              }}
             />
           </div>
         </div>

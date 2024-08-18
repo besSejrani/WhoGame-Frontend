@@ -85,14 +85,15 @@ const Header = () => {
 
             <li className={li}>
               <Button
-                text="Let's Play"
+                text="Let's Start"
                 type="button"
                 variant="outlined"
                 href="/start-game"
                 styleOverrides={{
                   fontSize: "1.2rem",
-                  fontWeight: 400,
+                  fontWeight: 300,
                   margin: "0rem 1rem 0rem 0rem",
+                  borderRadius: "30rem",
                 }}
               />
             </li>

@@ -383,7 +383,7 @@ const Footer = () => {
                 cursor: "pointer",
                 opacity: "0.85",
               }}
-              href="/legal/termes-and-conditions"
+              href="/legal/terms-and-conditions"
             >
               Terms &amp; Conditions
             </Link>
