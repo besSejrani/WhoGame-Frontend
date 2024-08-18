@@ -11,7 +11,11 @@ export const section = style({
   overflow: "hidden",
 
   alignItems: "center",
-  border: "2px solid #111827",
+  boxShadow: `
+    rgba(0, 0, 0, 0.1) 0px -4px 2px -2px,
+    rgba(0, 0, 0, 0.1) 0px 2px 2px 0px,
+    rgba(0, 0, 0, 0.2) 0px 2px 4px 0px
+  `,
   borderRadius: "3rem",
 });
 
