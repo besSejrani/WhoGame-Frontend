@@ -2,7 +2,7 @@
 import Container from "@/Components/ui/Container";
 
 // Styles
-import { section, title, paragraph, visual, rules } from "./index.css";
+import { section, title, visual, rules } from "./index.css";
 
 // Icons
 import {

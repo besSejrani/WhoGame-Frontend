@@ -7,7 +7,7 @@ export const section = style({
   width: "62%",
 
   display: "grid",
-  gridTemplateColumns: "1fr 1fr",
+  gridTemplateColumns: "40% 60%",
   overflow: "hidden",
 
   alignItems: "center",
@@ -28,7 +28,7 @@ export const visual = style({
   justifyContent: "center",
   // backgroundColor: "#111827",
 
-  backgroundImage: 'url("/background-grid.webp")',
+  backgroundImage: 'url("/background-isometric.png")',
   backgroundSize: "cover",
   backgroundPosition: "bottom",
   backgroundRepeat: "no-repeat",

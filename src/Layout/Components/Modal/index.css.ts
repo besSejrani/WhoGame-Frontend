@@ -9,7 +9,7 @@ export const overlay = style({
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: "40%",
-  height: "15rem",
+  height: "max-content",
   border: "none",
   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
   backgroundColor: "white",

@@ -39,7 +39,7 @@ const ModalDeleteContent: FC<IModalDelete> = ({
       </h2>
       <p style={{ fontSize: "1.4rem", fontWeight: 300 }}>{text}</p>
 
-      <div style={{ margin: "2rem 0rem" }}>
+      <div style={{ margin: "2rem 0rem 0rem 0rem" }}>
         <Button
           text="Cancel"
           type="button"

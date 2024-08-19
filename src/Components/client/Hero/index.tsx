@@ -15,13 +15,15 @@ const Hero = () => {
       <main className={hero}>
         <div>
           <h1 className={title}>
-            Who Is RAG ? <br />
+            Who Is RAG
+            <br />
             The Gen AI Challenge
           </h1>
           <p className={paragraph}>
-            Dive into the mistery! Can you figure out who's who? Ask smart
-            questions, use your detectives skills to narrow down the options,
-            and make your guess
+            Dive into the mistery! Can you figure out who's who?
+            <br />
+            Ask smart questions, use your detectives skills to narrow down the
+            options, and make your guess.
           </p>
 
           <div style={{ margin: "2rem 0rem" }}>
