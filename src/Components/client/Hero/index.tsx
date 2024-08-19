@@ -15,7 +15,7 @@ const Hero = () => {
       <main className={hero}>
         <div>
           <h1 className={title}>
-            Who Is RAG
+            Who Is RAG ?
             <br />
             The Gen AI Challenge
           </h1>

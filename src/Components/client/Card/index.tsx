@@ -107,8 +107,9 @@ const Card: React.FC<ICard> = ({
           <div
             style={{
               border: "1px solid #FFB500",
-              padding: "1.5rem",
+              padding: "1.5rem 0rem",
               height: "90%",
+              width: "90%",
               borderRadius: "0.5rem",
               display: "flex",
               flexDirection: "column",
@@ -120,8 +121,8 @@ const Card: React.FC<ICard> = ({
               src="/tecracer-white.svg"
               alt="Logo"
               height={60}
-              width={150}
-              style={{ margin: "0rem 0rem 1rem 0rem" }}
+              // width={150}
+              style={{ margin: "0rem 0rem 1rem 0rem", width: "90%" }}
               draggable={false}
             />
             <p style={{ color: "white", fontSize: "1.8rem" }}>{name}</p>
