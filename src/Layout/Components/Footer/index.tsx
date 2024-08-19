@@ -396,10 +396,21 @@ const Footer = () => {
       </Container>
 
       <Container>
-        <p style={{ opacity: "0.8" }}>
-          &copy; {new Date().getFullYear()} tecRacer Consulting GmbH, all rights
-          reserved.
-        </p>
+        <div
+          style={{
+            display: "flex",
+            width: "100%",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <p style={{ opacity: "0.8" }}>
+            &copy; {new Date().getFullYear()} tecRacer Consulting GmbH, all
+            rights reserved.
+          </p>
+
+          <p>Made by Tobias Emil Vonesch, Chrishon Nilanthan, Besjan Sejrani</p>
+        </div>
       </Container>
     </footer>
   );
