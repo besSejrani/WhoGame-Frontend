@@ -49,6 +49,7 @@ const ModalDeleteContent: FC<IModalDelete> = ({
             fontSize: "1.8rem",
             padding: "0.5rem 1rem",
             margin: "0rem 1rem 0rem 0rem",
+            fontWeight: 300,
           }}
         />
 
@@ -60,6 +61,7 @@ const ModalDeleteContent: FC<IModalDelete> = ({
           styleOverrides={{
             fontSize: "1.8rem",
             padding: "0.5rem 1rem",
+            fontWeight: 300,
           }}
         />
       </div>

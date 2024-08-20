@@ -5,7 +5,7 @@ import { style } from "@vanilla-extract/css";
 // ======================================
 export const hero = style({
   display: "grid",
-  gridTemplateColumns: "1fr 1fr",
+  gridTemplateColumns: "45% 55%",
   alignItems: "center",
   justifyItems: "center",
   padding: "14rem 0rem 8rem 0rem",
@@ -23,7 +23,7 @@ export const title = style({
 // Paragraph
 // ======================================
 export const paragraph = style({
-  width: "100%",
+  width: "90%",
   fontSize: "1.6rem",
   lineHeight: "2.2rem",
   margin: "1.5rem 0rem 2.5rem 0rem",

@@ -409,7 +409,9 @@ const Footer = () => {
             rights reserved.
           </p>
 
-          <p>Made by Tobias Emil Vonesch, Chrishon Nilanthan, Besjan Sejrani</p>
+          <p style={{ opacity: "0.8" }}>
+            Made by Tobias Emil Vonesch, Chrishon Nilanthan, Besjan Sejrani
+          </p>
         </div>
       </Container>
     </footer>

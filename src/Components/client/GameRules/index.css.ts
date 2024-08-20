@@ -28,7 +28,7 @@ export const visual = style({
   justifyContent: "center",
   // backgroundColor: "#111827",
 
-  backgroundImage: 'url("/background-isometric.png")',
+  backgroundImage: 'url("/background-isometric.webp")',
   backgroundSize: "cover",
   backgroundPosition: "bottom",
   backgroundRepeat: "no-repeat",

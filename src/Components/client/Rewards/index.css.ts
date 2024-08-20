@@ -27,7 +27,7 @@ export const visual = style({
   alignItems: "center",
   justifyContent: "center",
 
-  backgroundImage: 'url("/background-isometric.png")',
+  backgroundImage: 'url("/background-isometric.webp")',
   backgroundSize: "cover",
   backgroundPosition: "bottom",
   backgroundRepeat: "no-repeat",

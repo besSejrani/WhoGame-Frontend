@@ -6,6 +6,9 @@ import React, { useState } from "react";
 // Next
 import { useRouter } from "next/navigation";
 
+// Components
+import Button from "@/Components/client/Button";
+
 // Store
 import { useGameStore } from "@/Store/game";
 import useToastStore from "@Store/toasts";
@@ -65,8 +68,6 @@ const GuessSuccessForm: React.FC<GuessSuccessFormProps> = ({ session_id }) => {
         organization: formData.organization,
       });
 
-      console.log("data", data);
-
       resetCounter();
       resetSession();
 
@@ -85,72 +86,123 @@ const GuessSuccessForm: React.FC<GuessSuccessFormProps> = ({ session_id }) => {
       style={{
         display: "flex",
         flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
         gap: "1rem",
-        maxWidth: "300px",
-        margin: "auto",
       }}
     >
-      <div>
-        <label htmlFor="name">Name:</label>
+      <div style={{ position: "relative", width: "100%" }}>
+        <label
+          htmlFor="api-key"
+          style={{
+            position: "absolute",
+            top: "-2rem",
+            left: "1rem",
+            fontSize: "1.2rem",
+          }}
+        >
+          Name
+        </label>
         <input
           type="text"
           id="name"
+          placeholder="Example: Theo"
           name="name"
           value={formData.name}
           onChange={handleChange}
           style={{
-            display: "block",
+            fontSize: "1.2rem",
+            height: "3rem",
             width: "100%",
-            padding: "0.5rem",
-            margin: "0.5rem 0",
+            borderRadius: "0.5rem",
+
+            padding: "0rem 1rem",
           }}
         />
       </div>
-      <div>
-        <label htmlFor="email">Email:</label>
+
+      <div
+        style={{
+          position: "relative",
+          margin: "2rem 0rem 0rem 0rem",
+          width: "100%",
+        }}
+      >
+        <label
+          htmlFor="email"
+          style={{
+            position: "absolute",
+            top: "-2rem",
+            left: "1rem",
+            fontSize: "1.2rem",
+          }}
+        >
+          Email
+        </label>
         <input
           type="email"
           id="email"
+          placeholder="Example: theo@tecracer.ch"
           name="email"
           value={formData.email}
           onChange={handleChange}
           style={{
-            display: "block",
+            fontSize: "1.2rem",
+            height: "3rem",
             width: "100%",
-            padding: "0.5rem",
-            margin: "0.5rem 0",
+            borderRadius: "0.5rem",
+
+            padding: "0rem 1rem",
           }}
         />
       </div>
-      <div>
-        <label htmlFor="organization">Organization:</label>
+
+      <div
+        style={{
+          position: "relative",
+          margin: "2rem 0rem 0rem 0rem",
+          width: "100%",
+        }}
+      >
+        <label
+          htmlFor="organization"
+          style={{
+            position: "absolute",
+            top: "-2rem",
+            left: "1rem",
+            fontSize: "1.2rem",
+          }}
+        >
+          Organization
+        </label>
         <input
           type="text"
+          placeholder="Example: tecRacer"
           id="organization"
           name="organization"
           value={formData.organization}
           onChange={handleChange}
           style={{
-            display: "block",
+            fontSize: "1.2rem",
+            height: "3rem",
             width: "100%",
-            padding: "0.5rem",
-            margin: "0.5rem 0",
+            borderRadius: "0.5rem",
+
+            padding: "0rem 1rem",
           }}
         />
       </div>
-      <button
+
+      <Button
+        text="Submit"
         type="submit"
-        style={{
-          padding: "0.5rem 1rem",
-          backgroundColor: "#007BFF",
-          color: "white",
-          border: "none",
-          borderRadius: "4px",
-          cursor: "pointer",
+        variant="contained"
+        styleOverrides={{
+          width: "max-content",
+          alignSelf: "flex-end",
+          margin: "1rem 0rem 0rem 0rem",
         }}
-      >
-        Submit
-      </button>
+      />
     </form>
   );
 };

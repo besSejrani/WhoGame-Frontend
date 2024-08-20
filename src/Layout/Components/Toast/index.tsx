@@ -44,7 +44,7 @@ const Toast = () => {
         pauseOnFocusLoss: true,
         draggable: true,
         pauseOnHover: true,
-        style: { fontSize: "1rem" },
+        style: { fontSize: "1rem", right: "2.5rem" },
       });
 
       setErrorMessage("");
@@ -65,7 +65,7 @@ const Toast = () => {
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
-        style: { fontSize: "1rem" },
+        style: { fontSize: "1rem", right: "2.5rem" },
       });
       setInfoMessage("");
     }
@@ -85,7 +85,7 @@ const Toast = () => {
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
-        style: { fontSize: "1rem" },
+        style: { fontSize: "1rem", right: "2.5rem" },
       });
       setSuccessMessage("");
     }
