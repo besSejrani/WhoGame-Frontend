@@ -10,6 +10,8 @@ import { useModalStore } from "@/Store/modal";
 import { useGameStore } from "@/Store/game";
 import useToastStore from "@Store/toasts";
 
+import Cookies from "js-cookie";
+
 // Queries
 import { guessPerson } from "@Queries/index";
 
@@ -45,6 +47,8 @@ const Card: React.FC<ICard> = ({
   const router = useRouter();
   const [isFlipped, setIsFlipped] = useState(false);
 
+  const token = Cookies.get("token")!;
+
   const { openModal, closeModal } = useModalStore((state) => state);
   const { incrementCounter } = useGameStore();
   const setErrorMessage = useToastStore((state) => state.setErrorMessage);
@@ -59,7 +63,11 @@ const Card: React.FC<ICard> = ({
     try {
       console.log("session_id", session_id);
 
-      const answerCorrect = await guessPerson({ sessionId: session_id, name });
+      const answerCorrect = await guessPerson({
+        sessionId: session_id,
+        name,
+        token,
+      });
       if (answerCorrect) {
         await router.push(`/success-game/${session_id}`);
         setSuccessMessage("You nailed it!");

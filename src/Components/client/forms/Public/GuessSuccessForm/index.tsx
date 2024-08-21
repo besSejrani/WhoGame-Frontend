@@ -17,6 +17,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useGameStore } from "@/Store/game";
 import useToastStore from "@Store/toasts";
 
+import Cookies from "js-cookie";
+
 // Queries
 import { enterRaffle } from "@Queries/index";
 
@@ -36,11 +38,13 @@ interface GuessSuccessFormProps {
 
 const GuessSuccessForm: React.FC<GuessSuccessFormProps> = ({ session_id }) => {
   const router = useRouter();
-  const { resetCounter, resetSession } = useGameStore();
+
+  const token = Cookies.get("token")!;
 
   // ==============================
   //  Store
   // ==============================
+  const { resetCounter, resetSession } = useGameStore();
   const setErrorMessage = useToastStore((state) => state.setErrorMessage);
   const setSuccessMessage = useToastStore((state) => state.setSuccessMessage);
 
@@ -63,6 +67,7 @@ const GuessSuccessForm: React.FC<GuessSuccessFormProps> = ({ session_id }) => {
         email: data.email,
         name: data.name,
         organization: data.organization,
+        token,
       });
 
       resetCounter();

@@ -6,9 +6,13 @@ import axios from "axios";
 
 // ========================================================================================================
 
-export const getGameSession = async () => {
+export const getGameSession = async ({ token }: { token: string }) => {
   const uri = ServerUri();
-  const { data } = await axios.get(`${uri}/wii_dev_start_game`);
+  const { data } = await axios.get(`${uri}/wii_dev_start_game`, {
+    headers: {
+      Authorization: token,
+    },
+  });
 
   return data?.session_id;
 };
@@ -18,9 +22,11 @@ export const getGameSession = async () => {
 export const prodAskQuestions = async ({
   sessionId,
   question,
+  token,
 }: {
   sessionId: string;
   question: string;
+  token: string;
 }) => {
   const uri = ServerUri();
   const { data } = await axios.post(
@@ -36,6 +42,7 @@ export const prodAskQuestions = async ({
     {
       headers: {
         "Content-Type": "text/plain",
+        Authorization: token,
       },
     }
   );
@@ -48,9 +55,11 @@ export const prodAskQuestions = async ({
 export const guessPerson = async ({
   sessionId,
   name,
+  token,
 }: {
   sessionId: string;
   name: string;
+  token: string;
 }) => {
   const uri = ServerUri();
 
@@ -63,6 +72,7 @@ export const guessPerson = async ({
     {
       headers: {
         "Content-Type": "text/plain",
+        Authorization: token,
       },
     }
   );
@@ -77,11 +87,13 @@ export const enterRaffle = async ({
   name,
   email,
   organization,
+  token,
 }: {
   sessionId: string;
   name: string;
   email: string;
   organization: string;
+  token: string;
 }) => {
   const uri = ServerUri();
 
@@ -96,6 +108,7 @@ export const enterRaffle = async ({
     {
       headers: {
         "Content-Type": "text/plain",
+        Authorization: token,
       },
     }
   );
@@ -105,7 +118,13 @@ export const enterRaffle = async ({
 
 // ========================================================================================================
 
-export const quitGame = async ({ sessionId }: { sessionId: string }) => {
+export const quitGame = async ({
+  sessionId,
+  token,
+}: {
+  sessionId: string;
+  token: string;
+}) => {
   const uri = ServerUri();
 
   const data = await axios.post(
@@ -116,11 +135,30 @@ export const quitGame = async ({ sessionId }: { sessionId: string }) => {
     {
       headers: {
         "Content-Type": "text/plain",
+        Authorization: token,
       },
     }
   );
 
-  console.log("dataaaaaaaaa", data);
+  return data;
+};
+
+// ========================================================================================================
+
+export const validateApiKey = async ({ api_key }: { api_key: string }) => {
+  const uri = ServerUri();
+
+  const data = await axios.post(
+    `${uri}/wii_dev_jwt`,
+    JSON.stringify({
+      secret: api_key,
+    }),
+    {
+      headers: {
+        "Content-Type": "text/plain",
+      },
+    }
+  );
 
   return data;
 };

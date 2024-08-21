@@ -23,6 +23,8 @@ import { useModalStore } from "@/Store/modal";
 import { useGameStore } from "@/Store/game";
 import { prodAskQuestions, quitGame } from "@Queries/index";
 
+import Cookies from "js-cookie";
+
 // ==========================================================================================
 
 // Interface
@@ -35,6 +37,8 @@ type ChatEntry = {
 
 const Sidebar = ({ session_id }: { session_id: string }) => {
   const router = useRouter();
+
+  const token = Cookies.get("token")!;
 
   const { openModal, isOpen } = useModalStore((state) => state);
   let { counter, sessionId } = useGameStore();
@@ -148,10 +152,13 @@ const Sidebar = ({ session_id }: { session_id: string }) => {
     setIsSending(true);
 
     try {
-      console.log("session_id sidebar", session_id);
-      console.log("sessionId sidebar", sessionId);
+      console.log("sessionId", sessionId);
+      console.log("token", token);
 
-      const answer = await prodAskQuestions({ sessionId, question });
+      const answer = await prodAskQuestions({ sessionId, question, token });
+
+      console.log("prodAskQuestions", prodAskQuestions);
+
       setChat((prev) =>
         prev.map((entry) =>
           entry.id === newEntry.id
@@ -185,7 +192,7 @@ const Sidebar = ({ session_id }: { session_id: string }) => {
   };
 
   const quitTheGame = async () => {
-    const { status } = await quitGame({ sessionId: sessionId! });
+    const { status } = await quitGame({ sessionId: sessionId!, token });
 
     if (status === 200) {
       router.push("/");

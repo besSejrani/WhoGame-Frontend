@@ -1,10 +1,70 @@
+// StartGame.tsx
+
+// React
 import React from "react";
+
+// Store
+import useToastStore from "@Store/toasts";
+
+// Form
+import { useForm, SubmitHandler } from "react-hook-form";
+
+// Cookies
+import Cookies from "js-cookie";
+
+// Queries
+import { validateApiKey } from "@Queries/index";
 
 // ==========================================================================================
 
-const StartGame = () => {
+// Type
+type ContactFormValues = {
+  apiKey: string;
+};
+
+// Props
+interface StartGameProps {
+  onTokenReceived: () => void;
+}
+
+const StartGame: React.FC<StartGameProps> = ({ onTokenReceived }) => {
+  // ==============================
+  //  Store
+  // ==============================
+  const setErrorMessage = useToastStore((state) => state.setErrorMessage);
+  const setSuccessMessage = useToastStore((state) => state.setSuccessMessage);
+
+  // ==============================
+  //  Form
+  // ==============================
+  const {
+    handleSubmit,
+    formState: { errors },
+    register,
+  } = useForm<ContactFormValues>();
+
+  // ===========================
+  // Submit
+  // ===========================
+  const onSubmit: SubmitHandler<ContactFormValues> = async (form) => {
+    try {
+      const { data } = await validateApiKey({
+        api_key: form.apiKey,
+      });
+
+      Cookies.set("token", data.token, { expires: 7 });
+
+      setSuccessMessage("The API Key has been validated");
+
+      // Notify the parent component that a token has been received
+      onTokenReceived();
+    } catch (error) {
+      setErrorMessage("The API Key could not be validated");
+    }
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div style={{ display: "flex" }}>
         <div style={{ position: "relative" }}>
           <label
@@ -21,8 +81,13 @@ const StartGame = () => {
           <input
             type="text"
             id="api-key"
-            placeholder="Example: aknd3j29-d92d-4a7a-bf78-1f2b3c4a5d67
-        "
+            placeholder="Example: aknd3j29-d92d-4a7a-bf78-1f2b3c4a5d67"
+            {...register("apiKey", {
+              required: {
+                value: true,
+                message: "This field is required",
+              },
+            })}
             style={{
               fontSize: "1.2rem",
               height: "3rem",
