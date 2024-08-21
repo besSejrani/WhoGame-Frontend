@@ -23,6 +23,9 @@ import { useModalStore } from "@/Store/modal";
 import { useGameStore } from "@/Store/game";
 import { prodAskQuestions, quitGame } from "@Queries/index";
 
+// ==========================================================================================
+
+// Interface
 type ChatEntry = {
   id: number;
   userPrompt: string | null;
@@ -30,15 +33,19 @@ type ChatEntry = {
   isTyping: boolean;
 };
 
-const Sidebar = () => {
+const Sidebar = ({ session_id }: { session_id: string }) => {
   const router = useRouter();
 
   const { openModal, isOpen } = useModalStore((state) => state);
-  const { counter, sessionId } = useGameStore();
+  let { counter, sessionId } = useGameStore();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const [chat, setChat] = useState<ChatEntry[]>([]);
   const [isSending, setIsSending] = useState(false);
+
+  if (sessionId === null) {
+    sessionId = session_id;
+  }
 
   useEffect(() => {
     if (chatContainerRef.current) {
@@ -141,6 +148,9 @@ const Sidebar = () => {
     setIsSending(true);
 
     try {
+      console.log("session_id sidebar", session_id);
+      console.log("sessionId sidebar", sessionId);
+
       const answer = await prodAskQuestions({ sessionId, question });
       setChat((prev) =>
         prev.map((entry) =>
@@ -175,9 +185,7 @@ const Sidebar = () => {
   };
 
   const quitTheGame = async () => {
-    const session_id = sessionId!;
-
-    const { status } = await quitGame({ sessionId: session_id });
+    const { status } = await quitGame({ sessionId: sessionId! });
 
     if (status === 200) {
       router.push("/");

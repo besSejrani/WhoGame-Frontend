@@ -59,7 +59,7 @@ const GameId: React.FC<GameIdProps> = ({ session_id, data }) => {
           );
         })}
       </div>
-      <Sidebar />
+      <Sidebar session_id={session_id} />
     </div>
   );
 };

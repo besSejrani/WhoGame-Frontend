@@ -15,7 +15,7 @@ import Button from "@/Components/client/Button";
 import Rules from "@/Components/client/Rules";
 
 // Form
-import Checkbox from "@/Components/client/FormInputs/CheckBox";
+import Checkbox from "@/Components/client/FormComponents/CheckBox";
 import StartGame from "@/Components/client/forms/Public/StartGameForm";
 
 // Styles
@@ -63,6 +63,7 @@ const Game = () => {
 
       if (session_id && !isLoading) {
         setSessionId(session_id);
+
         router.push(`/game/${session_id}`);
         setSuccessMessage("The game has started");
       } else {

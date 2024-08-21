@@ -24,6 +24,9 @@ import {
   flippedCard,
 } from "./index.css";
 
+// ==========================================================================================
+
+// Interface
 interface ICard {
   name: string;
   imageUrl: string;
@@ -54,6 +57,8 @@ const Card: React.FC<ICard> = ({
 
   const guessUser = async () => {
     try {
+      console.log("session_id", session_id);
+
       const answerCorrect = await guessPerson({ sessionId: session_id, name });
       if (answerCorrect) {
         await router.push(`/success-game/${session_id}`);

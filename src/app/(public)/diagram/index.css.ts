@@ -27,7 +27,7 @@ export const architectureImageGroup = style({
 // ======================================
 export const architecture = style({
   padding: " 3rem",
-  margin: "0rem 8rem 0rem 0rem",
+  margin: "0rem 10rem 0rem 0rem",
   backgroundColor: "white",
   height: "max-content",
 
