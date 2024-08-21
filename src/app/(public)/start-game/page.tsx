@@ -4,6 +4,7 @@
 import { useState, useRef } from "react";
 
 // Next
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 // UI
@@ -105,25 +106,43 @@ const Game = () => {
           <div className={form}>
             {/* <StartGame /> */}
 
-            <Checkbox
-              label=" I agree that I have read the Privacy Policy and the Terms and Conditions."
-              initialChecked={isAgreed}
-              onChange={handleAgreementChange}
-            />
-
             <Button
               text="Let's Start"
               type="button"
               variant="outlined"
               styleOverrides={{
                 width: "12rem",
-                margin: "1rem 0rem",
+                margin: "1rem 0rem 4rem 0rem",
                 alignSelf: "center",
                 fontWeight: 100,
               }}
-              onClick={() => handleStartGame()}
-              disabled={isLoading}
+              onClick={handleStartGame}
+              disabled={!isAgreed || isLoading}
             />
+
+            <Checkbox
+              initialChecked={isAgreed}
+              onChange={handleAgreementChange}
+              styleOverrides={{ alignSelf: "flex-end" }}
+            >
+              I agree that I have read the{" "}
+              <Link
+                href="/legal/privacy-policy"
+                target="_blank"
+                style={{ color: "#FFB500" }}
+              >
+                Privacy Policy
+              </Link>{" "}
+              and the{" "}
+              <Link
+                href="/legal/terms-and-conditions"
+                target="_blank"
+                style={{ color: "#FFB500" }}
+              >
+                Terms and Conditions
+              </Link>
+              .
+            </Checkbox>
           </div>
         </div>
       </div>

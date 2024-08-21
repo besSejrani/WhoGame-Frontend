@@ -48,4 +48,6 @@ export const rules = style({
 export const form = style({
   display: "flex",
   flexDirection: "column",
+  justifyContent: "center",
+  height: "100%",
 });

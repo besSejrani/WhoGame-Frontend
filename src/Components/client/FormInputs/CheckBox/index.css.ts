@@ -13,8 +13,8 @@ export const checkboxContainer = style({
 // Box
 // ======================================
 export const checkboxBox = style({
-  width: "20px",
-  height: "20px",
+  width: "1.6rem",
+  height: "1.6rem",
   border: "2px solid #ccc",
   borderRadius: "4px",
   display: "flex",
@@ -28,8 +28,8 @@ export const checkboxBox = style({
 // Checked
 // ======================================
 export const checkboxChecked = style({
-  backgroundColor: "#3b82f6",
-  borderColor: "#3b82f6",
+  backgroundColor: "#FFB500",
+  borderColor: "#FFB500",
 });
 
 // ======================================

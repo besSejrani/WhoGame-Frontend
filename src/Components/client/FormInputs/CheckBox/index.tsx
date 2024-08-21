@@ -10,15 +10,17 @@ import {
 
 // Component
 interface CustomCheckboxProps {
-  label: string;
   initialChecked?: boolean;
   onChange?: (checked: boolean) => void;
+  children: React.ReactNode;
+  styleOverrides?: React.CSSProperties;
 }
 
 const Checkbox: React.FC<CustomCheckboxProps> = ({
-  label,
   initialChecked = false,
   onChange,
+  children,
+  styleOverrides,
 }) => {
   const [isChecked, setIsChecked] = useState(initialChecked);
 
@@ -31,11 +33,15 @@ const Checkbox: React.FC<CustomCheckboxProps> = ({
   };
 
   return (
-    <div className={checkboxContainer} onClick={handleToggle}>
+    <div
+      className={checkboxContainer}
+      onClick={handleToggle}
+      style={styleOverrides}
+    >
       <div className={`${checkboxBox} ${isChecked ? checkboxChecked : ""}`}>
-        {isChecked && <Check size={16} color="white" />}
+        {isChecked && <Check size={25} color="white" />}
       </div>
-      <span className={checkboxLabel}>{label}</span>
+      <span className={checkboxLabel}>{children}</span>
     </div>
   );
 };
