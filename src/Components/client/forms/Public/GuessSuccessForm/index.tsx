@@ -8,6 +8,10 @@ import { useRouter } from "next/navigation";
 
 // Components
 import Button from "@/Components/client/Button";
+import ErrorDisplay from "@/Components/client/FormComponents/ErrorDisplay";
+
+// Form
+import { useForm, SubmitHandler } from "react-hook-form";
 
 // Store
 import { useGameStore } from "@/Store/game";
@@ -18,9 +22,18 @@ import { enterRaffle } from "@Queries/index";
 
 // ==========================================================================================
 
+// Type
+type ContactFormValues = {
+  name: string;
+  email: string;
+  organization: string;
+};
+
+// Interface
 interface GuessSuccessFormProps {
   session_id: string;
 }
+
 const GuessSuccessForm: React.FC<GuessSuccessFormProps> = ({ session_id }) => {
   const router = useRouter();
   const { resetCounter, resetSession } = useGameStore();
@@ -31,41 +44,25 @@ const GuessSuccessForm: React.FC<GuessSuccessFormProps> = ({ session_id }) => {
   const setErrorMessage = useToastStore((state) => state.setErrorMessage);
   const setSuccessMessage = useToastStore((state) => state.setSuccessMessage);
 
-  // ===========================
-  // State
-  // ===========================
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    organization: "",
-  });
-
-  // UI
-  const [disabled, setDisabled] = useState<boolean>(false);
-
-  // ===========================
-  // Event
-  // ===========================
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  // ==============================
+  //  Form
+  // ==============================
+  const {
+    handleSubmit,
+    formState: { errors },
+    register,
+  } = useForm<ContactFormValues>();
 
   // ===========================
   // Submit
   // ===========================
-  const handleSubmit = async (form: React.FormEvent) => {
-    form.preventDefault();
-
+  const onSubmit: SubmitHandler<ContactFormValues> = async (data) => {
     try {
-      const data = enterRaffle({
+      await enterRaffle({
         sessionId: session_id,
-        email: formData.email,
-        name: formData.name,
-        organization: formData.organization,
+        email: data.email,
+        name: data.name,
+        organization: data.organization,
       });
 
       resetCounter();
@@ -74,15 +71,13 @@ const GuessSuccessForm: React.FC<GuessSuccessFormProps> = ({ session_id }) => {
       await router.push(`/`);
       setSuccessMessage("Thank you for completing the form");
     } catch (error) {
-      setErrorMessage("The form couldn't be updated");
-    } finally {
-      setDisabled(false);
+      setErrorMessage("The form couldn't be submitted");
     }
   };
 
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit(onSubmit)}
       style={{
         display: "flex",
         flexDirection: "column",
@@ -93,7 +88,7 @@ const GuessSuccessForm: React.FC<GuessSuccessFormProps> = ({ session_id }) => {
     >
       <div style={{ position: "relative", width: "100%" }}>
         <label
-          htmlFor="api-key"
+          htmlFor="name"
           style={{
             position: "absolute",
             top: "-2rem",
@@ -107,18 +102,29 @@ const GuessSuccessForm: React.FC<GuessSuccessFormProps> = ({ session_id }) => {
           type="text"
           id="name"
           placeholder="Example: Theo"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
+          {...register("name", {
+            required: {
+              value: true,
+              message: "This field is required",
+            },
+            minLength: {
+              value: 2,
+              message: "This field requires minimum 2 characters",
+            },
+            maxLength: {
+              value: 30,
+              message: "This field requires minimum 30 characters",
+            },
+          })}
           style={{
             fontSize: "1.2rem",
             height: "3rem",
             width: "100%",
             borderRadius: "0.5rem",
-
             padding: "0rem 1rem",
           }}
         />
+        <ErrorDisplay error={errors.name} />
       </div>
 
       <div
@@ -143,18 +149,26 @@ const GuessSuccessForm: React.FC<GuessSuccessFormProps> = ({ session_id }) => {
           type="email"
           id="email"
           placeholder="Example: theo@tecracer.ch"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
+          {...register("email", {
+            required: {
+              value: true,
+              message: "This field is required",
+            },
+            pattern: {
+              value:
+                /^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9]{2,})*$/i,
+              message: "Your email is not valid",
+            },
+          })}
           style={{
             fontSize: "1.2rem",
             height: "3rem",
             width: "100%",
             borderRadius: "0.5rem",
-
             padding: "0rem 1rem",
           }}
         />
+        <ErrorDisplay error={errors.email} />
       </div>
 
       <div
@@ -179,18 +193,22 @@ const GuessSuccessForm: React.FC<GuessSuccessFormProps> = ({ session_id }) => {
           type="text"
           placeholder="Example: tecRacer"
           id="organization"
-          name="organization"
-          value={formData.organization}
-          onChange={handleChange}
+          {...register("organization", {
+            required: {
+              value: false,
+              message: "This field is required",
+            },
+          })}
           style={{
             fontSize: "1.2rem",
             height: "3rem",
             width: "100%",
             borderRadius: "0.5rem",
-
             padding: "0rem 1rem",
           }}
         />
+
+        <ErrorDisplay error={errors.organization} />
       </div>
 
       <Button

@@ -9,6 +9,7 @@ import GuessSuccessForm from "@/Components/client/forms/Public/GuessSuccessForm"
 
 // Styles
 import { root, title, paragraph, formTitle, card } from "./index.css";
+import Button from "@/Components/client/Button";
 
 // ==========================================================================================
 
@@ -54,6 +55,22 @@ const Success: React.FC<SuccessProps> = ({ params }) => {
             <GuessSuccessForm session_id={session_id} />
           </div>
         </div>
+
+        <Button
+          text="Pass"
+          type="button"
+          variant="contained"
+          href="/"
+          styleOverrides={{
+            fontSize: "2rem",
+            fontWeight: 300,
+            padding: "0.5rem 3rem",
+            width: "max-content",
+            position: "absolute",
+            bottom: 50,
+            right: 50,
+          }}
+        />
       </Container>
     </div>
   );

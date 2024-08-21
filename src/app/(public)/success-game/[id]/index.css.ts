@@ -27,10 +27,10 @@ export const title = style({
 export const paragraph = style({
   fontSize: "2rem",
   fontWeight: 300,
-  width: "50%",
+  width: "40%",
   textAlign: "center",
   lineHeight: "2.5rem",
-  margin: "0rem 0rem 10rem 0rem",
+  margin: "0rem 0rem 7rem 0rem",
 });
 
 // ======================================
