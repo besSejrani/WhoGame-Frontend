@@ -87,45 +87,48 @@ export const Game: React.FC<GameProps> = ({ hasToken: initialHasToken }) => {
           <div className={rules}>
             <Rules />
           </div>
-          <div className={form}>
-            {!hasToken && <StartGame onTokenReceived={handleTokenReceived} />}
-            <Button
-              text="Let's Start"
-              type="button"
-              variant="outlined"
-              styleOverrides={{
-                width: "12rem",
-                margin: "1rem 0rem 4rem 0rem",
-                alignSelf: "center",
-                fontWeight: 100,
-              }}
-              onClick={handleStartGame}
-              disabled={!isAgreed || isLoading || !hasToken}
-            />
-            <Checkbox
-              initialChecked={isAgreed}
-              onChange={handleAgreementChange}
-              styleOverrides={{ alignSelf: "flex-end" }}
-            >
-              I agree that I have read the{" "}
-              <Link
-                href="/legal/privacy-policy"
-                target="_blank"
-                style={{ color: "#FFB500" }}
+          {!hasToken && <StartGame onTokenReceived={handleTokenReceived} />}
+
+          {hasToken && (
+            <div className={form}>
+              <Button
+                text="Let's Start"
+                type="button"
+                variant="outlined"
+                styleOverrides={{
+                  width: "12rem",
+                  margin: "1rem 0rem 4rem 0rem",
+                  alignSelf: "center",
+                  fontWeight: 100,
+                }}
+                onClick={handleStartGame}
+                disabled={!isAgreed || isLoading || !hasToken}
+              />
+              <Checkbox
+                initialChecked={isAgreed}
+                onChange={handleAgreementChange}
+                styleOverrides={{ alignSelf: "flex-end" }}
               >
-                Privacy Policy
-              </Link>{" "}
-              and the{" "}
-              <Link
-                href="/legal/terms-and-conditions"
-                target="_blank"
-                style={{ color: "#FFB500" }}
-              >
-                Terms and Conditions
-              </Link>
-              .
-            </Checkbox>
-          </div>
+                I agree that I have read the{" "}
+                <Link
+                  href="/legal/privacy-policy"
+                  target="_blank"
+                  style={{ color: "#FFB500" }}
+                >
+                  Privacy Policy
+                </Link>{" "}
+                and the{" "}
+                <Link
+                  href="/legal/terms-and-conditions"
+                  target="_blank"
+                  style={{ color: "#FFB500" }}
+                >
+                  Terms and Conditions
+                </Link>
+                .
+              </Checkbox>
+            </div>
+          )}
         </div>
       </div>
     </Container>

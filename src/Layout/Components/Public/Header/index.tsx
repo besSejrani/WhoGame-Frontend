@@ -1,9 +1,11 @@
 "use client";
 
+// React
 import React, { useEffect, useState, CSSProperties } from "react";
 
 // Next
 import Link from "next/link";
+
 // UI
 import Container from "@/Components/ui/Container";
 
@@ -11,7 +13,16 @@ import Container from "@/Components/ui/Container";
 import Button from "@/Components/client/Button";
 
 // Styles
-import { root, header, links, link, li } from "./index.css";
+import {
+  root,
+  header,
+  links,
+  link,
+  li,
+} from "@/Layout/Components/Public/Header/index.css";
+
+// Paths
+import { paths } from "@/paths";
 
 // ==========================================================================================
 
@@ -66,19 +77,19 @@ const Header = () => {
     <div style={dynamicStyle} className={root}>
       <Container styleOverrides={{ padding: "0.2rem 0rem ", width: "90%" }}>
         <header className={header}>
-          <Link href="/">
+          <Link href={paths.homePage()}>
             <img src="/logo.svg" alt="tecRacer logo" height={80} width={180} />
           </Link>
 
           <ul className={links}>
             <li className={li}>
-              <Link href="/" className={link}>
+              <Link href={paths.homePage()} className={link}>
                 Home
               </Link>
             </li>
 
             <li className={li}>
-              <Link href="/diagram" className={link}>
+              <Link href={paths.diagramPage()} className={link}>
                 Diagram
               </Link>
             </li>
@@ -88,7 +99,7 @@ const Header = () => {
                 text="Let's Start"
                 type="button"
                 variant="outlined"
-                href="/start-game"
+                href={paths.startGamePage()}
                 styleOverrides={{
                   fontSize: "1.2rem",
                   fontWeight: 300,

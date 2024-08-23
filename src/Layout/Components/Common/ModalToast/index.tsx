@@ -1,8 +1,8 @@
 import React from "react";
 
 // Components
-import Modal from "@Layout/Components/Modal";
-import Toast from "@Layout/Components/Toast";
+import Modal from "@/Layout/Components/Common/Modal";
+import Toast from "@/Layout/Components/Common/Toast";
 
 // ==========================================================================================
 

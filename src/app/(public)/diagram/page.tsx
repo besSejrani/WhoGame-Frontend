@@ -16,6 +16,9 @@ import {
   link,
 } from "./index.css";
 
+// Data
+import AwsServices from "@Data/aws-services.json";
+
 // ====================================================================================
 
 const Leaderboard = () => {
@@ -36,113 +39,17 @@ const Leaderboard = () => {
           <div className={architecture}>
             <h2 className={title}>Who Is RAG's architecture</h2>
 
-            <div className={group}>
-              <p className={service}>Application Load Balancer</p>
+            {AwsServices.map((aws) => {
+              return (
+                <div className={group}>
+                  <p className={service}>{aws.service}</p>
 
-              <a
-                href="https://aws.amazon.com/elasticloadbalancing/application-load-balancer/"
-                className={link}
-                target="_blanck"
-              >
-                Link
-              </a>
-            </div>
-
-            <div className={group}>
-              <p className={service}>Amazon EC2</p>
-
-              <a
-                href="https://aws.amazon.com/ec2/"
-                className={link}
-                target="_blanck"
-              >
-                Link
-              </a>
-            </div>
-
-            <div className={group}>
-              <p className={service}>Amazon API Gateway</p>
-
-              <a
-                href="https://aws.amazon.com/api-gateway/"
-                className={link}
-                target="_blanck"
-              >
-                Link
-              </a>
-            </div>
-
-            <div className={group}>
-              <p className={service}>Amazon DynamoDB</p>
-
-              <a
-                href="https://aws.amazon.com/dynamodb/"
-                className={link}
-                target="_blanck"
-              >
-                Link
-              </a>
-            </div>
-
-            <div className={group}>
-              <p className={service}>AWS Lambda</p>
-
-              <a
-                href="https://aws.amazon.com/lambda/"
-                className={link}
-                target="_blanck"
-              >
-                Link
-              </a>
-            </div>
-
-            <div className={group}>
-              <p className={service}>Amazon Bedrock</p>
-
-              <a
-                href="https://aws.amazon.com/bedrock/"
-                className={link}
-                target="_blanck"
-              >
-                Link
-              </a>
-            </div>
-
-            <div className={group}>
-              <p className={service}>OpenSearch</p>
-
-              <a
-                href="https://aws.amazon.com/opensearch-service/"
-                className={link}
-                target="_blanck"
-              >
-                Link
-              </a>
-            </div>
-
-            <div className={group}>
-              <p className={service}>Amazon S3</p>
-
-              <a
-                href="https://aws.amazon.com/s3/"
-                className={link}
-                target="_blanck"
-              >
-                Link
-              </a>
-            </div>
-
-            <div className={group}>
-              <p className={service}>Amazon CloudWatch</p>
-
-              <a
-                href="https://aws.amazon.com/cloudwatch/"
-                className={link}
-                target="_blanck"
-              >
-                Link
-              </a>
-            </div>
+                  <a href={aws.href} className={link} target="_blanck">
+                    Link
+                  </a>
+                </div>
+              );
+            })}
           </div>
 
           <Image

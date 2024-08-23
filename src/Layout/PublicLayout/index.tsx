@@ -4,12 +4,12 @@
 import { usePathname } from "next/navigation";
 
 // Layout
-import Header from "@/Layout/Components/Header";
-import Footer from "@/Layout/Components/Footer";
+import Header from "@/Layout/Components/Public/Header";
+import Footer from "@/Layout/Components/Public/Footer";
 
 // Components
-import Modal from "@Layout/Components/Modal";
-import Toast from "@Layout/Components/Toast";
+import Modal from "@/Layout/Components/Common/Modal";
+import Toast from "@/Layout/Components/Common/Toast";
 
 // ==========================================================================================
 
@@ -30,6 +30,7 @@ const Layout: React.FC<ILayout> = ({ children }) => {
   return (
     <div>
       {!isGameRoute && <Header />}
+
       {children}
 
       <Modal />

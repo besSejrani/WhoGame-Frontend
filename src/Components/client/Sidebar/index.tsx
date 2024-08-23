@@ -17,7 +17,7 @@ import {
   typingIndicator,
 } from "./index.css";
 
-import GameRulesModal from "@/Layout/Components/Modal/Content/GameRules";
+import GameRulesModal from "@/Layout/Components/Common/Modal/Content/GameRules";
 
 import { useModalStore } from "@/Store/modal";
 import { useGameStore } from "@/Store/game";

@@ -1,0 +1,46 @@
+[
+  {
+    "service": "Application Load Balancer",
+    "href": "https://aws.amazon.com/elasticloadbalancing/application-load-balancer/"
+  },
+  {
+    "service": "Amazon EC2",
+    "href": "https://aws.amazon.com/ec2/"
+  },
+  {
+    "service": "Amazon API Gateway",
+    "href": "https://aws.amazon.com/api-gateway/"
+  },
+  {
+    "service": "Amazon DynamoDB",
+    "href": "https://aws.amazon.com/dynamodb/"
+  },
+  {
+    "service": "AWS Lambda",
+    "href": "https://aws.amazon.com/lambda/"
+  },
+  {
+    "service": "Amazon Bedrock",
+    "href": "https://aws.amazon.com/bedrock/"
+  },
+  {
+    "service": "Amazon OpenSearch",
+    "href": "https://aws.amazon.com/opensearch-service/"
+  },
+  {
+    "service": "Amazon S3",
+    "href": "https://aws.amazon.com/s3/"
+  },
+  {
+    "service": "Amazon CloudWatch",
+    "href": "https://aws.amazon.com/cloudwatch/"
+  },
+  {
+    "service": "AWS Systems Manager",
+    "href": "https://aws.amazon.com/systems-manager/"
+  },
+  {
+    "service": "AWS Secrets Manager",
+    "href": "https://aws.amazon.com/secrets-manager/"
+  }
+]

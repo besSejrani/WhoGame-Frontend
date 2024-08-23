@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -22,45 +18,19 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@App/*": [
-        "./src/app/*"
-      ],
-      "@Data/*": [
-        "./data/*"
-      ],
-      "@Components/*": [
-        "./src/Components/*"
-      ],
-      "@Layout/*": [
-        "./src/Layout/*"
-      ],
-      "@Store/*": [
-        "./src/Store/*"
-      ],
-      "@Hooks/*": [
-        "./src/Hooks/*"
-      ],
-      "@Helpers/*": [
-        "./src/Helpers/*"
-      ],
-      "@Class/*": [
-        "./src/Class/*"
-      ],
-      "@DynamoDB/*": [
-        "./src/@DynamoDB/*"
-      ],
-      "@Queries/*": [
-        "./src/@Queries/*"
-      ],
-      "@Server/*": [
-        "./src/@Server/*"
-      ],
-      "@Types/*": [
-        "./src/@Types/*"
-      ]
+      "@/*": ["./src/*"],
+      "@App/*": ["./src/app/*"],
+      "@Data/*": ["./data/*"],
+      "@Components/*": ["./src/Components/*"],
+      "@Layout/*": ["./src/Layout/*"],
+      "@Store/*": ["./src/Store/*"],
+      "@Hooks/*": ["./src/Hooks/*"],
+      "@Helpers/*": ["./src/Helpers/*"],
+      "@Class/*": ["./src/Class/*"],
+      "@AWS/*": ["./src/@AWS/*"],
+      "@Queries/*": ["./src/@Queries/*"],
+      "@Server/*": ["./src/@Server/*"],
+      "@Types/*": ["./src/@Types/*"]
     },
     "target": "ES2017"
   },
@@ -71,7 +41,5 @@
     "Scripts/generateDeployManifest.js",
     ".next/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

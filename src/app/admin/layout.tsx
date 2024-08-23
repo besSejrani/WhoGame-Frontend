@@ -1,14 +1,16 @@
-import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
-
+// CSS
 import "@/app/globals.css";
 
-// ==========================================================================================
+// Layout
+import AdminLayout from "@Layout/AdminLayout";
 
-const inter = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
+// Providers
+import Providers from "../providers";
+
+// Types
+import type { Metadata } from "next";
+
+// ==========================================================================================
 
 export const metadata: Metadata = {
   title: "Who Is RAG | tecRacer",
@@ -22,8 +24,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>{children}</body>
-    </html>
+    <Providers>
+      <AdminLayout>{children}</AdminLayout>
+    </Providers>
   );
 }

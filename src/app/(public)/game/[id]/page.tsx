@@ -5,7 +5,7 @@ import Container from "@/Components/ui/Container";
 import Play from "@/Components/client/Play";
 
 // DynamoDB
-import { scanPeopleTable } from "@DynamoDB/dynamodb";
+import { scanPeopleTable } from "@AWS/DynamoDB";
 
 // ==========================================================================================
 

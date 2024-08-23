@@ -3,13 +3,16 @@ import Container from "@/Components/ui/Container";
 
 // Component
 import ConfettiComponent from "@/Components/client/Confetti";
+import Button from "@/Components/client/Button";
 
 // Form
 import GuessSuccessForm from "@/Components/client/forms/Public/GuessSuccessForm";
 
 // Styles
 import { root, title, paragraph, formTitle, card } from "./index.css";
-import Button from "@/Components/client/Button";
+
+// Paths
+import { paths } from "@/paths";
 
 // ==========================================================================================
 
@@ -60,7 +63,7 @@ const Success: React.FC<SuccessProps> = ({ params }) => {
           text="Pass"
           type="button"
           variant="contained"
-          href="/"
+          href={paths.homePage()}
           styleOverrides={{
             fontSize: "2rem",
             fontWeight: 300,

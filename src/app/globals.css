@@ -1,3 +1,8 @@
+/* @font-face {
+  font-family: "myInter";
+  src: url("./fonts/Inter-VariableFont.ttf") format("truetype");
+} */
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -7,7 +12,7 @@
 html {
   font-weight: 300;
   /* font-size: 62.5%; */
-  /* font-family: var(--font-inter); */
+  /* font-family: "myInter"; */
 }
 
 a {

@@ -5,7 +5,10 @@ import Container from "@/Components/ui/Container";
 import Button from "@/Components/client/Button";
 
 // Styles
-import { hero, title, paragraph } from "./index.css";
+import { hero, title, paragraph } from "@/Components/client/Hero/index.css";
+
+// Paths
+import { paths } from "@/paths";
 
 // ====================================================================================
 
@@ -28,7 +31,7 @@ const Hero = () => {
 
           <div style={{ margin: "2rem 0rem" }}>
             <Button
-              href="/start-game"
+              href={paths.startGamePage()}
               variant="contained"
               text="Let's Start"
               type="button"

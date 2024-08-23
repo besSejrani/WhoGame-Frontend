@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 
 // Components
 import Button from "@/Components/client/Button";
-import ModalVerifyIdentity from "@/Layout/Components/Modal/Content/ModalVerifyIdentity";
+import ModalVerifyIdentity from "@/Layout/Components/Common/Modal/Content/ModalVerifyIdentity";
 
 // Store
 import { useModalStore } from "@/Store/modal";

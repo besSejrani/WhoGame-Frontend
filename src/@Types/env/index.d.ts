@@ -20,6 +20,11 @@ declare namespace NodeJS {
     NEXT_PUBLIC_STAGING_SERVER: string;
     NEXT_PUBLIC_PRODUCTION_SERVER: string;
 
+    // =============================
+    // AUTHENTICATION
+    // =============================
+    OPEN_SSL_RANDOM_AUTH_SECRET: string;
+
     // ==================================
     // AWS
     // ==================================

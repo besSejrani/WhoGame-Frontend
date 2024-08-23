@@ -7,58 +7,29 @@ import Link from "next/link";
 // UI
 import Container from "@/Components/ui/Container";
 
+// Styles
+import {
+  footerStyles,
+  sectionStyles,
+  socialIconsStyles,
+} from "@/Layout/Components/Public/Footer/index.css";
+
+// Icon
 import { Linkedin, Youtube, Github } from "lucide-react";
+
+// Paths
+import { paths } from "@/paths";
 
 // ==========================================================================================
 
 const Footer = () => {
-  const footerStyles: React.CSSProperties = {
-    backgroundColor: "#111827",
-    color: "#FFFFFF",
-    padding: "5rem 0rem 2rem 0rem",
-
-    backgroundImage: 'url("/background-grid.webp")',
-    // backgroundImage: `linear-gradient(76deg, rgb(17 24 39 / 100%), rgb(8 98 158 / 70%)), url(/background-grid.webp)`,
-    backgroundSize: "cover", // or "contain" depending on your design needs
-    backgroundPosition: "bottom",
-    backgroundRepeat: "no-repeat",
-    borderTopLeftRadius: "5rem",
-  };
-
-  const containerStyles: React.CSSProperties = {
-    display: "flex",
-    justifyContent: "space-around",
-    maxWidth: "1200px",
-    margin: "0 auto",
-    padding: "0 20px",
-    flexWrap: "wrap" as "wrap", // Type assertion for flexWrap
-  };
-
-  const sectionStyles: React.CSSProperties = {
-    display: "flex",
-    flexDirection: "column",
-  };
-
-  const socialIconsStyles: React.CSSProperties = {
-    display: "flex",
-    gap: "1rem",
-    marginTop: "10px",
-  };
-
-  const footerBottomStyles: React.CSSProperties = {
-    borderTop: "1px solid #333",
-    textAlign: "center" as "center", // Type assertion for textAlign
-    padding: "10px 0",
-    marginTop: "20px",
-  };
-
   return (
-    <footer style={footerStyles}>
+    <footer className={footerStyles}>
       <Container>
         <div
           style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr" }}
         >
-          <div style={sectionStyles}>
+          <div className={sectionStyles}>
             <a target="_blank" href="https://www.tecracer.com/">
               <img
                 src="/tecracer-white.svg"
@@ -78,7 +49,7 @@ const Footer = () => {
               8050 Zürich
             </p>
 
-            <div style={socialIconsStyles}>
+            <div className={socialIconsStyles}>
               <a
                 target="_blank"
                 href="https://www.linkedin.com/company/tecracer-group/"
@@ -109,7 +80,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div style={sectionStyles}>
+          <div className={sectionStyles}>
             <h4
               style={{
                 fontSize: "1.8rem",
@@ -278,7 +249,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div style={sectionStyles}>
+          <div className={sectionStyles}>
             <h4
               style={{
                 fontSize: "1.8rem",
@@ -355,7 +326,7 @@ const Footer = () => {
             </a>
           </div>
 
-          <div style={sectionStyles}>
+          <div className={sectionStyles}>
             <h4
               style={{
                 fontSize: "1.8rem",
@@ -372,7 +343,7 @@ const Footer = () => {
                 cursor: "pointer",
                 opacity: "0.85",
               }}
-              href="/legal/privacy-policy"
+              href={paths.privacyPolicyPage()}
             >
               Privacy Policy
             </Link>
@@ -383,7 +354,7 @@ const Footer = () => {
                 cursor: "pointer",
                 opacity: "0.85",
               }}
-              href="/legal/terms-and-conditions"
+              href={paths.termsAndConditionsPage()}
             >
               Terms &amp; Conditions
             </Link>
