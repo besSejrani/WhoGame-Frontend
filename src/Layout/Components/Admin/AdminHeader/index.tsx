@@ -52,7 +52,7 @@ const Header = () => {
                 text="Logout"
                 type="button"
                 variant="outlined"
-                onClick={() => signOut()}
+                onClick={() => signOut({ callbackUrl: paths.homePage() })}
                 styleOverrides={{
                   fontSize: "2.5rem",
                   fontWeight: 300,
