@@ -101,8 +101,9 @@ const Header = () => {
                 variant="outlined"
                 href={paths.startGamePage()}
                 styleOverrides={{
-                  fontSize: "1.2rem",
+                  fontSize: "2rem",
                   fontWeight: 300,
+                  padding: "0.75rem 1.5rem",
                   margin: "0rem 1rem 0rem 0rem",
                   borderRadius: "30rem",
                 }}

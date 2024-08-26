@@ -5,7 +5,7 @@ import Container from "@/Components/ui/Container";
 import Play from "@/Components/client/Play";
 
 // DynamoDB
-import { scanPeopleTable } from "@AWS/DynamoDB";
+import { scanTable } from "@AWS/DynamoDB";
 
 // ==========================================================================================
 
@@ -25,7 +25,7 @@ const GameId: React.FC<{ params: Params }> = async ({ params }) => {
   // ===========================
   // Data
   // ===========================
-  const data = (await scanPeopleTable()) as Person[];
+  const data = (await scanTable({ tableName: "people" })) as Person[];
 
   return (
     <Container styleOverrides={{ width: "95%" }}>

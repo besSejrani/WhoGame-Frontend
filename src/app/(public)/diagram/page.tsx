@@ -53,7 +53,7 @@ const Leaderboard = () => {
           </div>
 
           <Image
-            src="/architecture-showcase.svg"
+            src="/architecture-showcase-2.svg"
             alt="infrastructure"
             width={800}
             height={900}

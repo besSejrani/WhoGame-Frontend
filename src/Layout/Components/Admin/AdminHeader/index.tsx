@@ -54,7 +54,7 @@ const Header = () => {
                 variant="outlined"
                 onClick={() => signOut()}
                 styleOverrides={{
-                  fontSize: "1.2rem",
+                  fontSize: "2.5rem",
                   fontWeight: 300,
                   margin: "0rem 1rem 0rem 0rem",
                   borderRadius: "30rem",

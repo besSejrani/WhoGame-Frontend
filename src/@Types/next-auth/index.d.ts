@@ -9,6 +9,7 @@ declare module "next-auth" {
       email: string;
       name: string;
       role: string;
+      token: string;
     } & DefaultSession["user"];
   }
 

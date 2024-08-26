@@ -30,6 +30,7 @@
       "@AWS/*": ["./src/@AWS/*"],
       "@Queries/*": ["./src/@Queries/*"],
       "@Server/*": ["./src/@Server/*"],
+      "@Authentication": ["src/auth.ts"],
       "@Types/*": ["./src/@Types/*"]
     },
     "target": "ES2017"

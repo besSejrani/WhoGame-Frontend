@@ -29,14 +29,15 @@ const Hero = () => {
             options, and make your guess.
           </p>
 
-          <div style={{ margin: "2rem 0rem" }}>
+          <div style={{ margin: "4rem 0rem" }}>
             <Button
               href={paths.startGamePage()}
               variant="contained"
               text="Let's Start"
               type="button"
               styleOverrides={{
-                padding: "0.7rem 2rem",
+                fontSize: "2.5rem",
+                padding: "1.2rem 2.5rem",
                 borderRadius: 30,
                 cursor: "pointer",
               }}
@@ -44,7 +45,11 @@ const Hero = () => {
           </div>
         </div>
 
-        <img src="/images/hero/hero.png" alt="Hero image" />
+        <img
+          src="/images/hero/hero.png"
+          alt="Hero image"
+          style={{ justifySelf: "center" }}
+        />
       </main>
     </Container>
   );

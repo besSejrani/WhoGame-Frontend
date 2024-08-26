@@ -1,5 +1,4 @@
 // AWS
-
 import {
   SecretsManagerClient,
   GetSecretValueCommand,

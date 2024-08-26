@@ -1,9 +1,11 @@
-// Next
-import { useRouter } from "next/navigation";
+// React
+import React, { useRef, useState, useEffect } from "react";
 
-import React, { useRef, useState, useEffect, useCallback } from "react";
+// Components
 import Button from "@/Components/client/Button";
-import Timer from "@Components/client/Timer";
+import GameInfos from "@Components/client/Sidebar/GameInfos";
+
+// Styles
 import {
   sidebar,
   sidebarContent,
@@ -17,12 +19,13 @@ import {
   typingIndicator,
 } from "./index.css";
 
-import GameRulesModal from "@/Layout/Components/Common/Modal/Content/GameRules";
-
-import { useModalStore } from "@/Store/modal";
+// State
 import { useGameStore } from "@/Store/game";
-import { prodAskQuestions, quitGame } from "@Queries/index";
 
+// Queries
+import { prodAskQuestions } from "@Queries/index";
+
+// Cookies
 import Cookies from "js-cookie";
 
 // ==========================================================================================
@@ -36,11 +39,8 @@ type ChatEntry = {
 };
 
 const Sidebar = ({ session_id }: { session_id: string }) => {
-  const router = useRouter();
-
   const token = Cookies.get("token")!;
 
-  const { openModal, isOpen } = useModalStore((state) => state);
   let { counter, sessionId } = useGameStore();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
@@ -51,6 +51,9 @@ const Sidebar = ({ session_id }: { session_id: string }) => {
     sessionId = session_id;
   }
 
+  // ==============================
+  //  Events
+  // ==============================
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop =
@@ -102,35 +105,9 @@ const Sidebar = ({ session_id }: { session_id: string }) => {
     });
   }, []);
 
-  const handleOpenModal = useCallback(() => {
-    console.log("Attempting to open modal");
-    openModal(<GameRulesModal />);
-    console.log("Modal open function called");
-    console.log("Current modal state:", { isOpen });
-  }, [openModal, isOpen]);
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        console.log("Escape key pressed");
-        event.preventDefault();
-        handleOpenModal();
-      }
-    };
-
-    console.log("Adding event listener for Escape key");
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      console.log("Removing event listener for Escape key");
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [handleOpenModal]);
-
-  useEffect(() => {
-    console.log("Modal state changed:", { isOpen });
-  }, [isOpen]);
-
+  // ==============================
+  //  Form
+  // ==============================
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     const question = textareaRef.current?.value;
@@ -152,12 +129,7 @@ const Sidebar = ({ session_id }: { session_id: string }) => {
     setIsSending(true);
 
     try {
-      console.log("sessionId", sessionId);
-      console.log("token", token);
-
       const answer = await prodAskQuestions({ sessionId, question, token });
-
-      console.log("prodAskQuestions", prodAskQuestions);
 
       setChat((prev) =>
         prev.map((entry) =>
@@ -188,14 +160,6 @@ const Sidebar = ({ session_id }: { session_id: string }) => {
     if (event.key === "Enter" && !event.shiftKey) {
       event.preventDefault();
       handleSubmit(event);
-    }
-  };
-
-  const quitTheGame = async () => {
-    const { status } = await quitGame({ sessionId: sessionId!, token });
-
-    if (status === 200) {
-      router.push("/");
     }
   };
 
@@ -263,89 +227,7 @@ const Sidebar = ({ session_id }: { session_id: string }) => {
           </div>
         </div>
       </aside>
-
-      <div
-        style={{
-          borderRadius: "1rem",
-          padding: "1rem",
-          margin: "2rem 0rem 0rem 0rem",
-          backgroundColor: "white",
-          boxShadow: `
-            rgba(0, 0, 0, 0.2) 0px 4px 2px -2px,
-            rgba(0, 0, 0, 0.2) 0px 2px 2px 0px,
-            rgba(0, 0, 0, 0.3) 0px 2px 6px 0px
-          `,
-        }}
-      >
-        <h2
-          style={{
-            fontSize: "1.4rem",
-            fontWeight: 400,
-            margin: "0rem 0rem 1rem 0rem",
-          }}
-        >
-          Game Infos
-        </h2>
-        <Timer />
-        <p>
-          <span style={{ fontWeight: 500 }}>Attempts:</span>
-          {counter}
-        </p>
-
-        <hr style={{ opacity: 0.5, margin: "1.5rem 0rem" }} />
-
-        <h2
-          style={{
-            fontSize: "1.4rem",
-            fontWeight: 400,
-            margin: "0rem 0rem 0.5rem 0rem",
-          }}
-        >
-          Keyboard shortcuts
-        </h2>
-        <div
-          style={{
-            margin: "0 0rem 0rem 0rem",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            cursor: "pointer",
-            userSelect: "none",
-            WebkitUserSelect: "none",
-            MozUserSelect: "none",
-            msUserSelect: "none",
-          }}
-          onClick={() => {
-            console.log("Help div clicked");
-            handleOpenModal();
-          }}
-        >
-          <p>Game Rules</p>
-          <p
-            style={{
-              border: "1px solid grey",
-              borderRadius: "99px",
-              width: "max-content",
-              padding: "0.25rem 1rem",
-            }}
-          >
-            esc
-          </p>
-        </div>
-
-        <hr style={{ opacity: 0.5, margin: "1.5rem 0rem" }} />
-
-        <Button
-          text="Quit the game"
-          type="submit"
-          variant="contained"
-          styleOverrides={{
-            width: "100%",
-            fontWeight: 100,
-          }}
-          onClick={() => quitTheGame()}
-        />
-      </div>
+      <GameInfos counter={counter} sessionId={session_id} token={token} />
     </div>
   );
 };

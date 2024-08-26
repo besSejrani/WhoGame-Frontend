@@ -25,7 +25,6 @@ export const header = style({
 // ======================================
 export const links = style({
   display: "flex",
-  // flexDirection: "column",
   alignItems: "center",
 });
 
@@ -33,7 +32,8 @@ export const links = style({
 // Link
 // ======================================
 export const link = style({
-  margin: "0rem 1rem 0rem 0rem",
+  fontSize: "1.8rem",
+  margin: "0rem 2rem 0rem 0rem",
 });
 
 // ======================================
