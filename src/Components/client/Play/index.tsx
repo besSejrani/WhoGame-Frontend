@@ -16,21 +16,14 @@ type Person = {
   photo_url: string;
 };
 
-// Define a type for the component props
 interface GameIdProps {
   session_id: string;
   data: Person[];
 }
 
 const GameId: React.FC<GameIdProps> = ({ session_id, data }) => {
-  // ===========================
-  // State
-  // ===========================
   const [selectedCards, setSelectedCards] = useState<Set<string>>(new Set());
 
-  // ===========================
-  // Events
-  // ===========================
   const toggleCardSelection = (name: string) => {
     setSelectedCards((prevSelectedCards) => {
       const newSelectedCards = new Set(prevSelectedCards);
@@ -43,21 +36,22 @@ const GameId: React.FC<GameIdProps> = ({ session_id, data }) => {
     });
   };
 
+  const FLIP_DELAY_INCREMENT = 100; // ms between each card flip
+
   return (
     <div className={root}>
       <div className={grid}>
-        {data.map((person) => {
-          return (
-            <Card
-              imageUrl={person.photo_url}
-              name={person.name}
-              key={person.name}
-              isSelected={selectedCards.has(person.name)}
-              session_id={session_id}
-              onClick={() => toggleCardSelection(person.name)}
-            />
-          );
-        })}
+        {data.map((person, index) => (
+          <Card
+            imageUrl={person.photo_url}
+            name={person.name}
+            key={person.name}
+            isSelected={selectedCards.has(person.name)}
+            session_id={session_id}
+            onClick={() => toggleCardSelection(person.name)}
+            flipDelay={(index + 1) * FLIP_DELAY_INCREMENT}
+          />
+        ))}
       </div>
       <Sidebar session_id={session_id} />
     </div>

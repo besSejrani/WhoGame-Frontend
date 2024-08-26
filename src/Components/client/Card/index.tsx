@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 // Components
@@ -28,13 +28,13 @@ import {
 
 // ==========================================================================================
 
-// Interface
 interface ICard {
   name: string;
   imageUrl: string;
   isSelected: boolean;
   onClick: () => void;
   session_id: string;
+  flipDelay: number;
 }
 
 const Card: React.FC<ICard> = ({
@@ -43,6 +43,7 @@ const Card: React.FC<ICard> = ({
   isSelected,
   onClick,
   session_id,
+  flipDelay,
 }) => {
   const router = useRouter();
   const [isFlipped, setIsFlipped] = useState(false);
@@ -53,6 +54,13 @@ const Card: React.FC<ICard> = ({
   const { incrementCounter } = useGameStore();
   const setErrorMessage = useToastStore((state) => state.setErrorMessage);
   const setSuccessMessage = useToastStore((state) => state.setSuccessMessage);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsFlipped(true);
+    }, flipDelay);
+    return () => clearTimeout(timer);
+  }, [flipDelay]);
 
   const handleClick = () => {
     setIsFlipped(!isFlipped);
@@ -134,7 +142,6 @@ const Card: React.FC<ICard> = ({
               src="/tecracer-white.svg"
               alt="Logo"
               height={60}
-              // width={150}
               style={{ margin: "0rem 0rem 1rem 0rem", width: "90%" }}
               draggable={false}
             />

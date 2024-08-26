@@ -37,6 +37,7 @@ export const cardFront = style([
   cardFace,
   {
     backgroundColor: "#ffffff",
+    transform: "rotateY(180deg)",
   },
 ]);
 
@@ -44,7 +45,7 @@ export const cardBack = style([
   cardFace,
   {
     backgroundColor: "#111827",
-    transform: "rotateY(180deg)",
+    transform: "rotateY(0deg)",
     justifyContent: "center",
     alignItems: "center",
   },
