@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 // React
 import { Suspense } from "react";
 
@@ -19,6 +21,7 @@ type Leaderboard = {
   organization: string;
   person: string;
   time: Date;
+  score: number;
 };
 
 const AdminLeaderboard = async () => {
@@ -27,11 +30,9 @@ const AdminLeaderboard = async () => {
   // ===========================
   const data = (await scanTable({ tableName: "leaderboard" })) as Leaderboard[];
 
+  console.log("data", data);
+
   const columns = [
-    {
-      name: "Session ID",
-      dataField: "session_id",
-    },
     {
       name: "Name",
       dataField: "name",
@@ -39,6 +40,10 @@ const AdminLeaderboard = async () => {
     {
       name: "Email",
       dataField: "email",
+    },
+    {
+      name: "Organization",
+      dataField: "organization",
     },
     {
       name: "Person",
@@ -53,6 +58,10 @@ const AdminLeaderboard = async () => {
       dataField: "time",
     },
     {
+      name: "Score",
+      dataField: "score",
+    },
+    {
       name: "Actions",
       dataField: "session_id",
       component: DataTableActions,
@@ -63,7 +72,7 @@ const AdminLeaderboard = async () => {
   ];
 
   return (
-    <div style={{ height: "100%" }}>
+    <div>
       <Suspense fallback={<Loading />}>
         {true ? (
           <DataTable

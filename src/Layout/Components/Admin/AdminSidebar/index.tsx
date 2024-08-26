@@ -11,7 +11,7 @@ const AdminSidebar: React.FC = () => {
         <nav className={styles.nav}>
           <div className={styles.content}>
             {/* Dashboard */}
-            <p className={styles.heading}>Dashboard</p>
+            <p className={styles.heading}>Game</p>
             <NavigationLink href="/admin" label="Leaderboard">
               <BarChart2
                 strokeWidth={1.25}

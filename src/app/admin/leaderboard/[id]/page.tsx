@@ -1,7 +1,11 @@
+// React
 import React from "react";
 
 // DynamoDB
 import { getRow } from "@AWS/DynamoDB";
+
+// Components
+import ChatHistory from "@/Components/client/ChatHistory";
 
 // ========================================================================================================
 
@@ -17,9 +21,15 @@ type FinishedGame = {
   finished_at: string;
   chat_history: string;
   attempts: number;
+  score: number;
   duration_seconds: number;
   session_id: string;
   person: string;
+};
+
+type Message = {
+  question: string;
+  answer: string;
 };
 
 const LeaderboardWinner: React.FC<ParamsProps> = async ({ params }) => {
@@ -33,26 +43,27 @@ const LeaderboardWinner: React.FC<ParamsProps> = async ({ params }) => {
     key: { session_id: id },
   })) as FinishedGame;
 
-  return (
-    <div
-      style={{
-        display: "flex",
-        width: "100%",
-        justifyContent: "space-between",
-      }}
-    >
-      <div>
-        <h1>Chat history</h1>
-        <div>{data?.chat_history}</div>
-      </div>
-      <div>
-        <h2>Infos</h2>
-        <p>Person: {data?.person}</p>
-        <p>Attempts: {data.attempts}</p>
-        <p>Duration: {data.duration_seconds} seconds</p>
-      </div>
-    </div>
-  );
+  const parseChatHistory = (chatHistory: string): Message[] => {
+    if (!chatHistory) return [];
+
+    return chatHistory
+      .split("Q:")
+      .filter(Boolean)
+      .map((message) => {
+        const [question, answer] = message
+          .split("A:")
+          .map((part) => part?.trim() || "");
+        return { question, answer };
+      })
+      .filter(
+        (entry): entry is Message =>
+          entry.question !== "" && entry.answer !== undefined
+      );
+  };
+
+  const chatMessages = parseChatHistory(data.chat_history);
+
+  return <ChatHistory messages={chatMessages} game={data} />;
 };
 
 export default LeaderboardWinner;
