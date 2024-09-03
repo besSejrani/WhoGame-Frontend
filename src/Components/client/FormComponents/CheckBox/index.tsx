@@ -1,26 +1,24 @@
+// React
 import React, { useState } from "react";
+
+// Icons
 import { Check } from "lucide-react";
 
-import {
-  checkboxBox,
-  checkboxChecked,
-  checkboxContainer,
-  checkboxLabel,
-} from "./index.css";
+// ========================================================================================================
 
-// Component
+// Interface
 interface CustomCheckboxProps {
   initialChecked?: boolean;
   onChange?: (checked: boolean) => void;
   children: React.ReactNode;
-  styleOverrides?: React.CSSProperties;
+  className?: string;
 }
 
 const Checkbox: React.FC<CustomCheckboxProps> = ({
   initialChecked = false,
   onChange,
   children,
-  styleOverrides,
+  className = "",
 }) => {
   const [isChecked, setIsChecked] = useState(initialChecked);
 
@@ -34,14 +32,16 @@ const Checkbox: React.FC<CustomCheckboxProps> = ({
 
   return (
     <div
-      className={checkboxContainer}
+      className={`flex items-center cursor-pointer ${className}`}
       onClick={handleToggle}
-      style={styleOverrides}
     >
-      <div className={`${checkboxBox} ${isChecked ? checkboxChecked : ""}`}>
+      <div
+        className={`w-8 h-8 mr-3 border-2 border-gray-300 rounded flex items-center justify-center transition-all duration-200 ease-in-out
+          ${isChecked ? "bg-primary border-primary" : ""}`}
+      >
         {isChecked && <Check size={25} color="white" />}
       </div>
-      <span className={checkboxLabel}>{children}</span>
+      <span className="select-none">{children}</span>
     </div>
   );
 };

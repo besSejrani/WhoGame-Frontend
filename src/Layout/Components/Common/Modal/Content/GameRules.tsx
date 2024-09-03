@@ -1,5 +1,5 @@
 // Components
-import Rules from "@Components/client/Rules";
+import Rules from "@Components/client/GameRules/Rules";
 
 // ========================================================================================================
 
@@ -19,5 +19,3 @@ const GameRulesModal = () => {
 };
 
 export default GameRulesModal;
-
-// ========================================================================================================

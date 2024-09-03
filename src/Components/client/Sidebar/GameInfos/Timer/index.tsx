@@ -28,9 +28,9 @@ const Timer = () => {
   }, []);
 
   return (
-    <div style={{ display: "flex" }}>
-      <p>
-        <span style={{ fontWeight: 500 }}>Timer:</span>
+    <div className="flex">
+      <p className="text-base">
+        <span className="font-500">Timer: </span>
         {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
       </p>
     </div>

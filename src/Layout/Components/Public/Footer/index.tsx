@@ -7,380 +7,215 @@ import Link from "next/link";
 // UI
 import Container from "@/Components/ui/Container";
 
-// Styles
-import {
-  footerStyles,
-  sectionStyles,
-  socialIconsStyles,
-} from "@/Layout/Components/Public/Footer/index.css";
-
 // Icon
 import { Linkedin, Youtube, Github } from "lucide-react";
 
-// Paths
-import { paths } from "@/paths";
+// Data
+import locationData from "@Data/footer/locations.json";
+import trainingData from "@Data/footer/trainings.json";
+import companyData from "@Data/footer/company.json";
+import legalData from "@Data/footer/legal.json";
 
 // ==========================================================================================
 
 const Footer = () => {
   return (
-    <footer className={footerStyles}>
-      <Container>
-        <div
-          style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr" }}
-        >
-          <div className={sectionStyles}>
-            <a target="_blank" href="https://www.tecracer.com/">
+    <footer
+      className={`
+        bg-dark text-white pt-32 pb-8 rounded-tl-[5rem] bottom-0 h-[100%] bg-no-repeat bg-bottom bg-cover z-[1] bg-footer-background-grid
+        2xl:bg-none
+        `}
+    >
+      {
+        // ===============================================
+        // Main Content
+        // ===============================================
+      }
+      <Container className="relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+          <div className="flex flex-col">
+            {
+              // ===============================================
+              // Logo
+              // ===============================================
+            }
+            <a
+              target="_blank"
+              href="https://www.tecracer.com/"
+              rel="noopener noreferrer"
+            >
               <img
                 src="/tecracer-white.svg"
-                alt="Logo"
-                height={100}
-                width={250}
-                style={{ margin: "0rem 0rem 1rem 0rem" }}
+                alt="tecRacer logo in white"
+                className="h-[100px] w-[250px] mb-4"
               />
             </a>
-            <p style={{ margin: "0rem 0rem 0.5rem 0rem", opacity: "0.9" }}>
-              tecRacer Consulting GmbH
-            </p>
-            <p style={{ margin: "0rem 0rem 0.5rem 0rem", opacity: "0.9" }}>
-              Schaffhauserstrasse 429
-            </p>
-            <p style={{ margin: "0rem 0rem 1.5rem 0rem", opacity: "0.9" }}>
-              8050 Zürich
-            </p>
 
-            <div className={socialIconsStyles}>
+            {
+              // ===============================================
+              // Address
+              // ===============================================
+            }
+
+            <address className="not-italic mb-6 opacity-90">
+              <p className="text-lg mb-2 opacity-90">
+                tecRacer Consulting GmbH
+              </p>
+              <p className="text-lg mb-2 opacity-90">Schaffhauserstrasse 429</p>
+              <p className="text-lg mb-2 opacity-90">8050 Zürich</p>
+            </address>
+
+            {
+              // ===============================================
+              // Social
+              // ===============================================
+            }
+
+            <div className="flex gap-4 mt-2.5">
               <a
                 target="_blank"
                 href="https://www.linkedin.com/company/tecracer-group/"
+                rel="noopener noreferrer"
               >
-                <Linkedin
-                  size={35}
-                  strokeWidth={1.25}
-                  absoluteStrokeWidth={true}
-                />
+                <Linkedin size={35} strokeWidth={1.25} absoluteStrokeWidth />
               </a>
-              <a target="_blank" href="https://github.com/tecracer">
-                <Github
-                  size={35}
-                  strokeWidth={1.25}
-                  absoluteStrokeWidth={true}
-                />
+              <a
+                target="_blank"
+                href="https://github.com/tecracer"
+                rel="noopener noreferrer"
+              >
+                <Github size={35} strokeWidth={1.25} absoluteStrokeWidth />
               </a>
               <a
                 target="_blank"
                 href="https://www.youtube.com/@tecraceraws-channel4634"
+                rel="noopener noreferrer"
               >
-                <Youtube
-                  size={35}
-                  strokeWidth={1.25}
-                  absoluteStrokeWidth={true}
-                />
+                <Youtube size={35} strokeWidth={1.25} absoluteStrokeWidth />
               </a>
             </div>
           </div>
 
-          <div className={sectionStyles}>
-            <h4
-              style={{
-                fontSize: "1.8rem",
-                fontWeight: "300",
-                margin: "1rem 0rem",
-              }}
-            >
-              Locations
-            </h4>
+          {
+            // ===============================================
+            // Locations
+            // ===============================================
+          }
+
+          <div className="flex flex-col">
+            <h3 className="text-2xl font-light mb-4">Locations</h3>
 
             <ul>
-              <li
-                style={{
-                  listStyle: "none",
-                  margin: "0rem 0rem 0.5rem 0rem",
-                  fontSize: "1.2rem",
-                }}
-              >
-                <span
-                  style={{ opacity: "0.85", margin: "0rem 0.5rem 0rem 0rem" }}
-                >
-                  Zurich
-                </span>
-                🇨🇭
-              </li>
-              <li
-                style={{
-                  listStyle: "none",
-                  margin: "0rem 0rem 0.5rem 0rem",
-                  fontSize: "1.2rem",
-                }}
-              >
-                <span
-                  style={{ opacity: "0.85", margin: "0rem 0.5rem 0rem 0rem" }}
-                >
-                  Geneva
-                </span>
-                🇨🇭
-              </li>
-              <li
-                style={{
-                  listStyle: "none",
-                  margin: "0rem 0rem 0.5rem 0rem",
-                  fontSize: "1.2rem",
-                }}
-              >
-                <span
-                  style={{ opacity: "0.85", margin: "0rem 0.5rem 0rem 0rem" }}
-                >
-                  Berlin
-                </span>
-                🇩🇪
-              </li>
-              <li
-                style={{
-                  listStyle: "none",
-                  margin: "0rem 0rem 0.5rem 0rem",
-                  fontSize: "1.2rem",
-                }}
-              >
-                <span
-                  style={{ opacity: "0.85", margin: "0rem 0.5rem 0rem 0rem" }}
-                >
-                  Duisburg
-                </span>
-                🇩🇪
-              </li>
-              <li
-                style={{
-                  listStyle: "none",
-                  margin: "0rem 0rem 0.5rem 0rem",
-                  fontSize: "1.2rem",
-                }}
-              >
-                <span
-                  style={{ opacity: "0.85", margin: "0rem 0.5rem 0rem 0rem" }}
-                >
-                  Frankfort
-                </span>
-                🇩🇪
-              </li>
-              <li
-                style={{
-                  listStyle: "none",
-                  margin: "0rem 0rem 0.5rem 0rem",
-                  fontSize: "1.2rem",
-                }}
-              >
-                <span
-                  style={{ opacity: "0.85", margin: "0rem 0.5rem 0rem 0rem" }}
-                >
-                  Hamburg
-                </span>
-                🇩🇪
-              </li>
-              <li
-                style={{
-                  listStyle: "none",
-                  margin: "0rem 0rem 0.5rem 0rem",
-                  fontSize: "1.2rem",
-                }}
-              >
-                <span
-                  style={{ opacity: "0.85", margin: "0rem 0.5rem 0rem 0rem" }}
-                >
-                  Hannover
-                </span>
-                🇩🇪
-              </li>
-              <li
-                style={{
-                  listStyle: "none",
-                  margin: "0rem 0rem 0.5rem 0rem",
-                  fontSize: "1.2rem",
-                }}
-              >
-                <span
-                  style={{ opacity: "0.85", margin: "0rem 0.5rem 0rem 0rem" }}
-                >
-                  Mannheim
-                </span>
-                🇩🇪
-              </li>
-              <li
-                style={{
-                  listStyle: "none",
-                  margin: "0rem 0rem 0.5rem 0rem",
-                  fontSize: "1.2rem",
-                }}
-              >
-                <span
-                  style={{ opacity: "0.85", margin: "0rem 0.5rem 0rem 0rem" }}
-                >
-                  Munich
-                </span>
-                🇩🇪
-              </li>
-              <li
-                style={{
-                  listStyle: "none",
-                  margin: "0rem 0rem 0.5rem 0rem",
-                  fontSize: "1.2rem",
-                }}
-              >
-                <span
-                  style={{ opacity: "0.85", margin: "0rem 0.5rem 0rem 0rem" }}
-                >
-                  Lisbon
-                </span>
-                🇵🇹
-              </li>
-              <li
-                style={{
-                  listStyle: "none",
-                  margin: "0rem 0rem 0.5rem 0rem",
-                  fontSize: "1.2rem",
-                }}
-              >
-                <span
-                  style={{ opacity: "0.85", margin: "0rem 0.5rem 0rem 0rem" }}
-                >
-                  Vienna
-                </span>
-                🇦🇹
-              </li>
+              {locationData.map((location, index) => (
+                <li key={index} className="list-none mb-2 text-lg opacity-90">
+                  <span className="opacity-85 mr-2">{location.name}</span>
+                  {location.flag}
+                </li>
+              ))}
             </ul>
           </div>
 
-          <div className={sectionStyles}>
-            <h4
-              style={{
-                fontSize: "1.8rem",
-                fontWeight: "300",
-                margin: "1rem 0rem",
-              }}
-            >
-              Company
-            </h4>
-            <a
-              style={{
-                listStyle: "none",
-                margin: "0rem 0rem 0.5rem 0rem",
-                fontSize: "1.2rem",
-                cursor: "pointer",
-                opacity: "0.85",
-              }}
-              target="_blank"
-              href="https://www.tecracer.com/en/tecracer-group/"
-            >
-              About
-            </a>
-            <a
-              style={{
-                listStyle: "none",
-                margin: "0rem 0rem 0.5rem 0rem",
-                fontSize: "1.2rem",
-                cursor: "pointer",
-                opacity: "0.85",
-              }}
-              target="_blank"
-              href="https://www.tecracer.com/blog"
-            >
-              Blog
-            </a>
-            <a
-              style={{
-                listStyle: "none",
-                margin: "0rem 0rem 0.5rem 0rem",
-                fontSize: "1.2rem",
-                cursor: "pointer",
-                opacity: "0.85",
-              }}
-              target="_blank"
-              href="https://www.tecracer.com/en/careers/"
-            >
-              Career
-            </a>
-            <a
-              style={{
-                listStyle: "none",
-                margin: "0rem 0rem 0.5rem 0rem",
-                fontSize: "1.2rem",
-                cursor: "pointer",
-                opacity: "0.85",
-              }}
-              target="_blank"
-              href="https://www.tecracer.com/en/news/"
-            >
-              News
-            </a>
-            <a
-              style={{
-                listStyle: "none",
-                margin: "0rem 0rem 0.5rem 0rem",
-                fontSize: "1.2rem",
-                cursor: "pointer",
-                opacity: "0.85",
-              }}
-              target="_blank"
-              href="https://www.tecracer.com/en/contact/"
-            >
-              Contact
-            </a>
+          {
+            // ===============================================
+            // Company
+            // ===============================================
+          }
+
+          <div className="flex flex-col">
+            <h3 className="text-2xl font-light mb-4">Company</h3>
+
+            <ul>
+              {companyData.map((company, index) => (
+                <li key={index} className="list-none mb-2 ">
+                  <a
+                    key={index}
+                    className="mb-2 text-lg cursor-pointer opacity-70"
+                    target="_blank"
+                    href={company.href}
+                    rel="noopener noreferrer"
+                  >
+                    {company.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <div className={sectionStyles}>
-            <h4
-              style={{
-                fontSize: "1.8rem",
-                fontWeight: "300",
-                margin: "1rem 0rem",
-              }}
-            >
-              Legal
-            </h4>
-            <Link
-              style={{
-                margin: "0rem 0rem 0.5rem 0rem",
-                fontSize: "1.2rem",
-                cursor: "pointer",
-                opacity: "0.85",
-              }}
-              href={paths.privacyPolicyPage()}
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              style={{
-                margin: "0rem 0rem 0.5rem 0rem",
-                fontSize: "1.2rem",
-                cursor: "pointer",
-                opacity: "0.85",
-              }}
-              href={paths.termsAndConditionsPage()}
-            >
-              Terms &amp; Conditions
-            </Link>
+          {
+            // ===============================================
+            // Trainings
+            // ===============================================
+          }
+
+          <div className="flex flex-col">
+            <h3 className="text-2xl font-light mb-4">Trainings</h3>
+
+            <ul>
+              {trainingData.map((training, index) => (
+                <li key={index} className="list-none mb-2 text-lg opacity-90">
+                  <a
+                    key={index}
+                    className="mb-2 text-lg cursor-pointer opacity-70"
+                    target="_blank"
+                    href={training.href}
+                    rel="noopener noreferrer"
+                  >
+                    {training.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {
+            // ===============================================
+            // Legal
+            // ===============================================
+          }
+
+          <div className="flex flex-col">
+            <h3 className="text-2xl font-light mb-4">Legal</h3>
+
+            <ul>
+              {legalData.map((legal, index) => (
+                <li key={index} className="list-none mb-2 text-lg">
+                  <Link
+                    key={index}
+                    className="mb-2 text-lg cursor-pointer opacity-65"
+                    href={legal.href}
+                  >
+                    {legal.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </Container>
 
-      <Container>
-        <hr style={{ margin: "2rem 0rem 1rem 0rem" }} />
+      {
+        // ===============================================
+        // Horizontal Line
+        // ===============================================
+      }
+      <Container className="relative z-10 mt-28 mb-12">
+        <hr />
       </Container>
 
-      <Container>
-        <div
-          style={{
-            display: "flex",
-            width: "100%",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <p style={{ opacity: "0.8" }}>
+      {
+        // ===============================================
+        // Copyright
+        // ===============================================
+      }
+
+      <Container className="relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <p className="text-base opacity-80 mb-4 md:mb-0">
             &copy; {new Date().getFullYear()} tecRacer Consulting GmbH, all
             rights reserved.
           </p>
 
-          <p style={{ opacity: "0.8" }}>
+          <p className="text-base opacity-80">
             Made by Tobias Emil Vonesch, Chrishon Nilanthan, Besjan Sejrani
           </p>
         </div>

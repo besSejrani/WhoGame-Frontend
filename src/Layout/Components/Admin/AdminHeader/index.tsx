@@ -1,10 +1,11 @@
 "use client";
 
 // React
-import React, { CSSProperties } from "react";
+import React, { useState, useEffect } from "react";
 
 // Next
 import Link from "next/link";
+import Image from "next/image";
 
 // Authentication
 import { useSession, signOut } from "next-auth/react";
@@ -14,61 +15,67 @@ import Container from "@/Components/ui/Container";
 
 // Components
 import Button from "@/Components/client/Button";
-
-// Styles
-import {
-  root,
-  header,
-  links,
-  link,
-  li,
-} from "@/Layout/Components/Admin/AdminHeader/index.css";
+import DarkMode from "@/Components/client/Menus/DarkMode";
 
 // Paths
 import { paths } from "@/paths";
 
 // ==========================================================================================
 
-const Header = () => {
+const Header: React.FC = () => {
   const session = useSession();
 
-  const headerWrapperStyle: CSSProperties = {
-    zIndex: 50,
-    backgroundColor: "white",
-    boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+  // ==============================
+  // State
+  // ==============================
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // ==============================
+  // Event
+  // ==============================
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDarkMode]);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
   };
 
   return (
-    <div style={headerWrapperStyle} className={root}>
-      <Container styleOverrides={{ padding: "0.2rem 2rem ", width: "100%" }}>
-        <header className={header}>
+    <div className="fixed w-full bg-white z-50 shadow-md dark:bg-gray-800">
+      <Container className="w-full px-4 sm:px-6 lg:px-8">
+        <header className="flex justify-between items-center w-full py-4">
           <Link href={paths.homePage()}>
-            <img src="/logo.svg" alt="tecRacer logo" height={80} width={180} />
+            <Image
+              src={isDarkMode ? "/tecracer-white.svg" : "/logo.svg"}
+              alt="tecRacer logo"
+              height={80}
+              width={180}
+            />
           </Link>
 
-          <ul className={links}>
-            <li className={li}>
+          <ul className="flex items-center">
+            <li className="list-none mr-4">
               <Button
                 text="Logout"
                 type="button"
                 variant="outlined"
                 onClick={() => signOut({ callbackUrl: paths.homePage() })}
-                styleOverrides={{
-                  fontSize: "2.5rem",
-                  fontWeight: 300,
-                  margin: "0rem 1rem 0rem 0rem",
-                  borderRadius: "30rem",
-                }}
+                className="text-xl px-4 py-2 font-light rounded-full"
+              />
+            </li>
+
+            <li className="list-none">
+              <DarkMode
+                isDarkMode={isDarkMode}
+                toggleDarkMode={toggleDarkMode}
               />
             </li>
           </ul>
-
-          {/* <ul {...stylex.props(styles.iconMenu)}>
-              <DarkMode />
-              <Language />
-              <Cart />
-              <Avatar />
-            </ul> */}
         </header>
       </Container>
     </div>

@@ -1,10 +1,5 @@
 import React from "react";
-
-// Next
 import Link from "next/link";
-
-// Styles
-import { containedButton, outlinedButton } from "./index.css";
 
 // ==========================================================================================
 
@@ -14,7 +9,7 @@ interface IButton {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   variant: "contained" | "outlined";
   type: "button" | "reset" | "submit";
-  styleOverrides?: React.CSSProperties;
+  className?: string;
   disabled?: boolean;
 }
 
@@ -24,19 +19,24 @@ const Button: React.FC<IButton> = ({
   type,
   text,
   href,
-  styleOverrides = {},
+  className = "",
   disabled,
 }) => {
-  const className = variant === "contained" ? containedButton : outlinedButton;
+  const baseClasses = "cursor-pointer transition duration-200 ease-in-out";
+  const variantClasses =
+    variant === "contained"
+      ? "bg-[#FFB500] text-white hover:bg-[#f8b000] disabled:bg-gray-300 disabled:cursor-not-allowed"
+      : "border-2 border-[#FFB500] text-[#FFB500] hover:bg-[#FFB500] hover:text-white disabled:bg-gray-300 disabled:border-gray-400 disabled:text-gray-500 disabled:hover:bg-gray-400";
+
+  const buttonClasses = `${baseClasses} ${variantClasses} ${className}`;
 
   const showButton = () => {
     if (!href) {
       return (
         <button
-          className={className}
+          className={buttonClasses}
           type={type}
           onClick={onClick}
-          style={styleOverrides}
           disabled={disabled}
         >
           {text}
@@ -44,7 +44,7 @@ const Button: React.FC<IButton> = ({
       );
     } else {
       return (
-        <Link href={href} className={className} style={styleOverrides}>
+        <Link href={href} className={buttonClasses}>
           {text}
         </Link>
       );

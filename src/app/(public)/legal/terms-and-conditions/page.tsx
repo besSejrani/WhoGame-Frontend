@@ -1,40 +1,36 @@
 import React from "react";
 import Container from "@Components/ui/Container";
 
-const TermsAndConditions = () => {
+// =================================================================================================
+
+const TermsAndConditions: React.FC = () => {
   return (
     <div>
       <Container>
         <h1
-          style={{
-            fontSize: "6rem",
-            fontWeight: 300,
-            margin: "10rem 0rem 0rem 0rem",
-          }}
+          className={`
+          text-6xl font-light mt-60 mb-0
+          dark:text-white
+          `}
         >
           Terms and Conditions
         </h1>
 
-        <div style={{ margin: "5rem 0rem" }}>
+        <div className="my-20">
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-              margin: "0rem 0rem 2rem 0rem",
-            }}
+            className={`
+            text-2xl leading-12  font-light mb-8
+            dark:text-white
+            `}
           >
             Last updated: August 17, 2024
           </p>
 
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-            }}
+            className={`
+            text-2xl leading-12  font-light
+            dark:text-white
+            `}
           >
             Welcome to Who Is Rag! These Terms and Conditions govern your use of
             our website located at who-is-rag.com (the "Site") and our online
@@ -45,23 +41,20 @@ const TermsAndConditions = () => {
 
         <hr />
 
-        <div style={{ margin: "5rem 0rem" }}>
+        <div className="my-20">
           <h2
-            style={{
-              fontSize: "3.5rem",
-              fontWeight: 300,
-              margin: "0rem 0rem 2rem 0rem",
-            }}
+            className={`
+            text-3xl font-light mb-8
+            dark:text-white
+            `}
           >
             1. Game Rules and Participation
           </h2>
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-            }}
+            className={`
+            text-2xl leading-12 opacity-70 font-light
+            dark:text-white
+            `}
           >
             1.1. The Who Is Rag game is a one-day event that takes place during
             the Cloud Summit in Zurich.
@@ -87,23 +80,20 @@ const TermsAndConditions = () => {
 
         <hr />
 
-        <div style={{ margin: "5rem 0rem" }}>
+        <div className="my-20">
           <h2
-            style={{
-              fontSize: "3.5rem",
-              fontWeight: 300,
-              margin: "0rem 0rem 2rem 0rem",
-            }}
+            className={`
+            text-3xl font-light mb-8
+            dark:text-white
+            `}
           >
             2. Prizes and Winners
           </h2>
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-            }}
+            className={`
+            text-2xl leading-12 opacity-70 font-light
+            dark:text-white
+            `}
           >
             2.1. Prizes will be awarded in the following categories:
             <br />
@@ -137,23 +127,20 @@ const TermsAndConditions = () => {
 
         <hr />
 
-        <div style={{ margin: "5rem 0rem" }}>
+        <div className="my-20">
           <h2
-            style={{
-              fontSize: "3.5rem",
-              fontWeight: 300,
-              margin: "0rem 0rem 2rem 0rem",
-            }}
+            className={`
+            text-3xl font-light mb-8
+            dark:text-white
+            `}
           >
             3. Intellectual Property
           </h2>
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-            }}
+            className={`
+            text-2xl leading-12 opacity-70 font-light
+            dark:text-white
+            `}
           >
             3.1. All content on the Who Is Rag website, including text,
             graphics, logos, and software, is the property of Tecracer or its
@@ -169,23 +156,20 @@ const TermsAndConditions = () => {
 
         <hr />
 
-        <div style={{ margin: "5rem 0rem" }}>
+        <div className="my-20">
           <h2
-            style={{
-              fontSize: "3.5rem",
-              fontWeight: 300,
-              margin: "0rem 0rem 2rem 0rem",
-            }}
+            className={`
+            text-3xl font-light mb-8
+            dark:text-white
+            `}
           >
             4. Limitation of Liability
           </h2>
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-            }}
+            className={`
+            text-2xl leading-12 opacity-70 font-light
+            dark:text-white
+            `}
           >
             4.1. Tecracer and its affiliates will not be liable for any
             indirect, incidental, special, consequential, or punitive damages
@@ -201,23 +185,20 @@ const TermsAndConditions = () => {
 
         <hr />
 
-        <div style={{ margin: "5rem 0rem" }}>
+        <div className="my-20">
           <h2
-            style={{
-              fontSize: "3.5rem",
-              fontWeight: 300,
-              margin: "0rem 0rem 2rem 0rem",
-            }}
+            className={`
+            text-3xl font-light mb-8
+            dark:text-white
+            `}
           >
             5. Modifications to Terms and Game Rules
           </h2>
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-            }}
+            className={`
+            text-2xl leading-12 opacity-70 font-light
+            dark:text-white
+            `}
           >
             5.1. Tecracer reserves the right to modify these Terms and
             Conditions at any time. Changes will be effective immediately upon
@@ -233,23 +214,20 @@ const TermsAndConditions = () => {
 
         <hr />
 
-        <div style={{ margin: "5rem 0rem" }}>
+        <div className="my-20">
           <h2
-            style={{
-              fontSize: "3.5rem",
-              fontWeight: 300,
-              margin: "0rem 0rem 2rem 0rem",
-            }}
+            className={`
+            text-3xl font-light mb-8
+            dark:text-white
+            `}
           >
             6. Governing Law
           </h2>
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-            }}
+            className={`
+            text-2xl leading-12 opacity-70 font-light
+            dark:text-white
+            `}
           >
             These Terms and Conditions shall be governed by and construed in
             accordance with the laws of Germany, without regard to its conflict
@@ -259,28 +237,33 @@ const TermsAndConditions = () => {
 
         <hr />
 
-        <div style={{ margin: "5rem 0rem" }}>
+        <div className="my-20">
           <h2
-            style={{
-              fontSize: "3.5rem",
-              fontWeight: 300,
-              margin: "0rem 0rem 2rem 0rem",
-            }}
+            className={`
+            text-3xl font-light mb-8
+            dark:text-white
+            `}
           >
             7. Contact Us
           </h2>
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-            }}
+            className={`
+            text-2xl leading-12 opacity-70 font-light
+            dark:text-white
+            `}
           >
             If you have any questions about these Terms and Conditions, please
             contact us at:{" "}
-            <a href="mailto:info@tecracer.de">info@tecracer.de</a> or call us
-            via <a href="tel:+4951159095950">+49 511 59095-950</a>
+            <a
+              href="mailto:info@tecracer.de"
+              className="text-primary underline"
+            >
+              info@tecracer.de
+            </a>
+            or call us via{" "}
+            <a href="tel:+4951159095950" className="text-primary underline">
+              +49 511 59095-950
+            </a>
           </p>
         </div>
       </Container>

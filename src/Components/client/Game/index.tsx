@@ -1,19 +1,34 @@
 "use client";
 
+// React
 import React, { useState, useRef, useEffect } from "react";
+
+// Next
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+
+// UI
 import Container from "@/Components/ui/Container";
+
+// Components
 import Button from "@/Components/client/Button";
-import Rules from "@/Components/client/Rules";
+import Rules from "@/Components/client/GameRules/Rules";
 import Checkbox from "@/Components/client/FormComponents/CheckBox";
 import StartGame from "@/Components/client/forms/Public/StartGameForm";
-import { root, group, rules, form } from "./index.css";
+
+// Store
 import { useGameStore } from "@/Store/game";
 import useToastStore from "@Store/toasts";
+
+// Cookies
 import Cookies from "js-cookie";
+
+// Queries
 import { getGameSession } from "@Queries/index";
 
+// ========================================================================================================
+
+// Interface
 interface GameProps {
   hasToken: boolean;
 }
@@ -71,49 +86,42 @@ export const Game: React.FC<GameProps> = ({ hasToken: initialHasToken }) => {
   };
 
   return (
-    <Container
-      styleOverrides={{
-        padding: "0rem",
-        height: "100%",
-        width: "100%",
-        backgroundImage: 'url("/background-perspective.svg")',
-        backgroundSize: "cover",
-        backgroundPosition: "bottom",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-      <div className={root}>
-        <div className={group}>
-          <div className={rules}>
-            <Rules />
+    <Container>
+      <div className="flex flex-col justify-center items-center h-screen w-full">
+        <div className="flex  w-[90%] justify-center items-center">
+          <div
+            className={`
+            p-12 mr-40 bg-white h-max overflow-hidden rounded-3xl shadow-[0_-4px_2px_-2px_rgba(0,0,0,0.1),0_2px_2px_0_rgba(0,0,0,0.1),0_2px_4px_0_rgba(0,0,0,0.2)]
+            dark:bg-cardDark
+            `}
+          >
+            <Rules isDarkMode={false} />
           </div>
           {!hasToken && <StartGame onTokenReceived={handleTokenReceived} />}
 
           {hasToken && (
-            <div className={form}>
+            <div className="flex flex-col justify-center h-full">
               <Button
                 text="Let's Start"
                 type="button"
                 variant="outlined"
-                styleOverrides={{
-                  width: "12rem",
-                  margin: "1rem 0rem 4rem 0rem",
-                  alignSelf: "center",
-                  fontWeight: 100,
-                }}
+                className="w-72 self-center text-2xl px-8 rounded-lg mb-12"
                 onClick={handleStartGame}
                 disabled={!isAgreed || isLoading || !hasToken}
               />
               <Checkbox
                 initialChecked={isAgreed}
                 onChange={handleAgreementChange}
-                styleOverrides={{ alignSelf: "flex-end" }}
+                className={`
+                  text-base
+                  dark:text-white
+                  `}
               >
                 I agree that I have read the{" "}
                 <Link
                   href="/legal/privacy-policy"
                   target="_blank"
-                  style={{ color: "#FFB500" }}
+                  className="text-[#FFB500]"
                 >
                   Privacy Policy
                 </Link>{" "}
@@ -121,11 +129,10 @@ export const Game: React.FC<GameProps> = ({ hasToken: initialHasToken }) => {
                 <Link
                   href="/legal/terms-and-conditions"
                   target="_blank"
-                  style={{ color: "#FFB500" }}
+                  className="text-[#FFB500]"
                 >
                   Terms and Conditions
                 </Link>
-                .
               </Checkbox>
             </div>
           )}

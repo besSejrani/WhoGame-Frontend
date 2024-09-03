@@ -1,32 +1,40 @@
+import React from "react";
+
 // UI
 import Container from "@/Components/ui/Container";
 
 // Form
 import SigninForm from "@/Components/client/forms/Public/SigninForm";
 
-// Styles
-import { root, title, paragraph, card } from "./index.css";
-
 // ==========================================================================================
 
-const Success = () => {
+const Success: React.FC = () => {
   return (
     <div>
-      <Container
-        styleOverrides={{
-          padding: "0rem",
-          height: "100%",
-          width: "100%",
-          backgroundImage: 'url("/background-perspective.svg")',
-          backgroundSize: "cover",
-          backgroundPosition: "bottom",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <div className={root}>
-          <div className={card}>
-            <h1 className={title}>Sign in</h1>
-            <p className={paragraph}>Sign in with your email and password</p>
+      <Container>
+        <div className="w-full h-screen flex justify-center items-center flex-col">
+          <div
+            className={`
+            p-12 mx-20 bg-white h-max w-1/4 overflow-hidden rounded-3xl shadow-[0_-4px_2px_-2px_rgba(0,0,0,0.1),0_2px_2px_0_rgba(0,0,0,0.1),0_2px_4px_0_rgba(0,0,0,0.2)]
+            dark:bg-cardDark
+            `}
+          >
+            <h1
+              className={`
+              text-center text-4xl font-200 mb-4
+              dark:text-white
+              `}
+            >
+              Sign in
+            </h1>
+            <p
+              className={`
+              text-center text-lg font-300 opacity-80 w-full leading-8 my-8
+              dark:text-white
+              `}
+            >
+              Sign in with your email and password
+            </p>
 
             <SigninForm />
           </div>

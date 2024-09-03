@@ -1,8 +1,5 @@
 import React from "react";
 
-// Styles
-import { displayError } from "./index.css";
-
 // Type for the error prop
 interface ErrorDisplayProps {
   error?: {
@@ -20,7 +17,9 @@ const ErrorDisplay: React.FC<ErrorDisplayProps> = ({ error }) => {
 
   const message = error.message || "An error occurred";
 
-  return <p className={displayError}>{message}</p>;
+  return (
+    <p className="text-red-500 text-sm font-extralight my-4 mx-0">{message}</p>
+  );
 };
 
 export default ErrorDisplay;

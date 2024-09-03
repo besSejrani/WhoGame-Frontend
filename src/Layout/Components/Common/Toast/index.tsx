@@ -1,8 +1,5 @@
 "use client";
-import React from "react";
-
-// React
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
 // Toast
 import { ToastContainer, toast } from "react-toastify";
@@ -13,7 +10,7 @@ import useToastStore from "@Store/toasts";
 
 // ========================================================================================================
 
-const Toast = () => {
+const Toast: React.FC = () => {
   const {
     errorMessage,
     infoMessage,
@@ -44,7 +41,10 @@ const Toast = () => {
         pauseOnFocusLoss: true,
         draggable: true,
         pauseOnHover: true,
-        style: { fontSize: "1rem", right: "2.5rem" },
+        className: `
+          text-lg right-10
+          dark:bg-cardDark dark:text-white
+        `,
       });
 
       setErrorMessage("");
@@ -65,7 +65,10 @@ const Toast = () => {
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
-        style: { fontSize: "1rem", right: "2.5rem" },
+        className: `
+          text-lg right-10
+          dark:bg-cardDark dark:text-white
+        `,
       });
       setInfoMessage("");
     }
@@ -85,7 +88,10 @@ const Toast = () => {
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
-        style: { fontSize: "1rem", right: "2.5rem" },
+        className: `
+          text-lg right-10
+          dark:bg-cardDark dark:text-white
+        `,
       });
       setSuccessMessage("");
     }

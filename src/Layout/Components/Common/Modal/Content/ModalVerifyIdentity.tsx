@@ -6,6 +6,7 @@ import type { FC } from "react";
 
 // ========================================================================================================
 
+// Interface
 interface IModalDelete {
   text: string;
   title: string;
@@ -20,37 +21,31 @@ const ModalDeleteContent: FC<IModalDelete> = ({
   onConfirm,
 }) => {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-      }}
-    >
+    <div className="flex justify-center items-center flex-col">
       <h2
-        style={{
-          fontSize: "2rem",
-          fontWeight: 300,
-          margin: "0rem 0rem 1rem 0rem",
-        }}
+        className={`
+        text-3xl font-light mb-4
+        dark:text-white
+        `}
       >
         {title}
       </h2>
-      <p style={{ fontSize: "1.4rem", fontWeight: 300 }}>{text}</p>
+      <p
+        className={`
+        text-base font-light
+        dark:text-white
+        `}
+      >
+        {text}
+      </p>
 
-      <div style={{ margin: "2rem 0rem 0rem 0rem" }}>
+      <div className="mt-8">
         <Button
           text="Cancel"
           type="button"
           variant="outlined"
           onClick={closeDialog}
-          styleOverrides={{
-            fontSize: "1.8rem",
-            padding: "0.5rem 1rem",
-            margin: "0rem 1rem 0rem 0rem",
-            fontWeight: 300,
-          }}
+          className="rounded-xl text-xl py-2 px-4 mr-6 font-light"
         />
 
         <Button
@@ -58,11 +53,7 @@ const ModalDeleteContent: FC<IModalDelete> = ({
           type="button"
           variant="contained"
           onClick={() => onConfirm()}
-          styleOverrides={{
-            fontSize: "1.8rem",
-            padding: "0.5rem 1rem",
-            fontWeight: 300,
-          }}
+          className="rounded-xl text-xl py-2 px-4 font-light"
         />
       </div>
     </div>
@@ -70,5 +61,3 @@ const ModalDeleteContent: FC<IModalDelete> = ({
 };
 
 export default ModalDeleteContent;
-
-// ========================================================================================================

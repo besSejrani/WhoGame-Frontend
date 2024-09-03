@@ -5,20 +5,6 @@ import React, { useRef, useState, useEffect } from "react";
 import Button from "@/Components/client/Button";
 import GameInfos from "@Components/client/Sidebar/GameInfos";
 
-// Styles
-import {
-  sidebar,
-  sidebarContent,
-  chatGroup,
-  chatUser,
-  chatBot,
-  sticky,
-  chatContainer,
-  formContainer,
-  typingDot,
-  typingIndicator,
-} from "./index.css";
-
 // State
 import { useGameStore } from "@/Store/game";
 
@@ -38,7 +24,7 @@ type ChatEntry = {
   isTyping: boolean;
 };
 
-const Sidebar = ({ session_id }: { session_id: string }) => {
+const Sidebar: React.FC<{ session_id: string }> = ({ session_id }) => {
   const token = Cookies.get("token")!;
 
   let { counter, sessionId } = useGameStore();
@@ -164,69 +150,77 @@ const Sidebar = ({ session_id }: { session_id: string }) => {
   };
 
   return (
-    <div className={sticky}>
-      <aside className={sidebar}>
-        <div className={sidebarContent}>
-          <div ref={chatContainerRef} className={chatContainer}>
+    <div className="sticky top-16 my-16 h-[calc(100vh-8rem)]">
+      <aside className="h-[40rem] w-full rounded-2xl overflow-hidden shadow-[0_4px_2px_-2px_rgba(0,0,0,0.2),0_2px_2px_0_rgba(0,0,0,0.2),0_2px_6px_0_rgba(0,0,0,0.3)]">
+        <div className="h-full flex flex-col">
+          {
+            // ===============================================
+            // Messages
+            // ===============================================
+          }
+          <div
+            ref={chatContainerRef}
+            className="flex-1 overflow-y-auto p-6 flex flex-col gap-4 bg-white"
+          >
             {chat.map((entry) => (
               <React.Fragment key={entry.id}>
                 {entry.userPrompt !== null && (
-                  <div className={chatGroup}>
-                    <div className={chatUser}>{entry.userPrompt}</div>
+                  <div className="flex flex-col gap-2">
+                    <div className="self-end text-base bg-[#e0f7fa] p-3 rounded-lg max-w-[60%] break-words">
+                      {entry.userPrompt}
+                    </div>
                   </div>
                 )}
                 {entry.isTyping ? (
-                  <div className={typingIndicator}>
-                    <span className={typingDot}></span>
-                    <span className={typingDot}></span>
-                    <span className={typingDot}></span>
+                  <div className="flex items-center gap-1 self-start p-3 rounded-lg bg-[#e0e0e0]">
+                    <span className="w-1.5 h-1.5 bg-gray-600 rounded-full animate-[blink_1.4s_infinite]"></span>
+                    <span className="w-1.5 h-1.5 bg-gray-600 rounded-full animate-[blink_1.4s_0.2s_infinite]"></span>
+                    <span className="w-1.5 h-1.5 bg-gray-600 rounded-full animate-[blink_1.4s_0.4s_infinite]"></span>
                   </div>
                 ) : (
                   entry.botResponse && (
-                    <div className={chatGroup}>
-                      <div className={chatBot}>{entry.botResponse}</div>
+                    <div className="flex flex-col gap-2">
+                      <div className="self-start text-base bg-[#e0e0e0] p-3 rounded-lg max-w-[60%] break-words">
+                        {entry.botResponse}
+                      </div>
                     </div>
                   )
                 )}
               </React.Fragment>
             ))}
           </div>
-          <div className={formContainer}>
-            <form
-              style={{ display: "flex", width: "100%" }}
-              onSubmit={handleSubmit}
-            >
+
+          {
+            // ===============================================
+            // Form
+            // ===============================================
+          }
+          <div className="border-t border-gray-300">
+            <form className="flex w-full" onSubmit={handleSubmit}>
               <textarea
                 ref={textareaRef}
                 placeholder="Type your message here."
                 onKeyDown={handleKeyDown}
-                style={{
-                  width: "75%",
-                  padding: "1rem",
-                  border: "none",
-                  borderTop: "1px solid",
-                  borderColor: "rgba(0,0,0,0.3)",
-                }}
+                className="w-3/4 p-4 text-sm border-none focus:outline-none resize-none"
               />
+
               <Button
                 text="Send"
                 type="submit"
                 variant="contained"
                 disabled={isSending}
-                styleOverrides={{
-                  width: "25%",
-                  padding: "0rem",
-                  margin: "0rem",
-                  fontSize: "1.6rem",
-                  border: "none",
-                  borderRadius: "0rem",
-                  cursor: "pointer",
-                }}
+                className="w-1/4 text-lg font-200"
               />
             </form>
           </div>
         </div>
       </aside>
+
+      {
+        // ===============================================
+        // Game Infos
+        // ===============================================
+      }
       <GameInfos counter={counter} sessionId={session_id} token={token} />
     </div>
   );

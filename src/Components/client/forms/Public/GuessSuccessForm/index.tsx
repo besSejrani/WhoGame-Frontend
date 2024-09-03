@@ -83,23 +83,17 @@ const GuessSuccessForm: React.FC<GuessSuccessFormProps> = ({ session_id }) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: "1rem",
-      }}
+      className={`
+        flex flex-col justify-center items-center gap-6
+        `}
     >
-      <div style={{ position: "relative", width: "100%" }}>
+      <div className="relative w-full">
         <label
           htmlFor="name"
-          style={{
-            position: "absolute",
-            top: "-2rem",
-            left: "1rem",
-            fontSize: "1.2rem",
-          }}
+          className={`
+          absolute -top-10 left-4 text-sm
+          dark:text-white
+          `}
         >
           Name
         </label>
@@ -121,32 +115,21 @@ const GuessSuccessForm: React.FC<GuessSuccessFormProps> = ({ session_id }) => {
               message: "This field requires minimum 30 characters",
             },
           })}
-          style={{
-            fontSize: "1.2rem",
-            height: "3rem",
-            width: "100%",
-            borderRadius: "0.5rem",
-            padding: "0rem 1rem",
-          }}
+          className={`
+            text-sm h-12 w-full rounded-lg px-4 outline-none border-gray-500 border-2
+            dark:bg-cardDark dark:text-white dark:border-gray-500 
+            `}
         />
         <ErrorDisplay error={errors.name} />
       </div>
 
-      <div
-        style={{
-          position: "relative",
-          margin: "2rem 0rem 0rem 0rem",
-          width: "100%",
-        }}
-      >
+      <div className="relative mt-8 w-full">
         <label
           htmlFor="email"
-          style={{
-            position: "absolute",
-            top: "-2rem",
-            left: "1rem",
-            fontSize: "1.2rem",
-          }}
+          className={`
+          absolute -top-10 left-4 text-sm
+          dark:text-white
+          `}
         >
           Email
         </label>
@@ -165,32 +148,21 @@ const GuessSuccessForm: React.FC<GuessSuccessFormProps> = ({ session_id }) => {
               message: "Your email is not valid",
             },
           })}
-          style={{
-            fontSize: "1.2rem",
-            height: "3rem",
-            width: "100%",
-            borderRadius: "0.5rem",
-            padding: "0rem 1rem",
-          }}
+          className={`
+            text-sm h-12 w-full rounded-lg px-4 outline-none border-gray-500 border-2
+            dark:bg-cardDark dark:text-white dark:border-gray-500 
+            `}
         />
         <ErrorDisplay error={errors.email} />
       </div>
 
-      <div
-        style={{
-          position: "relative",
-          margin: "2rem 0rem 0rem 0rem",
-          width: "100%",
-        }}
-      >
+      <div className="relative mt-8 w-full">
         <label
           htmlFor="organization"
-          style={{
-            position: "absolute",
-            top: "-2rem",
-            left: "1rem",
-            fontSize: "1.2rem",
-          }}
+          className={`
+            absolute -top-10 left-4 text-sm
+            dark:text-white
+            `}
         >
           Organization
         </label>
@@ -204,13 +176,10 @@ const GuessSuccessForm: React.FC<GuessSuccessFormProps> = ({ session_id }) => {
               message: "This field is required",
             },
           })}
-          style={{
-            fontSize: "1.2rem",
-            height: "3rem",
-            width: "100%",
-            borderRadius: "0.5rem",
-            padding: "0rem 1rem",
-          }}
+          className={`
+            text-sm h-12 w-full rounded-lg px-4 outline-none border-gray-500 border-2
+            dark:bg-cardDark dark:text-white dark:border-gray-500 
+            `}
         />
 
         <ErrorDisplay error={errors.organization} />
@@ -220,11 +189,7 @@ const GuessSuccessForm: React.FC<GuessSuccessFormProps> = ({ session_id }) => {
         text="Submit"
         type="submit"
         variant="contained"
-        styleOverrides={{
-          width: "max-content",
-          alignSelf: "flex-end",
-          margin: "1rem 0rem 0rem 0rem",
-        }}
+        className="w-max self-end mt-4 text-lg font-200 px-4 py-1 rounded-lg"
       />
     </form>
   );

@@ -15,17 +15,6 @@ import Cookies from "js-cookie";
 // Queries
 import { guessPerson } from "@Queries/index";
 
-// Styles
-import {
-  root,
-  image,
-  paragraph,
-  cardInner,
-  cardFront,
-  cardBack,
-  flippedCard,
-} from "./index.css";
-
 // ==========================================================================================
 
 interface ICard {
@@ -92,23 +81,66 @@ const Card: React.FC<ICard> = ({
   };
 
   return (
-    <div className={root} onClick={handleClick}>
-      <div className={`${cardInner} ${isFlipped ? flippedCard : ""}`}>
-        <div className={cardFront}>
-          <img src={imageUrl} draggable={false} className={image} alt={name} />
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              margin: "1rem",
-            }}
-          >
-            <p className={paragraph}>{name}</p>
+    <div
+      className="perspective-1000 w-full h-[300px] cursor-pointer"
+      onClick={handleClick}
+    >
+      <div
+        className={`relative w-full h-full transition-transform duration-700 preserve-3d ${
+          isFlipped ? "rotate-y-180" : ""
+        }`}
+      >
+        {
+          // ===============================================
+          // Back Card
+          // ===============================================
+        }
+        <div className="absolute w-full h-full backface-hidden rounded-2xl overflow-hidden bg-[#111827] shadow-md">
+          <div className="flex items-center justify-center w-full h-full">
+            <div className="border border-primary p-6 h-[90%] w-[90%] rounded-lg flex flex-col items-center justify-center">
+              <img
+                src="/tecracer-white.svg"
+                alt="Logo"
+                className="mb-4 w-[90%] h-[60px] object-contain"
+                draggable={false}
+              />
+              <p className="text-white text-2xl font-200">{name}</p>
+            </div>
+          </div>
+        </div>
+
+        {
+          // ===============================================
+          // Front Card
+          // ===============================================
+        }
+        <div
+          className={`
+          absolute w-full h-full backface-hidden rounded-lg overflow-hidden bg-white shadow-md rotate-y-180
+          dark:bg-dark
+          `}
+        >
+          <img
+            src={imageUrl}
+            alt={name}
+            className="h-[250px] w-full object-cover"
+            draggable={false}
+          />
+          <div className="flex justify-between items-center m-4">
+            <p
+              className={`
+              text-xl
+              font-200
+              dark:text-white
+              `}
+            >
+              {name}
+            </p>
             <Button
               text="Guess"
               type="button"
               variant="outlined"
+              className="text-base px-2 py-1 rounded-lg"
               onClick={(e) => {
                 e.stopPropagation();
                 openModal(
@@ -120,32 +152,7 @@ const Card: React.FC<ICard> = ({
                   />
                 );
               }}
-              styleOverrides={{ fontSize: "1.2rem", padding: "0.5rem 1rem" }}
             />
-          </div>
-        </div>
-        <div className={cardBack}>
-          <div
-            style={{
-              border: "1px solid #FFB500",
-              padding: "1.5rem 0rem",
-              height: "90%",
-              width: "90%",
-              borderRadius: "0.5rem",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <img
-              src="/tecracer-white.svg"
-              alt="Logo"
-              height={60}
-              style={{ margin: "0rem 0rem 1rem 0rem", width: "90%" }}
-              draggable={false}
-            />
-            <p style={{ color: "white", fontSize: "1.8rem" }}>{name}</p>
           </div>
         </div>
       </div>

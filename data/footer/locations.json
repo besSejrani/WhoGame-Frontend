@@ -1,0 +1,46 @@
+[
+  {
+    "name": "Zurich",
+    "flag": "🇨🇭"
+  },
+  {
+    "name": "Geneva",
+    "flag": "🇨🇭"
+  },
+  {
+    "name": "Berlin",
+    "flag": "🇩🇪"
+  },
+  {
+    "name": "Duisburg",
+    "flag": "🇩🇪"
+  },
+  {
+    "name": "Frankfurt",
+    "flag": "🇩🇪"
+  },
+  {
+    "name": "Hamburg",
+    "flag": "🇩🇪"
+  },
+  {
+    "name": "Hannover",
+    "flag": "🇩🇪"
+  },
+  {
+    "name": "Mannheim",
+    "flag": "🇩🇪"
+  },
+  {
+    "name": "Munich",
+    "flag": "🇩🇪"
+  },
+  {
+    "name": "Lisbon",
+    "flag": "🇵🇹"
+  },
+  {
+    "name": "Vienna",
+    "flag": "🇦🇹"
+  }
+]

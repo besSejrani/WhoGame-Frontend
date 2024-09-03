@@ -6,9 +6,6 @@ import React, { useState } from "react";
 import Card from "@/Components/client/Card";
 import Sidebar from "@Components/client/Sidebar";
 
-// Styles
-import { root, grid } from "./index.css";
-
 // ==========================================================================================
 
 type Person = {
@@ -22,8 +19,14 @@ interface GameIdProps {
 }
 
 const GameId: React.FC<GameIdProps> = ({ session_id, data }) => {
+  // ==============================
+  // State
+  // ==============================
   const [selectedCards, setSelectedCards] = useState<Set<string>>(new Set());
 
+  // ==============================
+  // Event
+  // ==============================
   const toggleCardSelection = (name: string) => {
     setSelectedCards((prevSelectedCards) => {
       const newSelectedCards = new Set(prevSelectedCards);
@@ -39,8 +42,13 @@ const GameId: React.FC<GameIdProps> = ({ session_id, data }) => {
   const FLIP_DELAY_INCREMENT = 100; // ms between each card flip
 
   return (
-    <div className={root}>
-      <div className={grid}>
+    <div className="grid grid-cols-[78%_22%] w-full gap-x-16">
+      {
+        // ===============================================
+        // Columns
+        // ===============================================
+      }
+      <div className="my-16 grid grid-cols-6 w-full gap-4 gap-y-8 relative">
         {data.map((person, index) => (
           <Card
             imageUrl={person.photo_url}
@@ -53,6 +61,12 @@ const GameId: React.FC<GameIdProps> = ({ session_id, data }) => {
           />
         ))}
       </div>
+
+      {
+        // ===============================================
+        // Sidebar
+        // ===============================================
+      }
       <Sidebar session_id={session_id} />
     </div>
   );

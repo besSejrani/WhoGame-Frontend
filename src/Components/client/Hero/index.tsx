@@ -1,46 +1,50 @@
+import React from "react";
+
 // UI
 import Container from "@/Components/ui/Container";
 
 // Components
 import Button from "@/Components/client/Button";
 
-// Styles
-import { hero, title, paragraph } from "@/Components/client/Hero/index.css";
-
 // Paths
 import { paths } from "@/paths";
 
 // ====================================================================================
 
-const Hero = () => {
+const Hero: React.FC = () => {
   return (
     <Container>
-      <main className={hero}>
+      <main className="grid grid-cols-2 items-center py-96 pb-32">
         <div>
-          <h1 className={title}>
+          <h1
+            className={`
+            text-7xl mb-10 font-350 leading-36
+            dark:text-white
+            `}
+          >
             Who Is RAG ?
             <br />
             The Gen AI Challenge
           </h1>
-          <p className={paragraph}>
+          <p
+            className={`
+            w-[80%] text-2xl  mb-10 opacity-80
+            dark:text-white dark:opacity-65
+            `}
+          >
             Dive into the mistery! Can you figure out who's who?
             <br />
             Ask smart questions, use your detectives skills to narrow down the
             options, and make your guess.
           </p>
 
-          <div style={{ margin: "4rem 0rem" }}>
+          <div className="mt-12">
             <Button
               href={paths.startGamePage()}
               variant="contained"
               text="Let's Start"
               type="button"
-              styleOverrides={{
-                fontSize: "2.5rem",
-                padding: "1.2rem 2.5rem",
-                borderRadius: 30,
-                cursor: "pointer",
-              }}
+              className="text-3xl font-light py-4 px-10 mr-4 rounded-full"
             />
           </div>
         </div>
@@ -48,7 +52,8 @@ const Hero = () => {
         <img
           src="/images/hero/hero.png"
           alt="Hero image"
-          style={{ justifySelf: "center" }}
+          className="justify-self-center"
+          draggable={false}
         />
       </main>
     </Container>

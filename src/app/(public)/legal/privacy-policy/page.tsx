@@ -5,40 +5,34 @@ import Container from "@Components/ui/Container";
 
 // =================================================================================================
 
-const PrivacyPolicy = () => {
+const PrivacyPolicy: React.FC = () => {
   return (
     <div>
       <Container>
         <h1
-          style={{
-            fontSize: "6rem",
-            fontWeight: 300,
-            margin: "10rem 0rem 0rem 0rem",
-          }}
+          className={`
+          text-6xl font-light mt-60 mb-0
+          dark:text-white
+          `}
         >
           Privacy Policy
         </h1>
 
-        <div style={{ margin: "5rem 0rem" }}>
+        <div className="my-20">
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-              margin: "0rem 0rem 2rem 0rem",
-            }}
+            className={`
+            text-2xl leading-12 font-light mb-8
+            dark:text-white
+            `}
           >
             Last updated: August 13, 2024
           </p>
 
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-            }}
+            className={`
+            text-2xl leading-12 font-light
+            dark:text-white
+            `}
           >
             Welcome to Who Is Rag! This privacy policy describes how Tecracer
             ("we", "us", or "our") collects, uses, and shares your personal
@@ -49,32 +43,28 @@ const PrivacyPolicy = () => {
 
         <hr />
 
-        <div style={{ margin: "5rem 0rem" }}>
+        <div className="my-20">
           <h2
-            style={{
-              fontSize: "3.5rem",
-              fontWeight: 300,
-              margin: "0rem 0rem 2rem 0rem",
-            }}
+            className={`
+            text-3xl font-light mb-8
+            dark:text-white
+            `}
           >
             1. Data Protection Overview
           </h2>
           <h3
-            style={{
-              fontSize: "2.5rem",
-              fontWeight: 300,
-              margin: "1.5rem 0rem",
-            }}
+            className={`
+            text-2xl font-light mt-20 mb-6
+            dark:text-white
+            `}
           >
             1.1. General information
           </h3>
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-            }}
+            className={`
+            text-2xl leading-12 opacity-70 font-light
+            dark:text-white
+            `}
           >
             The following notes provide a simple overview of what happens to
             your personal data when you visit our website. Personal data is any
@@ -83,21 +73,18 @@ const PrivacyPolicy = () => {
             data protection declaration listed below this text.
           </p>
           <h3
-            style={{
-              fontSize: "2.5rem",
-              fontWeight: 300,
-              margin: "1.5rem 0rem",
-            }}
+            className={`
+            text-2xl font-light mt-20 mb-6
+            dark:text-white
+            `}
           >
             1.2. Data collection on our website
           </h3>
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-            }}
+            className={`
+            text-2xl leading-12 opacity-70 font-light
+            dark:text-white
+            `}
           >
             Who is responsible for data collection on this website? The data
             processing on this website is carried out by the website operator.
@@ -121,7 +108,7 @@ const PrivacyPolicy = () => {
             <strong>What do we use your data for?</strong>
             <br />
             We use the data we collect for the following purposes:
-            <ul style={{ margin: "1rem 0 0 2rem" }}>
+            <ul className="list-disc ml-8 mt-4">
               <li>
                 To operate and manage our game-based website, including player
                 registration and participation
@@ -189,27 +176,24 @@ const PrivacyPolicy = () => {
 
         <hr />
 
-        <div style={{ margin: "5rem 0rem" }}>
+        <div className="my-20">
           <h2
-            style={{
-              fontSize: "3.5rem",
-              fontWeight: 300,
-              margin: "0rem 0rem 2rem 0rem",
-            }}
+            className={`
+            text-3xl font-light mb-8
+            dark:text-white
+            `}
           >
             2. Game-Specific Data Collection and Use
           </h2>
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-            }}
+            className={`
+            text-2xl leading-12 opacity-70 font-light
+            dark:text-white
+            `}
           >
             2.1. Our "Who Is Rag" game collects and processes data related to
             your game play, including but not limited to:
-            <ul style={{ margin: "1rem 0 0 2rem" }}>
+            <ul className="list-disc ml-8 mt-4">
               <li>Questions asked during the game</li>
               <li>Time taken to complete the game</li>
               <li>Number of questions asked</li>
@@ -231,34 +215,30 @@ const PrivacyPolicy = () => {
 
         <hr />
 
-        <div style={{ margin: "5rem 0rem" }}>
+        <div className="my-20">
           <h2
-            style={{
-              fontSize: "3.5rem",
-              fontWeight: 300,
-              margin: "0rem 0rem 2rem 0rem",
-            }}
+            className={`
+            text-3xl font-light mb-8
+            dark:text-white
+            `}
           >
             3. General notes and mandatory information
           </h2>
 
           <h3
-            style={{
-              fontSize: "2.5rem",
-              fontWeight: 300,
-              margin: "1.5rem 0rem",
-            }}
+            className={`
+            text-2xl font-light mt-20 mb-6
+            dark:text-white
+            `}
           >
             3.1. Privacy
           </h3>
 
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-            }}
+            className={`
+            text-2xl leading-12 opacity-70 font-light
+            dark:text-white
+            `}
           >
             The operators of this site take the protection of your personal data
             very seriously. We treat your personal data confidentially and in
@@ -274,22 +254,19 @@ const PrivacyPolicy = () => {
           </p>
 
           <h3
-            style={{
-              fontSize: "2.5rem",
-              fontWeight: 300,
-              margin: "1.5rem 0rem",
-            }}
+            className={`
+            text-2xl font-light mt-20 mb-6
+            dark:text-white
+            `}
           >
             3.2. Note on the responsible entity
           </h3>
 
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-            }}
+            className={`
+            text-2xl leading-12 opacity-70 font-light
+            dark:text-white
+            `}
           >
             The responsible party for data processing on this website is:
             <br />
@@ -299,10 +276,18 @@ const PrivacyPolicy = () => {
             <br />
             30165 Hannover
             <br />
-            Telefon: <a href="tel:+4951159095950">+49 511 59095-950</a>
+            Telefon:{" "}
+            <a className="text-primary underline" href="tel:+4951159095950">
+              +49 511 59095-950
+            </a>
             <br />
             E-Mail:{" "}
-            <a href="mailto:datenschutz@tecracer.de">datenschutz@tecracer.de</a>
+            <a
+              className="text-primary underline"
+              href="mailto:datenschutz@tecracer.de"
+            >
+              datenschutz@tecracer.de
+            </a>
             <br />
             <br />
             The responsible entity is the natural or legal person who alone or
@@ -312,22 +297,19 @@ const PrivacyPolicy = () => {
           </p>
 
           <h3
-            style={{
-              fontSize: "2.5rem",
-              fontWeight: 300,
-              margin: "1.5rem 0rem",
-            }}
+            className={`
+            text-2xl font-light mt-20 mb-6
+            dark:text-white
+            `}
           >
             3.3. Withdrawal of your consent to data processing
           </h3>
 
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-            }}
+            className={`
+            text-2xl leading-12 opacity-70 font-light
+            dark:text-white
+            `}
           >
             Many data processing operations are only possible with your explicit
             consent. You can withdraw consent you have already given at any
@@ -337,22 +319,19 @@ const PrivacyPolicy = () => {
           </p>
 
           <h3
-            style={{
-              fontSize: "2.5rem",
-              fontWeight: 300,
-              margin: "1.5rem 0rem",
-            }}
+            className={`
+            text-2xl font-light mt-20 mb-6
+            dark:text-white
+            `}
           >
             3.4. Right of appeal to the responsible supervisory authority
           </h3>
 
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-            }}
+            className={`
+            text-2xl leading-12 opacity-70 font-light
+            dark:text-white
+            `}
           >
             In the event of violations of data protection law, the affected
             party has a right of appeal to the responsible supervisory
@@ -360,29 +339,30 @@ const PrivacyPolicy = () => {
             of data protection law is the State Data Protection Commissioner of
             Lower Saxony. The contact details for the data protection officer
             can be found in the following{" "}
-            <a href="https://www.bfdi.bund.de/SharedDocs/Adressen/DE/LfD/Niedersachsen.html?nn=304054">
+            <a
+              href="https://www.bfdi.bund.de/SharedDocs/Adressen/DE/LfD/Niedersachsen.html?nn=304054"
+              target="_blank"
+              className="text-primary underline"
+            >
               link
             </a>
             .
           </p>
 
           <h3
-            style={{
-              fontSize: "2.5rem",
-              fontWeight: 300,
-              margin: "1.5rem 0rem",
-            }}
+            className={`
+            text-2xl font-light mt-20 mb-6
+            dark:text-white
+            `}
           >
             3.5. SSL or TLS encryption
           </h3>
 
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-            }}
+            className={`
+            text-2xl leading-12 opacity-70 font-light
+            dark:text-white
+            `}
           >
             In the event of violations of data protection law, the affected
             party has a right of appeal to the responsible supervisory
@@ -393,22 +373,19 @@ const PrivacyPolicy = () => {
           </p>
 
           <h3
-            style={{
-              fontSize: "2.5rem",
-              fontWeight: 300,
-              margin: "1.5rem 0rem",
-            }}
+            className={`
+            text-2xl font-light mt-20 mb-6
+            dark:text-white
+            `}
           >
             3.6. Information, blocking, deletion
           </h3>
 
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-            }}
+            className={`
+            text-2xl leading-12 opacity-70 font-light
+            dark:text-white
+            `}
           >
             Within the framework of the applicable legal provisions, you have
             the right at any time to request information free of charge about
@@ -422,34 +399,30 @@ const PrivacyPolicy = () => {
 
         <hr />
 
-        <div style={{ margin: "5rem 0rem" }}>
+        <div className="my-20">
           <h2
-            style={{
-              fontSize: "3.5rem",
-              fontWeight: 300,
-              margin: "0rem 0rem 2rem 0rem",
-            }}
+            className={`
+            text-3xl font-light mb-8
+            dark:text-white
+            `}
           >
             4. Privacy Officer
           </h2>
 
           <h3
-            style={{
-              fontSize: "2.5rem",
-              fontWeight: 300,
-              margin: "1.5rem 0rem",
-            }}
+            className={`
+            text-2xl font-light mt-20 mb-6
+            dark:text-white
+            `}
           >
             4.1. Legally required data protection officer
           </h3>
 
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-            }}
+            className={`
+            text-2xl leading-12 opacity-70 font-light
+            dark:text-white
+            `}
           >
             We have appointed a data protection officer for our company.
             <br />
@@ -461,10 +434,18 @@ const PrivacyPolicy = () => {
             <br />
             30165 Hannover
             <br />
-            Telefon: <a href="tel:+4951159095950">+49 511 59095-950</a>
+            Telefon:{" "}
+            <a className="text-primary underline" href="tel:+4951159095950">
+              +49 511 59095-950
+            </a>
             <br />
             E-Mail:{" "}
-            <a href="mailto:datenschutz@tecracer.de">datenschutz@tecracer.de</a>
+            <a
+              className="text-primary underline"
+              href="mailto:datenschutz@tecracer.de"
+            >
+              datenschutz@tecracer.de
+            </a>
             <br />
             <br />
             The following data protection officer has been appointed for
@@ -478,43 +459,47 @@ const PrivacyPolicy = () => {
             <br />
             30165 Hannover
             <br />
-            Telefon: <a href="tel:+4951159095984">+49 511 59095-984</a>
+            Telefon:{" "}
+            <a className="text-primary underline" href="tel:+4951159095984">
+              +49 511 59095-984
+            </a>
             <br />
             E-Mail:
-            <a href="mailto:MTavassol@tecracer.de">MTavassol@tecracer.de</a>
+            <a
+              className="text-primary underline"
+              href="mailto:MTavassol@tecracer.de"
+            >
+              MTavassol@tecracer.de
+            </a>
           </p>
         </div>
 
         <hr />
 
-        <div style={{ margin: "5rem 0rem" }}>
+        <div className="my-20">
           <h2
-            style={{
-              fontSize: "3.5rem",
-              fontWeight: 300,
-              margin: "0rem 0rem 2rem 0rem",
-            }}
+            className={`
+            text-3xl font-light mb-8
+            dark:text-white
+            `}
           >
             5. Data Collection On Our Website
           </h2>
 
           <h3
-            style={{
-              fontSize: "2.5rem",
-              fontWeight: 300,
-              margin: "1.5rem 0rem",
-            }}
+            className={`
+            text-2xl font-light mt-20 mb-6
+            dark:text-white
+            `}
           >
             5.1. Cookies
           </h3>
 
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-            }}
+            className={`
+            text-2xl leading-12 opacity-70 font-light
+            dark:text-white
+            `}
           >
             Websites partly use so-called cookies. Cookies do not cause any
             damage to your computer and do not contain viruses. Cookies serve to
@@ -548,27 +533,24 @@ const PrivacyPolicy = () => {
           </p>
 
           <h3
-            style={{
-              fontSize: "2.5rem",
-              fontWeight: 300,
-              margin: "1.5rem 0rem",
-            }}
+            className={`
+            text-2xl font-light mt-20 mb-6
+            dark:text-white
+            `}
           >
             5.2. Server log files
           </h3>
 
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-            }}
+            className={`
+            text-2xl leading-12 opacity-70 font-light
+            dark:text-white
+            `}
           >
             The provider of this site automatically collects and stores
             information in so-called server log files, which your browser
             automatically transmits to us. These are:
-            <ul style={{ margin: "2rem 0rem 0rem 5rem" }}>
+            <ul className="list-disc ml-20 mt-4">
               <li>browser type and browser version</li>
               <li>Operating system used</li>
               <li>referrer URL</li>
@@ -586,23 +568,20 @@ const PrivacyPolicy = () => {
 
         <hr />
 
-        <div style={{ margin: "5rem 0rem" }}>
+        <div className="my-20">
           <h2
-            style={{
-              fontSize: "3.5rem",
-              fontWeight: 300,
-              margin: "0rem 0rem 2rem 0rem",
-            }}
+            className={`
+            text-3xl font-light mb-8
+            dark:text-white
+            `}
           >
             6. Data Retention
           </h2>
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-            }}
+            className={`
+            text-2xl leading-12 opacity-70 font-light
+            dark:text-white
+            `}
           >
             We retain personal information we collect from you where we have an
             ongoing legitimate business need to do so (for example, to provide
@@ -613,23 +592,20 @@ const PrivacyPolicy = () => {
 
         <hr />
 
-        <div style={{ margin: "5rem 0rem" }}>
+        <div className="my-20">
           <h2
-            style={{
-              fontSize: "3.5rem",
-              fontWeight: 300,
-              margin: "0rem 0rem 2rem 0rem",
-            }}
+            className={`
+            text-3xl font-light mb-8
+            dark:text-white
+            `}
           >
             7. Changes to This Privacy Policy
           </h2>
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-            }}
+            className={`
+            text-2xl leading-12 opacity-70 font-light
+            dark:text-white
+            `}
           >
             We may update our Privacy Policy from time to time. We will notify
             you of any changes by posting the new Privacy Policy on this page.
@@ -641,28 +617,33 @@ const PrivacyPolicy = () => {
 
         <hr />
 
-        <div style={{ margin: "5rem 0rem" }}>
+        <div className="my-20">
           <h2
-            style={{
-              fontSize: "3.5rem",
-              fontWeight: 300,
-              margin: "0rem 0rem 2rem 0rem",
-            }}
+            className={`
+            text-3xl font-light mb-8
+            dark:text-white
+            `}
           >
             8. Contact Us
           </h2>
           <p
-            style={{
-              fontSize: "2rem",
-              lineHeight: "3rem",
-              opacity: "0.7",
-              fontWeight: 300,
-            }}
+            className={`
+            text-2xl leading-12 opacity-70 font-light
+            dark:text-white
+            `}
           >
             If you have any questions about this Privacy Policy, please contact
             us at:{" "}
-            <a href="mailto:datenschutz@tecracer.de">datenschutz@tecracer.de</a>{" "}
-            or call us via <a href="tel:+4951159095950">+49 511 59095-950</a>
+            <a
+              href="mailto:datenschutz@tecracer.de"
+              className="text-primary underline"
+            >
+              datenschutz@tecracer.de
+            </a>{" "}
+            or call us via{" "}
+            <a className="text-primary underline" href="tel:+4951159095950">
+              +49 511 59095-950
+            </a>
           </p>
         </div>
       </Container>
@@ -671,5 +652,3 @@ const PrivacyPolicy = () => {
 };
 
 export default PrivacyPolicy;
-
-// =================================================================================================

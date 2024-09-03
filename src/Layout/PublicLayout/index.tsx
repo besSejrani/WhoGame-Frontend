@@ -28,7 +28,8 @@ const Layout: React.FC<ILayout> = ({ children }) => {
   const isSuccessGameRoute = pathname.startsWith("/success-game");
 
   return (
-    <div>
+    <div className="dark:bg-main bg-background-perspective h-full w-full bg-cover bg-bottom bg-no-repeat">
+      {/* <Header /> */}
       {!isGameRoute && <Header />}
 
       {children}

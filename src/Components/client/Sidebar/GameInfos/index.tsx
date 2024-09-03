@@ -10,11 +10,8 @@ import GameRulesModal from "@/Layout/Components/Common/Modal/Content/GameRules";
 // Components
 import Button from "@/Components/client/Button";
 
-// Styles
-import { card } from "./index.css";
-
 // Icons
-import Timer from "@Components/client/Timer";
+import Timer from "@/Components/client/Sidebar/GameInfos/Timer";
 
 // State
 import { useModalStore } from "@/Store/modal";
@@ -34,6 +31,9 @@ interface GameProps {
 const GameInfo: React.FC<GameProps> = ({ sessionId, token, counter }) => {
   const router = useRouter();
 
+  // ==============================
+  //  Store
+  // ==============================
   const { openModal, isOpen } = useModalStore((state) => state);
 
   // ==============================
@@ -66,83 +66,45 @@ const GameInfo: React.FC<GameProps> = ({ sessionId, token, counter }) => {
       }
     };
 
-    console.log("Adding event listener for Escape key");
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      console.log("Removing event listener for Escape key");
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [handleOpenModal]);
 
   return (
-    <div className={card}>
-      <h2
-        style={{
-          fontSize: "1.4rem",
-          fontWeight: 400,
-          margin: "0rem 0rem 1rem 0rem",
-        }}
-      >
-        Game Infos
-      </h2>
+    <div className="rounded-2xl p-4 mt-8 bg-white shadow-[0_4px_2px_-2px_rgba(0,0,0,0.2),0_2px_2px_0_rgba(0,0,0,0.2),0_2px_6px_0_rgba(0,0,0,0.3)]">
+      <h2 className="text-xl font-300 mb-4">Game Infos</h2>
       <Timer />
-      <p>
-        <span style={{ fontWeight: 500 }}>Attempts:</span>
+
+      <p className="text-base">
+        <span className="font-500">Attempts: </span>
         {counter}
       </p>
 
-      <hr style={{ opacity: 0.5, margin: "1.5rem 0rem" }} />
+      <hr className="my-6 border-gray-300" />
 
-      <h2
-        style={{
-          fontSize: "1.4rem",
-          fontWeight: 400,
-          margin: "0rem 0rem 0.5rem 0rem",
-        }}
-      >
-        Keyboard shortcuts
-      </h2>
+      <h2 className="text-xl font-300 mb-2">Keyboard shortcuts</h2>
       <div
-        style={{
-          margin: "0 0rem 0rem 0rem",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          cursor: "pointer",
-          userSelect: "none",
-          WebkitUserSelect: "none",
-          MozUserSelect: "none",
-          msUserSelect: "none",
-        }}
+        className="flex justify-between items-center cursor-pointer select-none"
         onClick={() => {
-          console.log("Help div clicked");
           handleOpenModal();
         }}
       >
-        <p>Game Rules</p>
-        <p
-          style={{
-            border: "1px solid grey",
-            borderRadius: "99px",
-            width: "max-content",
-            padding: "0.25rem 1rem",
-          }}
-        >
+        <p className="text-base">Game Rules</p>
+        <p className="text-base border border-gray-400 rounded-full px-4 py-1">
           esc
         </p>
       </div>
 
-      <hr style={{ opacity: 0.5, margin: "1.5rem 0rem" }} />
+      <hr className="my-6 border-gray-300" />
 
       <Button
         text="Quit the game"
         type="submit"
         variant="contained"
-        styleOverrides={{
-          width: "100%",
-          fontWeight: 100,
-        }}
+        className="w-full text-lg font-extralight py-2 rounded-md"
         onClick={() => quitTheGame()}
       />
     </div>

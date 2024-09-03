@@ -1,7 +1,5 @@
-// StartGame.tsx
-
 // React
-import React from "react";
+import React, { useState, useRef } from "react";
 
 // Store
 import useToastStore from "@Store/toasts";
@@ -32,6 +30,12 @@ interface StartGameProps {
 
 const StartGame: React.FC<StartGameProps> = ({ onTokenReceived }) => {
   // ==============================
+  //  State
+  // ==============================
+  const [isLoading, setIsLoading] = useState(false);
+  const cooldownTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // ==============================
   //  Store
   // ==============================
   const setErrorMessage = useToastStore((state) => state.setErrorMessage);
@@ -50,71 +54,80 @@ const StartGame: React.FC<StartGameProps> = ({ onTokenReceived }) => {
   // Submit
   // ===========================
   const onSubmit: SubmitHandler<ContactFormValues> = async (form) => {
+    if (isLoading || cooldownTimerRef.current) return;
+    setIsLoading(true);
+
     try {
       const { data } = await validateApiKey({
         api_key: form.apiKey,
       });
 
       Cookies.set("token", data.token, { expires: 7 });
-
       setSuccessMessage("The Password has been validated");
-
       onTokenReceived();
     } catch (error) {
+      console.error("Error validating API key:", error);
       setErrorMessage("The Password could not be validated");
+    } finally {
+      setIsLoading(false);
+      cooldownTimerRef.current = setTimeout(() => {
+        cooldownTimerRef.current = null;
+      }, 3000);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div style={{ display: "flex" }}>
-        <div style={{ position: "relative" }}>
-          <label
-            htmlFor="api-key"
-            style={{
-              position: "absolute",
-              top: "-2rem",
-              left: "1rem",
-              fontSize: "1.2rem",
-            }}
-          >
-            Password
-          </label>
-          <input
-            type="text"
-            id="api-key"
-            placeholder="Example: aknd3j29-d92d-4a7a-bf78"
-            {...register("apiKey", {
-              required: {
-                value: true,
-                message: "This field is required",
-              },
-            })}
-            style={{
-              fontSize: "1.2rem",
-              height: "3rem",
-              width: "22rem",
-              border: "1px solid black",
-              borderRight: "none",
-              padding: "0rem 1rem",
-              outline: "none",
-            }}
-          />
-        </div>
+    <form onSubmit={handleSubmit(onSubmit)} className="flex">
+      <div className="relative">
+        {
+          // ===============================================
+          // Label
+          // ===============================================
+        }
+        <label
+          htmlFor="api-key"
+          className={`
+          absolute -top-14 left-4 text-base
+          dark:text-white
+          `}
+        >
+          Password
+        </label>
 
-        <Button
-          text="Validate"
-          type="submit"
-          variant="contained"
-          styleOverrides={{
-            borderTopRightRadius: "1rem",
-            borderTopLeftRadius: "0rem",
-            borderBottomRightRadius: "1rem",
-            borderBottomLeftRadius: "0rem",
-            cursor: "pointer",
-          }}
+        {
+          // ===============================================
+          // Input
+          // ===============================================
+        }
+        <input
+          type="text"
+          id="api-key"
+          placeholder="Example: aknd3j29-d92d-4a7a-bf78"
+          className={`
+            text-base w-120 py-4 border border-black border-r-0 px-4 outline-none h-20 rounded-tl-xl rounded-bl-xl
+            dark:border-none
+            ${isLoading ? "bg-gray-100 cursor-not-allowed" : ""}
+            `}
+          {...register("apiKey", {
+            required: {
+              value: true,
+              message: "This field is required",
+            },
+          })}
+          disabled={isLoading}
         />
       </div>
+
+      <Button
+        text="Validate"
+        type="submit"
+        variant="contained"
+        className={`
+          rounded-r-lg rounded-l-none text-base px-4 py-4
+          ${isLoading ? "opacity-50 cursor-not-allowed" : ""}
+        `}
+        disabled={isLoading}
+      />
     </form>
   );
 };

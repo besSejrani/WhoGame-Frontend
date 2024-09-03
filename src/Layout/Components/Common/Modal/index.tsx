@@ -2,15 +2,12 @@
 
 import React, { useRef, useEffect } from "react";
 
-// Styles
-import { overlay, modal } from "./index.css";
-
 // State
 import { useModalStore } from "@Store/modal";
 
 // ==========================================================================================
 
-const Modal = () => {
+const Modal: React.FC = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const { isOpen, content, closeModal } = useModalStore();
 
@@ -39,10 +36,29 @@ const Modal = () => {
   };
 
   return (
-    <dialog ref={dialogRef} className={overlay} onClick={() => closeDialog()}>
-      <div onClick={(e) => e.stopPropagation()} className={modal}>
+    <dialog
+      ref={dialogRef}
+      className={`
+        fixed py-4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/3 h-max border-none shadow-lg bg-white z-[1000] rounded-2xl cursor-pointer
+        dark:bg-cardDark
+        `}
+      onClick={() => closeDialog()}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className={`
+          h-full w-full bg-white p-8 rounded-lg cursor-default
+          dark:bg-cardDark
+          `}
+      >
         {content}
       </div>
+      <style jsx>{`
+        dialog::backdrop {
+          background: rgba(0, 0, 0, 0.5);
+          transition: opacity 0.3s ease;
+        }
+      `}</style>
     </dialog>
   );
 };
