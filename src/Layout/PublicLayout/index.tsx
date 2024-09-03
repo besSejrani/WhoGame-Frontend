@@ -29,8 +29,8 @@ const Layout: React.FC<ILayout> = ({ children }) => {
 
   return (
     <div className="dark:bg-main bg-background-perspective h-full w-full bg-cover bg-bottom bg-no-repeat">
-      {/* <Header /> */}
-      {!isGameRoute && <Header />}
+      <Header />
+      {/* {!isGameRoute && <Header />} */}
 
       {children}
 

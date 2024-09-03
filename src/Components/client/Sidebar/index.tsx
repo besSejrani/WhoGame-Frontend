@@ -151,7 +151,7 @@ const Sidebar: React.FC<{ session_id: string }> = ({ session_id }) => {
 
   return (
     <div className="sticky top-16 my-16 h-[calc(100vh-8rem)]">
-      <aside className="h-[40rem] w-full rounded-2xl overflow-hidden shadow-[0_4px_2px_-2px_rgba(0,0,0,0.2),0_2px_2px_0_rgba(0,0,0,0.2),0_2px_6px_0_rgba(0,0,0,0.3)]">
+      <aside className="h-[45rem] w-full rounded-2xl overflow-hidden shadow-[0_4px_2px_-2px_rgba(0,0,0,0.2),0_2px_2px_0_rgba(0,0,0,0.2),0_2px_6px_0_rgba(0,0,0,0.3)]">
         <div className="h-full flex flex-col">
           {
             // ===============================================
@@ -166,7 +166,7 @@ const Sidebar: React.FC<{ session_id: string }> = ({ session_id }) => {
               <React.Fragment key={entry.id}>
                 {entry.userPrompt !== null && (
                   <div className="flex flex-col gap-2">
-                    <div className="self-end text-base bg-[#e0f7fa] p-3 rounded-lg max-w-[60%] break-words">
+                    <div className="self-end text-base bg-[#e0f7fa] p-3 rounded-lg max-w-[60%] break-words text-dark">
                       {entry.userPrompt}
                     </div>
                   </div>
@@ -180,7 +180,7 @@ const Sidebar: React.FC<{ session_id: string }> = ({ session_id }) => {
                 ) : (
                   entry.botResponse && (
                     <div className="flex flex-col gap-2">
-                      <div className="self-start text-base bg-[#e0e0e0] p-3 rounded-lg max-w-[60%] break-words">
+                      <div className="self-start text-base bg-[#e0e0e0] p-3 rounded-lg max-w-[60%] break-words text-dark">
                         {entry.botResponse}
                       </div>
                     </div>
@@ -201,7 +201,7 @@ const Sidebar: React.FC<{ session_id: string }> = ({ session_id }) => {
                 ref={textareaRef}
                 placeholder="Type your message here."
                 onKeyDown={handleKeyDown}
-                className="w-3/4 p-4 text-sm border-none focus:outline-none resize-none"
+                className="w-3/4 p-4 text-sm border-none focus:outline-none resize-none bg-white text-dark"
               />
 
               <Button

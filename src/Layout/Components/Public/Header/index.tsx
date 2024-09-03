@@ -6,6 +6,7 @@ import React, { useEffect, useState, CSSProperties } from "react";
 // Next
 import Link from "next/link";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 
 // UI
 import Container from "@/Components/ui/Container";
@@ -20,17 +21,22 @@ import { paths } from "@/paths";
 
 // ==========================================================================================
 
-const Header = () => {
+const Header: React.FC = () => {
   // ==============================
   // State
   // ==============================
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { setTheme, resolvedTheme } = useTheme();
 
   // ==============================
   // Event
   // ==============================
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
@@ -52,22 +58,16 @@ const Header = () => {
     };
   }, [prevScrollPos]);
 
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDarkMode]);
-
   const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };
 
   const headerWrapperStyle: CSSProperties = {
     transition: "transform 0.3s ease-in-out",
     transform: isHeaderVisible ? "translateY(0)" : "translateY(-100%)",
   };
+
+  if (!mounted) return null;
 
   return (
     <div
@@ -78,7 +78,9 @@ const Header = () => {
         <header className="flex justify-between items-center">
           <Link href={paths.homePage()}>
             <Image
-              src={isDarkMode ? "/tecracer-white.svg" : "/logo.svg"}
+              src={
+                resolvedTheme === "dark" ? "/tecracer-white.svg" : "/logo.svg"
+              }
               alt="tecRacer logo"
               height={80}
               width={180}
@@ -119,7 +121,7 @@ const Header = () => {
             <ul className="flex items-center ml-12">
               <DarkMode
                 className="mr-5"
-                isDarkMode={isDarkMode}
+                isDarkMode={resolvedTheme === "dark"}
                 toggleDarkMode={toggleDarkMode}
               />
               {/* <Language /> */}

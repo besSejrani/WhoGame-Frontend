@@ -29,7 +29,7 @@ const Timer = () => {
 
   return (
     <div className="flex">
-      <p className="text-base">
+      <p className="text-base text-dark">
         <span className="font-500">Timer: </span>
         {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
       </p>

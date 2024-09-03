@@ -7,6 +7,9 @@ import PublicLayout from "@Layout/PublicLayout";
 // Types
 import type { Metadata } from "next";
 
+// Theme Provider
+import { Provider } from "@/app/themeProvider";
+
 // ==========================================================================================
 
 export const metadata: Metadata = {
@@ -20,5 +23,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <PublicLayout>{children}</PublicLayout>;
+  return (
+    <Provider>
+      <PublicLayout>{children}</PublicLayout>;
+    </Provider>
+  );
 }

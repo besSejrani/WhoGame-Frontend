@@ -39,7 +39,7 @@ const Modal: React.FC = () => {
     <dialog
       ref={dialogRef}
       className={`
-        fixed py-4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/3 h-max border-none shadow-lg bg-white z-[1000] rounded-2xl cursor-pointer
+        fixed py-4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/3 h-max border-none shadow-lg bg-white z-[1000] rounded-2xl cursor-pointer outline-none
         dark:bg-cardDark
         `}
       onClick={() => closeDialog()}
