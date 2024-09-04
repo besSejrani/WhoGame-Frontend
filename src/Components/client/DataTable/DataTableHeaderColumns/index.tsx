@@ -1,9 +1,14 @@
+// React
 import React from "react";
 
-import { header, headerColumn } from "./index.css";
+// ==========================================================================================
 
+// Interface
 interface DataTableHeaderColumnsProps {
-  columns: any[];
+  columns: {
+    name: string;
+    width?: string;
+  }[];
 }
 
 const DataTableHeaderColumns: React.FC<DataTableHeaderColumnsProps> = ({
@@ -14,11 +19,12 @@ const DataTableHeaderColumns: React.FC<DataTableHeaderColumnsProps> = ({
     .join(" ");
 
   return (
-    <div className={header} style={{ gridTemplateColumns }}>
+    <div
+      className="grid justify-between p-16 bg-white bg-opacity-10 text-2xl"
+      style={{ gridTemplateColumns }}
+    >
       {columns.map((column, index) => (
-        <p key={index} className={headerColumn}>
-          {column.name}
-        </p>
+        <p key={index}>{column.name}</p>
       ))}
     </div>
   );

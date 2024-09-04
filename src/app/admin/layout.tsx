@@ -7,6 +7,9 @@ import AdminLayout from "@Layout/AdminLayout";
 // Providers
 import Providers from "../providers";
 
+// Theme Provider
+import { Provider as ThemeProvider } from "@/app/themeProvider";
+
 // Types
 import type { Metadata } from "next";
 
@@ -25,7 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <Providers>
-      <AdminLayout>{children}</AdminLayout>
+      <ThemeProvider>
+        <AdminLayout>{children}</AdminLayout>
+      </ThemeProvider>
     </Providers>
   );
 }

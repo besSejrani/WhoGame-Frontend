@@ -63,7 +63,16 @@ const LeaderboardWinner: React.FC<ParamsProps> = async ({ params }) => {
 
   const chatMessages = parseChatHistory(data.chat_history);
 
-  return <ChatHistory messages={chatMessages} game={data} />;
+  return (
+    <div
+      className={`
+    bg-white
+    dark:bg-dark
+    `}
+    >
+      <ChatHistory messages={chatMessages} game={data} />
+    </div>
+  );
 };
 
 export default LeaderboardWinner;

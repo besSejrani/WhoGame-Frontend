@@ -30,8 +30,6 @@ const AdminLeaderboard = async () => {
   // ===========================
   const data = (await scanTable({ tableName: "leaderboard" })) as Leaderboard[];
 
-  console.log("data", data);
-
   const columns = [
     {
       name: "Name",

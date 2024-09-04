@@ -1,18 +1,10 @@
+// React
 import React, { createElement } from "react";
 
-import { cell, row, rowVariants } from "./index.css";
-
+// Date Library
 import dayjs from "dayjs";
 
-const getNestedProperty = (obj: any, path: string | number) => {
-  if (typeof path !== "string") {
-    return obj[path];
-  }
-
-  return path.split(".").reduce((currentObject, key) => {
-    return currentObject ? currentObject[key] : undefined;
-  }, obj);
-};
+// ==========================================================================================
 
 interface Column {
   width?: string;
@@ -30,6 +22,16 @@ interface DataTableRowProps {
   columns: Column[];
 }
 
+const getNestedProperty = (obj: any, path: string | number) => {
+  if (typeof path !== "string") {
+    return obj[path];
+  }
+
+  return path.split(".").reduce((currentObject, key) => {
+    return currentObject ? currentObject[key] : undefined;
+  }, obj);
+};
+
 const DataTableRow: React.FC<DataTableRowProps> = ({
   item,
   index,
@@ -41,13 +43,13 @@ const DataTableRow: React.FC<DataTableRowProps> = ({
 
   return (
     <div
-      className={`${row} ${
-        index % 2 === 0 ? rowVariants.even : rowVariants.odd
+      className={`p-8 grid items-center ${
+        index % 2 === 0 ? "bg-black bg-opacity-5" : "bg-white bg-opacity-5"
       }`}
       style={{ gridTemplateColumns }}
     >
       {columns.map((column, colIndex) => (
-        <div key={colIndex} className={cell}>
+        <div key={colIndex} className="text-[1.6rem] py-4 px-0 opacity-85">
           {column.component
             ? createElement(column.component, {
                 ...column.componentProps,

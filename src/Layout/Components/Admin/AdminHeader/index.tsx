@@ -7,8 +7,11 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
+// Theme
+import { useTheme } from "next-themes";
+
 // Authentication
-import { useSession, signOut } from "next-auth/react";
+import { signOut } from "next-auth/react";
 
 // UI
 import Container from "@/Components/ui/Container";
@@ -23,35 +26,34 @@ import { paths } from "@/paths";
 // ==========================================================================================
 
 const Header: React.FC = () => {
-  const session = useSession();
-
   // ==============================
   // State
   // ==============================
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { setTheme, resolvedTheme } = useTheme();
 
   // ==============================
   // Event
   // ==============================
   useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDarkMode]);
+    setMounted(true);
+  }, []);
 
   const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };
+
+  if (!mounted) return null;
 
   return (
     <div className="fixed w-full bg-white z-50 shadow-md dark:bg-gray-800">
-      <Container className="w-full px-4 sm:px-6 lg:px-8">
-        <header className="flex justify-between items-center w-full py-4">
+      <Container className="w-[100%]">
+        <header className="flex justify-between items-center w-full py-4 px-8 pr-16">
           <Link href={paths.homePage()}>
             <Image
-              src={isDarkMode ? "/tecracer-white.svg" : "/logo.svg"}
+              src={
+                resolvedTheme === "dark" ? "/tecracer-white.svg" : "/logo.svg"
+              }
               alt="tecRacer logo"
               height={80}
               width={180}
@@ -59,7 +61,7 @@ const Header: React.FC = () => {
           </Link>
 
           <ul className="flex items-center">
-            <li className="list-none mr-4">
+            <li className="list-none mr-8">
               <Button
                 text="Logout"
                 type="button"
@@ -71,7 +73,7 @@ const Header: React.FC = () => {
 
             <li className="list-none">
               <DarkMode
-                isDarkMode={isDarkMode}
+                isDarkMode={resolvedTheme === "dark"}
                 toggleDarkMode={toggleDarkMode}
               />
             </li>

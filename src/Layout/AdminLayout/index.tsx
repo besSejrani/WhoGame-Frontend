@@ -27,6 +27,10 @@ const Layout: React.FC<ILayout> = ({ children }) => {
           gridTemplateColumns: "1fr 9fr",
           gridColumnGap: "4rem",
         }}
+        className={`
+          bg-white
+          dark:bg-dark
+          `}
       >
         <AdminSidebar />
         <div style={{ margin: "12rem 4rem 0rem 0rem" }}>{children}</div>

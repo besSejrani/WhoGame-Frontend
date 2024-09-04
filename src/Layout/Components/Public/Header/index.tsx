@@ -14,7 +14,7 @@ import Container from "@/Components/ui/Container";
 // Components
 import Button from "@/Components/client/Button";
 import DarkMode from "@/Components/client/Menus/DarkMode";
-import Language from "@/Components/client/Menus/Language";
+// import Language from "@/Components/client/Menus/Language";
 
 // Paths
 import { paths } from "@/paths";

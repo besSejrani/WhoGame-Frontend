@@ -4,12 +4,6 @@
 import React from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import {
-  root,
-  link,
-  hoverLink,
-  label,
-} from "@/Components/client/Navigation/NavigationLink/index.css";
 
 interface NavigationLinkProps {
   href: string;
@@ -26,10 +20,17 @@ const NavigationLink: React.FC<NavigationLinkProps> = ({
   const isNameInPath = href === pathname;
 
   return (
-    <Link href={href} className={`${link} ${isNameInPath ? hoverLink : ""}`}>
-      <div className={root}>
+    <Link
+      href={href}
+      className={`
+        text-lg flex items-center p-8 no-underline
+        hover:bg-primary
+        ${isNameInPath ? "bg-[rgba(255,181,0,0.7)]" : ""}
+      `}
+    >
+      <div className="flex items-center w-max">
         {children}
-        <p className={label}>{label}</p>
+        <p className="opacity-70">{label}</p>
       </div>
     </Link>
   );

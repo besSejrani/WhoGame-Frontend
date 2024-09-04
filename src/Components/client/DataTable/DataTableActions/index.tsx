@@ -1,12 +1,17 @@
 "use client";
 
+// React
 import React from "react";
+
+// Next
 import { useRouter } from "next/navigation";
 
+// Icon
 import { Eye } from "lucide-react";
 
-import { icon, root } from "./index.css";
+// ==========================================================================================
 
+// Interface
 interface IDataTableActions {
   id?: string;
   viewPath?: string;
@@ -15,13 +20,18 @@ interface IDataTableActions {
 const DataTableActions: React.FC<IDataTableActions> = ({ id, viewPath }) => {
   const router = useRouter();
 
-  console.log("id", id);
-
   return (
-    <div className={root}>
+    <div className="flex justify-between w-full">
       {viewPath && (
         <div
-          className={icon}
+          className="
+            text-2xl text-black 
+            p-2 rounded-lg mr-4 cursor-pointer
+            flex justify-center items-center
+            relative
+            shadow-[0_2px_1px_-1px_rgba(0,0,0,0.3),0_1px_1px_0_rgba(0,0,0,0.3),0_1px_3px_0_rgba(0,0,0,0.4)]
+            dark:text-white dark:shadow-[0_2px_1px_-1px_rgba(255,255,255,0.3),0_1px_1px_0_rgba(255,255,255,0.3),0_1px_3px_0_rgba(255,255,255,0.4)]
+          "
           tabIndex={0}
           onClick={() => router.push(`${viewPath}/${id}`)}
           onKeyDown={(e) =>
