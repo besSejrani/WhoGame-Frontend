@@ -68,13 +68,20 @@ const Sidebar: React.FC<{ session_id: string }> = ({ session_id }) => {
         botResponse: null,
         isTyping: true,
       },
+      {
+        id: Date.now() + 4,
+        userPrompt: null,
+        botResponse: null,
+        isTyping: true,
+      },
     ];
     setChat(initialMessages);
 
     const messages = [
-      "Can you figure out who's who ?",
-      "Ask smart questions, use your detective skills to narrow down the possibilities, and make your guess.",
-      "Click on the user cards to eliminate suspects and narrow your options.",
+      "Can you guess who the person we're looking for is?",
+      "Ask closed yes or no questions about the people in order to narrow down the person.",
+      "Click on the cards to flip them over",
+      "Have a guess when you think you know who it is",
       "Good Luck!",
     ];
 

@@ -41,34 +41,11 @@ const Rewards: React.FC = () => {
                 `}
               >
                 <Trophy
-                  size={40}
+                  size={90}
                   strokeWidth={1.25}
                   absoluteStrokeWidth={true}
                   className={`
-                  mr-4 flex-shrink-0
-                  `}
-                />
-                <span
-                  className={`
-                   opacity-80
-                  `}
-                >
-                  A prize will be awarded to the player with the fastest time
-                </span>
-              </p>
-
-              <p
-                className={`
-                flex items-center mb-4 text-lg
-                dark:text-white
-                `}
-              >
-                <Trophy
-                  size={40}
-                  strokeWidth={1.25}
-                  absoluteStrokeWidth={true}
-                  className={`
-                  mr-4 flex-shrink-0
+                  mr-8 flex-shrink-0
                   
                   `}
                 />
@@ -77,32 +54,8 @@ const Rewards: React.FC = () => {
                    opacity-80
                   `}
                 >
-                  A prize will be awarded to the player with the most creative
-                  questions
-                </span>
-              </p>
-
-              <p
-                className={`
-                flex items-center mb-4 text-lg
-                dark:text-white
-                `}
-              >
-                <Trophy
-                  size={40}
-                  strokeWidth={1.25}
-                  absoluteStrokeWidth={true}
-                  className={`
-                  mr-4 flex-shrink-0
-                  
-                  `}
-                />
-                <span
-                  className={`
-                   opacity-80
-                  `}
-                >
-                  A prize will be awarded to the player with the fewest guesses
+                  Prizes will be awarded to the users with the highest scores,
+                  the second-highest score, and the most creative question.
                 </span>
               </p>
             </div>

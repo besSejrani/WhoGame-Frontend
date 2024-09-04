@@ -7,7 +7,7 @@ import {
   MessageSquareText,
   Clover,
   Languages,
-  TimerOff,
+  ArrowUp10,
 } from "lucide-react";
 
 // ==========================================================================================
@@ -46,7 +46,8 @@ const Rules: React.FC<RulesProps> = ({ isDarkMode = false }) => {
               ${darkModeText} opacity-80
               `}
           >
-            Objective: Guess the correct person by asking questions.
+            <span className="font-500">Objective</span>: Find out who we’re
+            looking for by asking questions.
           </span>
         </p>
 
@@ -65,7 +66,8 @@ const Rules: React.FC<RulesProps> = ({ isDarkMode = false }) => {
               ${darkModeText} opacity-80
               `}
           >
-            Questions: You can ask unlimited questions to gather clues.
+            <span className="font-500">Questions</span>: Ask yes or no questions
+            in order to narrow down the person.
           </span>
         </p>
 
@@ -84,7 +86,8 @@ const Rules: React.FC<RulesProps> = ({ isDarkMode = false }) => {
               ${darkModeText} opacity-80
               `}
           >
-            Guesses: Make as many guesses as you want.
+            <span className="font-500">Guesses</span>: Have a guess when you
+            think you know who it is.
           </span>
         </p>
 
@@ -103,12 +106,13 @@ const Rules: React.FC<RulesProps> = ({ isDarkMode = false }) => {
               ${darkModeText} opacity-80
               `}
           >
-            Language: Questions must be written in English.
+            <span className="font-500">Language</span>: Ask your questions in
+            Englisch.
           </span>
         </p>
 
         <p className="flex items-center mb-4 text-lg">
-          <TimerOff
+          <ArrowUp10
             size={40}
             strokeWidth={1.25}
             absoluteStrokeWidth={true}
@@ -122,7 +126,8 @@ const Rules: React.FC<RulesProps> = ({ isDarkMode = false }) => {
               ${darkModeText} opacity-80
               `}
           >
-            No Time Limit: Take your time to find the right person.
+            <span className="font-500">Score</span>: Be quick but careful. Time,
+            questions and guesses form the score.
           </span>
         </p>
       </div>
