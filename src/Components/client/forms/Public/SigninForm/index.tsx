@@ -78,6 +78,7 @@ const SignInForm: React.FC = () => {
         </label>
         <input
           type="email"
+          autoComplete="off"
           id="email"
           {...register("email", {
             required: {

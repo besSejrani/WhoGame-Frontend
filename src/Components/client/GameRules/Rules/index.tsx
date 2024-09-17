@@ -107,7 +107,7 @@ const Rules: React.FC<RulesProps> = ({ isDarkMode = false }) => {
               `}
           >
             <span className="font-500">Language</span>: Ask your questions in
-            Englisch.
+            English.
           </span>
         </p>
 

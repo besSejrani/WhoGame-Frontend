@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <Provider>
-      <PublicLayout>{children}</PublicLayout>;
+      <PublicLayout>{children}</PublicLayout>
     </Provider>
   );
 }

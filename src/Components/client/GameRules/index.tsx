@@ -11,7 +11,7 @@ import Rules from "@Components/client/GameRules/Rules";
 
 const GameRules: React.FC = () => {
   return (
-    <Container className="flex justify-center items-center py-40">
+    <Container className="flex justify-center items-center py-60">
       <section className="w-[80%] grid grid-cols-[50%_50%] items-center">
         <div
           className={`

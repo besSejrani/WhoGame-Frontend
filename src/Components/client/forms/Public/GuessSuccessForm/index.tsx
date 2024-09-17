@@ -100,6 +100,7 @@ const GuessSuccessForm: React.FC<GuessSuccessFormProps> = ({ session_id }) => {
         <input
           type="text"
           id="name"
+          autoComplete="off"
           placeholder="Example: Theo"
           {...register("name", {
             required: {
@@ -136,6 +137,7 @@ const GuessSuccessForm: React.FC<GuessSuccessFormProps> = ({ session_id }) => {
         <input
           type="email"
           id="email"
+          autoComplete="off"
           placeholder="Example: theo@tecracer.ch"
           {...register("email", {
             required: {
@@ -168,6 +170,7 @@ const GuessSuccessForm: React.FC<GuessSuccessFormProps> = ({ session_id }) => {
         </label>
         <input
           type="text"
+          autoComplete="off"
           placeholder="Example: tecRacer"
           id="organization"
           {...register("organization", {

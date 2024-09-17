@@ -102,6 +102,7 @@ const StartGame: React.FC<StartGameProps> = ({ onTokenReceived }) => {
         <input
           type="text"
           id="api-key"
+          autoComplete="off"
           placeholder="Example: aknd3j29-d92d-4a7a-bf78"
           className={`
             text-base w-120 py-4 border border-black border-r-0 px-4 outline-none h-20 rounded-tl-xl rounded-bl-xl
