@@ -47,7 +47,7 @@ const Header: React.FC = () => {
 
   return (
     <div className="fixed w-full bg-white z-50 shadow-md dark:bg-gray-800">
-      <Container className="w-[100%]">
+      <Container className="w-full">
         <header className="flex justify-between items-center w-full py-4 px-8 pr-16">
           <Link href={paths.homePage()}>
             <Image
